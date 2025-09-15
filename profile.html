@@ -24,7 +24,7 @@
   <main class="wrap">
     <section class="panel">
       <h1>Profile</h1>
-      <p class="muted">AI Engineer and Researcher with experience in embedded VLM/NLVR systems, CV pipelines, and edge optimizations.</p>
+      <p class="muted">AI Engineer and Researcher with experience in embedded VLM/NLVR systems, CV pipelines, and edge optimizations with ONNX/OpenVINO and INT8/FP16 quantization.</p>
       <div class="cta-row">
         <button id="open-assistant" class="btn ghost"><i class="ti ti-message-chatbot"></i> Ask the assistant</button>
         <a class="btn primary" href="https://huggingface.co/spaces/MANO066/Career-takAI" target="_blank" rel="noopener"><i class="ti ti-compass"></i> Open Space</a>
@@ -34,18 +34,14 @@
     <section class="panel">
       <h2>Experience</h2>
       <ul class="list">
-        <li>
-          <strong>AI Engineer — IEI Integration Corp</strong> (Jul 2024 – Present, New Taipei): VLM+NLVR integration, multi‑object tracking, and ONNX/OpenVINO INT8/FP16 deployment for real‑time edge systems. 
-        </li>
-        <li>
-          <strong>AI Engineer — Intelligent Recognition Industry Service Centre</strong> (Jun 2023 – May 2024, Douliu): iTrash recycling detection (~50% accuracy boost) and TFT‑LCD vertical‑line mura detection with YOLOv8‑based methods. 
-        </li>
+        <li><strong>AI Engineer — IEI Integration Corp</strong> (Jul 2024 – Present, New Taipei): Integrated VLM + NLVR into embedded detection, designed multi‑object tracking, and optimized edge deployments with ONNX/OpenVINO and INT8/FP16 for real‑time reliability.</li>
+        <li><strong>AI Engineer — Intelligent Recognition Industry Service Centre</strong> (Jun 2023 – May 2024, Douliu): iTrash recycling detection with ~50% accuracy gain and TFT‑LCD vertical‑line mura detection using YOLOv8‑based methods.</li>
       </ul>
     </section>
 
     <section class="panel">
       <h2>Education</h2>
-      <p>M.Sc Aeronautical & Electronic Engineering (AI Specialist), National Formosa University (2021–2023) — Thesis: Multi‑Spectral Image‑Based Air Quality Prediction.</p>
+      <p>M.Sc Aeronautical & Electronic Engineering (AI Specialist), National Formosa University (2021–2023) — Thesis: Multi‑Spectral Image‑Based Air Quality Prediction via ensemble learning.</p>
     </section>
 
     <section class="panel">
@@ -71,21 +67,3 @@
         <span class="badge">ONNX</span>
         <span class="badge">OpenVINO</span>
         <span class="badge">INT8/FP16</span>
-        <span class="badge">Quantization & Pruning</span>
-      </div>
-    </section>
-  </main>
-
-  <!-- Right-side assistant -->
-  <dialog id="assistant" class="assistant" aria-label="Career-takAI Assistant">
-    <div class="assistant-head">
-      <span><i class="ti ti-message-chatbot"></i> Career‑takAI</span>
-      <button id="close-assistant" class="icon-btn" aria-label="Close assistant"><i class="ti ti-x"></i></button>
-    </div>
-    <div class="assistant-body" id="assistant-body"></div>
-  </dialog>
-
-  <footer class="wrap footer">© <span id="y"></span> Manova L M</footer>
-  <script src="app.js"></script>
-</body>
-</html>
