@@ -4,197 +4,90 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Manova L M | AI Engineer</title>
-  <meta name="description" content="AI Engineer specializing in deep learning, computer vision, multimodal AI, and LLMs." />
-  <meta name="theme-color" content="#eae2d9" />
+  <meta name="description" content="AI Engineer specializing in LLMs, multimodal AI, and computer vision." />
   <link rel="icon" href="favicon.ico" />
-
-  <style>
-    /* Theme */
-    :root{
-      --bg:#f4eee7;      /* cream */
-      --ink:#242424;     /* headline */
-      --text:#3c3c3c;    /* body */
-      --muted:#6b6b6b;   /* subtle */
-      --brand:#0a66c2;   /* accent */
-      --card:#ffffff;    /* panels */
-      --shadow:0 12px 40px rgba(0,0,0,.12);
-    }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg:#0f1114; --ink:#f2f4f7; --text:#e0e4ea; --muted:#a9b0bb; --card:#151a20; --shadow:0 14px 46px rgba(0,0,0,.35);
-      }
-    }
-
-    /* Base */
-    *{box-sizing:border-box}
-    html,body{margin:0}
-    body{
-      font-family: Inter, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height:1.6;
-    }
-    a{color:var(--brand); text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    /* Layout */
-    .wrap{max-width:1200px; margin:0 auto; padding:24px}
-    header.site{
-      display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 4px;
-    }
-    .logo{display:flex; align-items:center; gap:10px; font-weight:800; color:var(--ink)}
-    nav.primary ul{display:flex; gap:24px; list-style:none; padding:0; margin:0}
-    nav.primary a{color:var(--ink); font-weight:600}
-    nav.primary a:hover{opacity:.8}
-
-    /* Hero */
-    .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:44px; align-items:center; padding:64px 0 40px}
-    @media (max-width: 900px){ .hero{grid-template-columns:1fr; gap:28px; padding:36px 0} }
-    .hero-title{font-size:clamp(36px,6vw,64px); line-height:1.05; color:var(--ink); margin:0 0 18px}
-    .hero-underline{border:none; border-bottom:3px dotted #bcb6ae; width:min(560px,90%); margin:18px 0}
-    .tagline{color:var(--muted); font-weight:600}
-
-    /* Portrait composite */
-    .portrait-wrap{position:relative; width:min(520px,90%); margin:auto}
-    .portrait-shadow{
-      position:absolute; inset:auto auto 12% 6%;
-      width:68%; aspect-ratio:1/1; background:#2d2927; border-radius:50%;
-      filter:blur(0.2px); transform:translate(-6%, 6%); z-index:0;
-    }
-    .portrait{
-      position:relative; z-index:1; width:100%; aspect-ratio:1/1; object-fit:cover;
-      border-radius:50%; box-shadow:var(--shadow); border:6px solid #e9e2d9;
-      clip-path: circle(50% at 50% 50%);
-    }
-
-    /* Meta row under hero (email / phone / location) */
-    .meta{display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; color:var(--muted)}
-    .dot::before{content:"• "; color:#b5ada4}
-
-    /* Sections */
-    section{background:var(--card); border-radius:16px; padding:22px; box-shadow:var(--shadow); margin:18px 0}
-    h2{margin:0 0 10px; color:var(--ink); font-size:22px}
-    ul.clean{list-style:none; padding:0; margin:0}
-    ul.clean li{margin:8px 0}
-
-    /* Badges */
-    .badges{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px}
-    .badge{
-      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
-      background:#f0ece6; color:#2a2a2a; border:1px solid #ded7cf;
-    }
-    @media (prefers-color-scheme: dark){ .badge{background:#1a1f26; color:#dfe4ea; border-color:#283041} }
-
-    /* Embed */
-    .embed{border:1px dashed #cfc7bd; border-radius:14px; padding:10px; background:#faf6f1}
-    @media (prefers-color-scheme: dark){ .embed{background:#0f1318; border-color:#2b323d} }
-
-    footer{color:var(--muted); text-align:center; padding:18px 0 8px}
-  </style>
-
-  <!-- Gradio web component (official embed for HF Spaces) -->
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <!-- Gradio web component for HF Spaces -->
   <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js"></script>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="wrap">
-    <header class="site" aria-label="Primary">
-      <div class="logo">Manova L M</div>
-      <nav class="primary" aria-label="Main navigation">
-        <ul>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#speaking">Speaking</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#" aria-haspopup="true" aria-expanded="false">Language ▾</a></li>
-        </ul>
-      </nav>
-    </header>
+  <header class="site wrap">
+    <a class="brand" href="index.html">
+      <span class="logo-dot"></span>
+      <span class="brand-name">Manova L M</span>
+    </a>
+    <nav class="top-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="#blog">Blog</a>
+      <a href="#speaking">Speaking</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
 
-    <!-- HERO -->
-    <section class="hero" aria-label="Intro">
-      <div>
-        <h1 class="hero-title">I am Manova L M</h1>
-        <hr class="hero-underline" />
-        <p class="tagline">AI Engineer specializing in deep learning, computer vision, and multimodal AI.</p>
-        <div class="meta">
-          <span>manomathew1943@gmail.com</span>
-          <span class="dot">+886 958334626</span>
-          <span class="dot">Taiwan</span>
+  <main class="wrap">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>I am Manova L M</h1>
+        <p class="tagline">AI Engineer focused on <strong>LLMs</strong>, multimodal AI, and computer vision for real‑world deployment.</p>
+        <div class="quick meta">
+          <span><i class="ti ti-mail"></i> manomathew1943@gmail.com</span>
+          <span><i class="ti ti-phone"></i> +886 958334626</span>
+          <span><i class="ti ti-map-pin"></i> Taiwan</span>
         </div>
-        <div class="badges" style="margin-top:16px">
-          <a class="badge" href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener">🔗 LinkedIn</a>
-          <a class="badge" href="https://github.com/mano066" target="_blank" rel="noopener">💻 GitHub</a>
-          <a class="badge" href="https://huggingface.co/MANO066" target="_blank" rel="noopener">🤗 Hugging Face</a>
-          <a class="badge" href="https://huggingface.co/spaces/MANO066/Career-takAI" target="_blank" rel="noopener">🧭 Career‑takAI</a>
+        <div class="cta-row">
+          <a class="btn primary" href="profile.html"><i class="ti ti-user"></i> View full profile</a>
+          <button id="open-assistant" class="btn ghost"><i class="ti ti-message-chatbot"></i> Open assistant</button>
+        </div>
+        <div class="social">
+          <a class="chip" href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
+          <a class="chip" href="https://github.com/mano066" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i> GitHub</a>
+          <a class="chip" href="https://huggingface.co/MANO066" target="_blank" rel="noopener"><i class="ti ti-brand-hipchat"></i> Hugging Face</a>
+          <a class="chip" href="https://huggingface.co/spaces/MANO066/Career-takAI" target="_blank" rel="noopener"><i class="ti ti-compass"></i> Career‑takAI</a>
         </div>
       </div>
 
       <div class="portrait-wrap" aria-hidden="true">
         <div class="portrait-shadow"></div>
-        <!-- Replace profile.jpg with a real headshot -->
         <img class="portrait" src="profile.jpg" alt="Portrait of Manova L M" />
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="about" aria-labelledby="exp">
-      <h2 id="exp">Experience</h2>
-      <ul class="clean">
-        <li><strong>AI Engineer, IEI Integration Corp</strong> — VLM + NLVR in embedded detection; ONNX/OpenVINO INT8/FP16 optimizations (2024–Present).</li>
-        <li><strong>AI Engineer, Intelligent Recognition Industry Service Centre</strong> — iTrash recycling detection (+~50% accuracy) and TFT‑LCD V‑line mura detection with YOLO‑based methods (2023–2024).</li>
-      </ul>
-    </section>
-
-    <!-- SKILLS -->
-    <section aria-labelledby="skills">
-      <h2 id="skills">Skills</h2>
+    <!-- Highlight skills (LLM-first) -->
+    <section class="panel">
+      <h2>Core skills</h2>
       <div class="badges">
-        <span class="badge">Deep Learning</span>
+        <span class="badge">Large Language Models (LLMs)</span>
+        <span class="badge">Multimodal AI</span>
         <span class="badge">Computer Vision</span>
-        <span class="badge">LLMs</span>
-        <span class="badge">VLMs</span>
         <span class="badge">Generative AI</span>
-        <span class="badge">OpenAI SDK</span>
+        <span class="badge">ONNX</span>
+        <span class="badge">OpenVINO</span>
+        <span class="badge">Quantization & Pruning</span>
         <span class="badge">CrewAI</span>
         <span class="badge">LangChain</span>
         <span class="badge">Autogen</span>
         <span class="badge">MCP</span>
-        <span class="badge">ONNX</span>
-        <span class="badge">OpenVINO</span>
-        <span class="badge">Quantization</span>
+        <span class="badge">OpenAI SDK</span>
       </div>
     </section>
+  </main>
 
-    <!-- PUBLICATIONS -->
-    <section aria-labelledby="pubs">
-      <h2 id="pubs">Publications</h2>
-      <ul class="clean">
-        <li>Enhancing PM2.5 Detection via Multi‑Spectral Image‑based Double Channel Ensemble Learning for Drones — IEEE Sensors Journal, 2025.</li>
-        <li>Vertical‑Line Mura Defect Detection for TFT‑LCDs — IEEE ACCESS, 2024.</li>
-      </ul>
-    </section>
+  <!-- Right-side assistant -->
+  <dialog id="assistant" class="assistant" aria-label="Career-takAI Assistant">
+    <div class="assistant-head">
+      <span><i class="ti ti-message-chatbot"></i> Career‑takAI</span>
+      <button id="close-assistant" class="icon-btn" aria-label="Close assistant"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="assistant-body" id="assistant-body">
+      <!-- Gradio app mounts here -->
+    </div>
+  </dialog>
 
-    <!-- CHATBOT EMBED -->
-    <section aria-labelledby="chat">
-      <h2 id="chat">Career‑takAI Chatbot</h2>
-      <div class="embed">
-        <gradio-app
-          space="MANO066/Career-takAI"
-          theme_mode="light"
-          eager="true"
-          initial_height="0px"
-          container="false"
-          info="false"
-        ></gradio-app>
-        <noscript>
-          JavaScript is required for the embedded chatbot; open the Space directly:
-          <a href="https://huggingface.co/spaces/MANO066/Career-takAI" target="_blank" rel="noopener">Career‑takAI</a>.
-        </noscript>
-      </div>
-    </section>
-
-    <footer>© <span id="y"></span> Manova L M — All rights reserved.</footer>
-  </div>
-
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <footer class="wrap footer">© <span id="y"></span> Manova L M</footer>
+  <script src="app.js"></script>
 </body>
 </html>
