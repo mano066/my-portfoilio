@@ -1767,4 +1767,112 @@ body {
     --shadow: 0 2px 4px rgba(0,0,0,0.5);
   }
 }
+/* Enhanced Project Card Styles */
+.project-badge.success {
+  background: var(--secondary);
+}
+
+.project-badge.award {
+  background: var(--accent);
+}
+
+.project-card.award {
+  border-color: var(--accent);
+  position: relative;
+}
+
+.project-card.award::before {
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+}
+
+.project-icon.cv {
+  background: #e8f5e8;
+}
+
+.project-icon.defect {
+  background: #fff3e0;
+}
+
+.project-icon.measurement {
+  background: #f3e5f5;
+}
+
+.project-icon.grinding {
+  background: #fce4ec;
+}
+
+.project-icon.research {
+  background: #e3f2fd;
+}
+
+.project-impact {
+  display: flex;
+  gap: 32px;
+  margin: 24px 0;
+  padding: 20px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.project-card.featured .project-impact {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.impact-metric {
+  text-align: center;
+}
+
+.metric-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.project-card.featured .metric-value {
+  color: var(--secondary);
+}
+
+.metric-label {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.project-card.featured .metric-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.achievement.success {
+  background: var(--secondary);
+  color: white;
+  border-color: var(--secondary);
+}
+
+.achievement.success i {
+  color: white;
+}
+
+.achievement.award {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.achievement.award i {
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .project-impact {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+
 
