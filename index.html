@@ -3,83 +3,234 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Manova L M | AI Engineer</title>
-  <meta name="description" content="AI Engineer specializing in LLMs, multimodal AI, and computer vision." />
+  <title>Manova L M | AI Engineer & Researcher</title>
+  <meta name="description" content="AI Engineer specializing in LLMs, multimodal AI, computer vision, and edge deployment optimization." />
+  <meta name="theme-color" content="#0a66c2" />
   <link rel="icon" href="favicon.ico" />
+  
+  <!-- Advanced Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js"></script>
+  
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="page-transition"></div>
+  
   <header class="site wrap">
-    <a class="brand" href="index.html"><span class="logo-dot"></span><span class="brand-name">Manova L M</span></a>
-    <nav class="top-nav" aria-label="Primary">
-      <a class="active" href="index.html">Home</a>
-      <a href="profile.html">Profile</a>
-      <a href="#blog">Blog</a>
-      <a href="#speaking">Speaking</a>
-      <a href="#about">About</a>
+    <a class="brand" href="index.html">
+      <div class="brand-avatar">
+        <span class="brand-initial">M</span>
+        <div class="brand-pulse"></div>
+      </div>
+      <span class="brand-name">Manova L M</span>
+    </a>
+    <nav class="top-nav" aria-label="Primary navigation">
+      <a class="nav-link active" href="index.html" data-page="home">
+        <i class="ti ti-home"></i>
+        <span>Home</span>
+      </a>
+      <a class="nav-link" href="profile.html" data-page="profile">
+        <i class="ti ti-user"></i>
+        <span>Profile</span>
+      </a>
+      <a class="nav-link" href="projects.html" data-page="projects">
+        <i class="ti ti-code"></i>
+        <span>Projects</span>
+      </a>
+      <a class="nav-link" href="publications.html" data-page="publications">
+        <i class="ti ti-book"></i>
+        <span>Research</span>
+      </a>
+      <a class="nav-link" href="contact.html" data-page="contact">
+        <i class="ti ti-mail"></i>
+        <span>Contact</span>
+      </a>
     </nav>
   </header>
 
   <main class="wrap">
     <section class="hero">
-      <div class="hero-text">
-        <h1>I am Manova L M</h1>
-        <p class="tagline">AI Engineer focused on <strong>LLMs</strong>, multimodal AI, and computer vision for real‑world deployment.</p>
-        <div class="quick meta">
-          <span><i class="ti ti-mail"></i> manomathew1943@gmail.com</span>
-          <span><i class="ti ti-phone"></i> +886 958334626</span>
-          <span><i class="ti ti-map-pin"></i> Taiwan</span>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="ti ti-sparkles"></i>
+          <span>AI Engineer & Researcher</span>
         </div>
-        <div class="cta-row">
-          <a class="btn primary" href="profile.html"><i class="ti ti-user"></i> View full profile</a>
-          <button id="open-assistant" class="btn ghost"><i class="ti ti-message-chatbot"></i> Open assistant</button>
+        
+        <h1 class="hero-title">
+          <span class="title-line">I am</span>
+          <span class="title-name">Manova L M</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          Specialized in <span class="highlight">Large Language Models</span>, 
+          <span class="highlight">Multimodal AI</span>, and 
+          <span class="highlight">Computer Vision</span> with expertise in edge deployment optimization.
+        </p>
+        
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Publications</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Awards Won</div>
+          </div>
         </div>
-        <div class="social">
-          <a class="chip" href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
-          <a class="chip" href="https://github.com/mano066" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i> GitHub</a>
-          <a class="chip" href="https://huggingface.co/MANO066" target="_blank" rel="noopener"><i class="ti ti-brand-hipchat"></i> Hugging Face</a>
-          <a class="chip" href="https://huggingface.co/spaces/MANO066/Career-takAI" target="_blank" rel="noopener"><i class="ti ti-compass"></i> Career‑takAI</a>
+        
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="profile.html">
+            <i class="ti ti-user"></i>
+            <span>View Profile</span>
+          </a>
+          <a class="btn btn-outline" href="#contact">
+            <i class="ti ti-mail"></i>
+            <span>Get in Touch</span>
+          </a>
+        </div>
+        
+        <div class="social-links">
+          <a class="social-link linkedin" href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener">
+            <i class="ti ti-brand-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a class="social-link github" href="https://github.com/mano066" target="_blank" rel="noopener">
+            <i class="ti ti-brand-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a class="social-link huggingface" href="https://huggingface.co/MANO066" target="_blank" rel="noopener">
+            <i class="ti ti-brand-hipchat"></i>
+            <span>Hugging Face</span>
+          </a>
         </div>
       </div>
 
-      <div class="portrait-wrap" aria-hidden="true">
-        <div class="portrait-shadow"></div>
-        <img class="portrait" src="profile.jpg" alt="Portrait of Manova L M" />
+      <div class="hero-visual">
+        <div class="portrait-container">
+          <div class="portrait-glow"></div>
+          <div class="portrait-frame">
+            <img class="portrait" src="profile.jpg" alt="Manova L M - AI Engineer" loading="lazy" />
+          </div>
+          <div class="floating-elements">
+            <div class="float-element" style="--delay: 0s;">🤖</div>
+            <div class="float-element" style="--delay: 1s;">⚡</div>
+            <div class="float-element" style="--delay: 2s;">🧠</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="panel">
-      <h2>Core skills</h2>
-      <div class="badges">
-        <span class="badge">Large Language Models (LLMs)</span>
-        <span class="badge">Multimodal AI</span>
-        <span class="badge">Computer Vision</span>
-        <span class="badge">Generative AI</span>
-        <span class="badge">OpenAI SDK</span>
-        <span class="badge">CrewAI</span>
-        <span class="badge">LangChain</span>
-        <span class="badge">Autogen</span>
-        <span class="badge">MCP</span>
-        <span class="badge">ONNX</span>
-        <span class="badge">OpenVINO</span>
-        <span class="badge">INT8/FP16</span>
-        <span class="badge">Quantization & Pruning</span>
+    <section class="expertise">
+      <div class="section-header">
+        <h2>Core Expertise</h2>
+        <p>Cutting-edge technologies driving AI innovation</p>
+      </div>
+      
+      <div class="expertise-grid">
+        <div class="expertise-card primary">
+          <div class="card-icon">
+            <i class="ti ti-brain"></i>
+          </div>
+          <h3>Large Language Models</h3>
+          <p>Advanced LLM development, fine-tuning, and deployment with focus on real-world applications.</p>
+          <div class="tech-tags">
+            <span class="tag">OpenAI SDK</span>
+            <span class="tag">Transformers</span>
+            <span class="tag">LangChain</span>
+          </div>
+        </div>
+
+        <div class="expertise-card">
+          <div class="card-icon">
+            <i class="ti ti-eye"></i>
+          </div>
+          <h3>Computer Vision</h3>
+          <p>Deep learning solutions for object detection, image classification, and defect detection systems.</p>
+          <div class="tech-tags">
+            <span class="tag">YOLO</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">PyTorch</span>
+          </div>
+        </div>
+
+        <div class="expertise-card">
+          <div class="card-icon">
+            <i class="ti ti-cpu"></i>
+          </div>
+          <h3>Edge Optimization</h3>
+          <p>Model optimization for embedded systems using quantization, pruning, and efficient inference.</p>
+          <div class="tech-tags">
+            <span class="tag">ONNX</span>
+            <span class="tag">OpenVINO</span>
+            <span class="tag">INT8/FP16</span>
+          </div>
+        </div>
+
+        <div class="expertise-card">
+          <div class="card-icon">
+            <i class="ti ti-robot"></i>
+          </div>
+          <h3>Agentic AI</h3>
+          <p>Building autonomous AI agents and multi-agent systems for complex task automation.</p>
+          <div class="tech-tags">
+            <span class="tag">CrewAI</span>
+            <span class="tag">Autogen</span>
+            <span class="tag">MCP</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-cta" id="contact">
+      <div class="cta-content">
+        <h2>Let's Build Something Amazing</h2>
+        <p>Ready to collaborate on cutting-edge AI solutions?</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="ti ti-mail"></i>
+            <a href="mailto:manomathew1943@gmail.com">manomathew1943@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <i class="ti ti-phone"></i>
+            <a href="tel:+886958334626">+886 958 334 626</a>
+          </div>
+          <div class="contact-item">
+            <i class="ti ti-map-pin"></i>
+            <span>Taiwan</span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Right-side assistant -->
-  <dialog id="assistant" class="assistant" aria-label="Career-takAI Assistant">
-    <div class="assistant-head">
-      <span><i class="ti ti-message-chatbot"></i> Career‑takAI</span>
-      <button id="close-assistant" class="icon-btn" aria-label="Close"><i class="ti ti-x"></i></button>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <strong>Manova L M</strong>
+          <p>AI Engineer & Researcher</p>
+        </div>
+        <div class="footer-links">
+          <a href="profile.html">Profile</a>
+          <a href="projects.html">Projects</a>
+          <a href="publications.html">Research</a>
+        </div>
+        <div class="footer-copy">
+          <p>&copy; <span id="current-year"></span> Manova L M. All rights reserved.</p>
+        </div>
+      </div>
     </div>
-    <div class="assistant-body" id="assistant-body"></div>
-  </dialog>
+  </footer>
 
-  <footer class="wrap footer">© <span id="y"></span> Manova L M</footer>
   <script src="app.js"></script>
 </body>
 </html>
