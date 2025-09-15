@@ -6,20 +6,15 @@
   <title>Manova L M | AI Engineer</title>
   <meta name="description" content="AI Engineer specializing in LLMs, multimodal AI, and computer vision." />
   <link rel="icon" href="favicon.ico" />
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-  <!-- Gradio web component for HF Spaces -->
   <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site wrap">
-    <a class="brand" href="index.html">
-      <span class="logo-dot"></span>
-      <span class="brand-name">Manova L M</span>
-    </a>
+    <a class="brand" href="index.html"><span class="logo-dot"></span><span class="brand-name">Manova L M</span></a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="index.html">Home</a>
+      <a class="active" href="index.html">Home</a>
       <a href="profile.html">Profile</a>
       <a href="#blog">Blog</a>
       <a href="#speaking">Speaking</a>
@@ -28,7 +23,6 @@
   </header>
 
   <main class="wrap">
-    <!-- Hero -->
     <section class="hero">
       <div class="hero-text">
         <h1>I am Manova L M</h1>
@@ -56,7 +50,6 @@
       </div>
     </section>
 
-    <!-- Highlight skills (LLM-first) -->
     <section class="panel">
       <h2>Core skills</h2>
       <div class="badges">
@@ -64,14 +57,15 @@
         <span class="badge">Multimodal AI</span>
         <span class="badge">Computer Vision</span>
         <span class="badge">Generative AI</span>
-        <span class="badge">ONNX</span>
-        <span class="badge">OpenVINO</span>
-        <span class="badge">Quantization & Pruning</span>
+        <span class="badge">OpenAI SDK</span>
         <span class="badge">CrewAI</span>
         <span class="badge">LangChain</span>
         <span class="badge">Autogen</span>
         <span class="badge">MCP</span>
-        <span class="badge">OpenAI SDK</span>
+        <span class="badge">ONNX</span>
+        <span class="badge">OpenVINO</span>
+        <span class="badge">INT8/FP16</span>
+        <span class="badge">Quantization & Pruning</span>
       </div>
     </section>
   </main>
@@ -80,11 +74,9 @@
   <dialog id="assistant" class="assistant" aria-label="Career-takAI Assistant">
     <div class="assistant-head">
       <span><i class="ti ti-message-chatbot"></i> Career‑takAI</span>
-      <button id="close-assistant" class="icon-btn" aria-label="Close assistant"><i class="ti ti-x"></i></button>
+      <button id="close-assistant" class="icon-btn" aria-label="Close"><i class="ti ti-x"></i></button>
     </div>
-    <div class="assistant-body" id="assistant-body">
-      <!-- Gradio app mounts here -->
-    </div>
+    <div class="assistant-body" id="assistant-body"></div>
   </dialog>
 
   <footer class="wrap footer">© <span id="y"></span> Manova L M</footer>
