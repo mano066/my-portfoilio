@@ -1,95 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manova L M | AI Engineer</title>
-<style>
-  body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; }
-  header { background: #0077cc; color: #fff; padding: 20px 0; text-align: center; }
-  h1, h2 { margin: 0.5em 0; }
-  section { padding: 20px; max-width: 900px; margin: auto; }
-  ul { list-style: none; padding: 0; }
-  li { margin-bottom: 10px; }
-  a { color: #0077cc; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .card { border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manova L M | AI Engineer</title>
+  <meta name="description" content="AI Engineer specializing in deep learning, computer vision, and multimodal AI. Publications in IEEE ACCESS and IEEE Sensors Journal." />
+  <meta name="theme-color" content="#0a66c2" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Manova L M | AI Engineer" />
+  <meta property="og:description" content="Deep Learning, Computer Vision, Multimodal AI, and Generative AI." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="og-image.png" />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --bg-elev: #111317;
+      --txt: #e6e9ef;
+      --muted: #a8b3cf;
+      --primary: #0a66c2;
+      --accent: #00d4ff;
+      --card: #151821;
+      --border: #222738;
+      --chip: #10131a;
+      --success: #1db954;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f9fc;
+        --bg-elev: #ffffff;
+        --txt: #1b1f29;
+        --muted: #4b5565;
+        --card: #ffffff;
+        --border: #e5e9f2;
+        --chip: #f1f5fb;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, system-ui, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(10,102,194,0.20), transparent 40%),
+                  radial-gradient(900px 500px at 110% 10%, rgba(0,212,255,0.18), transparent 50%),
+                  var(--bg);
+      color: var(--txt);
+      line-height: 1.6;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 24px; }
+    header {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)) , var(--card);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+    .top {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+    .avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: inline-flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 24px;
+      border: 2px solid rgba(255,255,255,0.15);
+      box-shadow: 0 6px 18px rgba(10,102,194,0.35);
+      user-select: none;
+    }
+    h1 { margin: 0 0 6px 0; font-size: 28px; letter-spacing: 0.3px; }
+    .subtitle { margin: 0; color: var(--muted); }
+    .contact {
+      margin-top: 14px;
+      display: flex; flex-wrap: wrap; gap: 12px;
+      color: var(--muted);
+    }
+    .contact a { color: var(--txt); text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.2); }
+    .contact a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .social {
+      margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)), var(--chip);
+      color: var(--txt); text-decoration: none; font-weight: 600; font-size: 14px;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .badge:hover { transform: translateY(-1px); border-color: var(--accent); box-shadow: 0 6px 16px rgba(0,212,255,0.18); }
+    main { margin-top: 22px; display: grid; gap: 22px; }
+    section {
+      border: 1px solid var(--border); border-radius: 14px; background: var(--card); padding: 20px;
+    }
+    section h2 { margin: 0 0 12px 0; font-size: 20px; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    li + li { margin-top: 8px; }
+    .grid-2 {
+      display: grid; gap: 14px;
+    }
+    @media (min-width: 860px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+    }
+    .card {
+      border: 1px solid var(--border); border-radius: 12px; padding: 14px; background: var(--bg-elev);
+    }
+    .role { margin: 0 0 6px; font-weight: 700; }
+    .meta { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .chip { padding: 6px 10px; background: var(--chip); border: 1px solid var(--border); border-radius: 999px; font-size: 12px; color: var(--muted); }
+    footer { color: var(--muted); text-align: center; margin: 16px 0 8px; font-size: 13px; }
+    /* Accessibility focus */
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <header aria-label="Profile header">
+      <div class="top">
+        <div class="avatar" aria-hidden="true">ML</div>
+        <div>
+          <h1>Manova L M</h1>
+          <p class="subtitle">AI Engineer and Researcher • Taiwan</p>
+          <div class="contact" aria-label="Contact">
+            <a href="mailto:manomathew1943@gmail.com">manomathew1943@gmail.com</a>
+            <span>•</span>
+            <a href="tel:+886958334626">+886 958 334 626</a>
+          </div>
+          <div class="social" aria-label="Social links">
+            <a class="badge" href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener" aria-label="LinkedIn">🔗 LinkedIn</a>
+            <a class="badge" href="https://github.com/mano066" target="_blank" rel="noopener" aria-label="GitHub">💻 GitHub</a>
+            <!-- Assumed handle on Hugging Face based on GitHub; update if different -->
+            <a class="badge" href="https://huggingface.co/mano066" target="_blank" rel="noopener" aria-label="Hugging Face">🤗 Hugging Face</a>
+            <!-- Placeholder: replace with actual CareerTakAI profile URL -->
+            <a class="badge" href="#" target="_blank" rel="noopener" aria-label="CareerTakAI">🧭 CareerTakAI</a>
+          </div>
+        </div>
+      </div>
+    </header>
 
-<header>
-  <h1>Manova L M</h1>
-  <p>AI Engineer and Researcher</p>
-  <p>Email: manomathew1943@gmail.com | Phone: +886 958334626 | Taiwan</p>
-</header>
+    <main>
+      <section aria-labelledby="skills">
+        <h2 id="skills">Skills</h2>
+        <div class="chips">
+          <span class="chip">Deep Learning</span>
+          <span class="chip">Computer Vision</span>
+          <span class="chip">Machine Learning</span>
+          <span class="chip">Multimodal AI</span>
+          <span class="chip">LLMs</span>
+          <span class="chip">VLMs</span>
+          <span class="chip">Generative AI</span>
+          <span class="chip">OpenAI SDK</span>
+          <span class="chip">CrewAI</span>
+          <span class="chip">LangChain</span>
+          <span class="chip">Autogen</span>
+          <span class="chip">MCP</span>
+          <span class="chip">ONNX</span>
+          <span class="chip">OpenVINO</span>
+          <span class="chip">INT8/FP16</span>
+          <span class="chip">Quantization & Pruning</span>
+        </div>
+      </section>
 
-<section>
-  <h2>Skills</h2>
-  <ul>
-    <li><strong>AI & Deep Learning:</strong> Deep Learning, Computer Vision, Machine Learning</li>
-    <li><strong>Multimodal AI:</strong> Large Language Models, Vision-based Models, Generative AI</li>
-    <li><strong>Frameworks:</strong> OpenAI SDK, CrewAI, LangChain, Autogen, MCP</li>
-  </ul>
-</section>
+      <section aria-labelledby="experience">
+        <h2 id="experience">Experience</h2>
+        <div class="grid-2">
+          <div class="card">
+            <p class="role">AI Engineer — IEI Integration Corp</p>
+            <p class="meta">Jul 2024 – Present • New Taipei, Taiwan</p>
+            <ul>
+              <li>Integrated VLM + NLVR models into embedded object‑detection pipelines and continuous monitoring systems.</li>
+              <li>Optimized with ONNX, OpenVINO, INT8/FP16 quantization and pruning for edge deployment.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="role">AI Engineer — Intelligent Recognition Industry Service Centre</p>
+            <p class="meta">Jun 2023 – May 2024 • Douliu, Taiwan</p>
+            <ul>
+              <li>iTrash Recycling Detection: boosted detection accuracy by ~50% with CV pipelines.</li>
+              <li>TFT‑LCD Vertical‑Line Mura defect detection leveraging YOLOv8/VLM‑YOLOGA variants.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-<section>
-  <h2>Experience</h2>
-  <div class="card">
-    <h3>AI Engineer | IEI Integration Corp (07/2024 – Present)</h3>
-    <ul>
-      <li>Integrated VLM + NLVR models into embedded object-detection pipelines.</li>
-      <li>Optimized models using ONNX, OpenVINO, INT8/FP16 quantization & pruning.</li>
-    </ul>
+      <section aria-labelledby="education">
+        <h2 id="education">Education</h2>
+        <p>M.Sc, Aeronautical & Electronic Engineering (AI Specialist) — National Formosa University (2021–2023).</p>
+        <p>Thesis: Multi‑Spectral Image‑Based Air Quality Prediction (Ensemble Learning).</p>
+      </section>
+
+      <section aria-labelledby="projects">
+        <h2 id="projects">Projects</h2>
+        <ul>
+          <li>Autonomous steering angle prediction in a simulation environment (02/2022–05/2022).</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="publications">
+        <h2 id="publications">Publications</h2>
+        <ul>
+          <li>Enhancing PM2.5 Detection via Multi‑Spectral Image‑based Ensemble Learning — IEEE Sensors Journal, 2025.</li>
+          <li>Vertical‑Line Mura Defect Detection for TFT‑LCDs — IEEE ACCESS, 2024.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="certs">
+        <h2 id="certs">Certificates</h2>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">Tableau</span>
+          <span class="chip">Deep Learning</span>
+          <span class="chip">LLM Engineering</span>
+          <span class="chip">Data Science Fundamentals</span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="y"></span> Manova L M — All rights reserved.
+    </footer>
   </div>
-  <div class="card">
-    <h3>AI Engineer | Intelligent Recognition Industry Service Centre (06/2023 – 05/2024)</h3>
-    <ul>
-      <li>iTrash Recycling Detection: Boosted detection accuracy by 50%.</li>
-      <li>TFT-LCD Vertical-Line Mura Defect Detection using YOLOv8.</li>
-    </ul>
-  </div>
-</section>
-
-<section>
-  <h2>Education</h2>
-  <p>M.Sc Aeronautical and Electronic Engineering (AI Specialist), National Formosa University (2021 – 2023)</p>
-  <p>Thesis: Multi-Spectral Image-Based Air Quality Prediction</p>
-</section>
-
-<section>
-  <h2>Projects</h2>
-  <ul>
-    <li>Autonomous steering angle prediction in simulation environment (02/2022 – 05/2022)</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Publications</h2>
-  <ul>
-    <li>Enhancing PM2.5 Detection via Multi-Spectral Image-based Ensemble Learning – IEEE Sensors Journal, 2025</li>
-    <li>Vertical-Line Mura Defect Detection for TFT-LCDs – IEEE ACCESS, 2024</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Certificates</h2>
-  <ul>
-    <li>Python</li>
-    <li>Data visualization with Tableau</li>
-    <li>Deep Learning Course</li>
-    <li>LLM Engineering</li>
-    <li>Data Science Fundamentals</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Contact</h2>
-  <p>Email: manomathew1943@gmail.com</p>
-  <p>Phone: +886 958334626</p>
-  <p>GitHub: <a href="https://github.com/mano066" target="_blank">mano066</a></p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank">manova-m-509145157</a></p>
-</section>
-
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
