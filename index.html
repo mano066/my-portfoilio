@@ -16,6 +16,9 @@
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
   
+  <!-- Gradio Web Component for Career-takAI -->
+  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js"></script>
+  
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -53,7 +56,7 @@
     </nav>
   </header>
 
-  <main class="wrap">
+  <main class="wrap" id="main">
     <section class="hero">
       <div class="hero-content">
         <div class="hero-badge">
@@ -78,7 +81,7 @@
             <div class="stat-label">Years Experience</div>
           </div>
           <div class="stat">
-            <div class="stat-number">10+</div>
+            <div class="stat-number">11</div>
             <div class="stat-label">Publications</div>
           </div>
           <div class="stat">
@@ -92,10 +95,10 @@
             <i class="ti ti-user"></i>
             <span>View Profile</span>
           </a>
-          <a class="btn btn-outline" href="#contact">
-            <i class="ti ti-mail"></i>
-            <span>Get in Touch</span>
-          </a>
+          <button id="chatbot-hero-trigger" class="btn btn-outline">
+            <i class="ti ti-message-chatbot"></i>
+            <span>Ask AI Assistant</span>
+          </button>
         </div>
         
         <div class="social-links">
@@ -211,6 +214,34 @@
       </div>
     </section>
   </main>
+
+  <!-- Career-takAI Chatbot -->
+  <div class="chatbot-wrapper">
+    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Open Career-takAI Assistant">
+      <div class="chatbot-icon">
+        <i class="ti ti-message-chatbot"></i>
+      </div>
+      <div class="chatbot-pulse"></div>
+    </button>
+    
+    <div id="chatbot-panel" class="chatbot-panel">
+      <div class="chatbot-header">
+        <div class="chatbot-title">
+          <i class="ti ti-robot"></i>
+          <span>Career-takAI</span>
+        </div>
+        <button id="chatbot-close" class="chatbot-close" aria-label="Close chatbot">
+          <i class="ti ti-x"></i>
+        </button>
+      </div>
+      <div class="chatbot-content" id="chatbot-content">
+        <div class="chatbot-loading">
+          <i class="ti ti-loader"></i>
+          <span>Initializing AI Assistant...</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="wrap">
