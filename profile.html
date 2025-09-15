@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -48,7 +49,7 @@
     </nav>
   </header>
 
-  <main class="wrap profile-page">
+  <main class="wrap profile-page" id="main">
     <div class="page-header">
       <h1>Professional Profile</h1>
       <p>Comprehensive overview of experience, education, and achievements in AI engineering</p>
@@ -236,6 +237,34 @@
       </section>
     </div>
   </main>
+
+  <!-- Career-takAI Chatbot -->
+  <div class="chatbot-wrapper">
+    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Open Career-takAI Assistant">
+      <div class="chatbot-icon">
+        <i class="ti ti-message-chatbot"></i>
+      </div>
+      <div class="chatbot-pulse"></div>
+    </button>
+    
+    <div id="chatbot-panel" class="chatbot-panel">
+      <div class="chatbot-header">
+        <div class="chatbot-title">
+          <i class="ti ti-robot"></i>
+          <span>Career-takAI</span>
+        </div>
+        <button id="chatbot-close" class="chatbot-close" aria-label="Close chatbot">
+          <i class="ti ti-x"></i>
+        </button>
+      </div>
+      <div class="chatbot-content" id="chatbot-content">
+        <div class="chatbot-loading">
+          <i class="ti ti-loader"></i>
+          <span>Initializing AI Assistant...</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="wrap">
