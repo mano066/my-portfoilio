@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Manova L M | AI Engineer</title>
-  <meta name="description" content="AI Engineer specializing in deep learning, computer vision, and multimodal AI. Publications in IEEE ACCESS and IEEE Sensors Journal." />
+  <meta name="description" content="AI Engineer specializing in deep learning, computer vision, multimodal AI, and LLMs. Publications in IEEE ACCESS and IEEE Sensors Journal." />
   <meta name="theme-color" content="#0a66c2" />
   <!-- Open Graph -->
   <meta property="og:title" content="Manova L M | AI Engineer" />
@@ -12,6 +12,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="og-image.png" />
   <link rel="icon" href="favicon.ico" />
+
   <style>
     :root {
       --bg: #0b0c10;
@@ -23,7 +24,6 @@
       --card: #151821;
       --border: #222738;
       --chip: #10131a;
-      --success: #1db954;
     }
     @media (prefers-color-scheme: light) {
       :root {
@@ -46,7 +46,7 @@
       color: var(--txt);
       line-height: 1.6;
     }
-    .container { max-width: 1000px; margin: 0 auto; padding: 24px; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 24px; }
     header {
       border: 1px solid var(--border);
       border-radius: 16px;
@@ -73,15 +73,11 @@
     h1 { margin: 0 0 6px 0; font-size: 28px; letter-spacing: 0.3px; }
     .subtitle { margin: 0; color: var(--muted); }
     .contact {
-      margin-top: 14px;
-      display: flex; flex-wrap: wrap; gap: 12px;
-      color: var(--muted);
+      margin-top: 14px; display: flex; flex-wrap: wrap; gap: 12px; color: var(--muted);
     }
     .contact a { color: var(--txt); text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.2); }
     .contact a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-    .social {
-      margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px;
-    }
+    .social { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; }
     .badge {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border);
@@ -92,29 +88,26 @@
     }
     .badge:hover { transform: translateY(-1px); border-color: var(--accent); box-shadow: 0 6px 16px rgba(0,212,255,0.18); }
     main { margin-top: 22px; display: grid; gap: 22px; }
-    section {
-      border: 1px solid var(--border); border-radius: 14px; background: var(--card); padding: 20px;
-    }
+    section { border: 1px solid var(--border); border-radius: 14px; background: var(--card); padding: 20px; }
     section h2 { margin: 0 0 12px 0; font-size: 20px; }
     ul { margin: 0; padding: 0; list-style: none; }
     li + li { margin-top: 8px; }
-    .grid-2 {
-      display: grid; gap: 14px;
-    }
-    @media (min-width: 860px) {
-      .grid-2 { grid-template-columns: 1fr 1fr; }
-    }
-    .card {
-      border: 1px solid var(--border); border-radius: 12px; padding: 14px; background: var(--bg-elev);
-    }
+    .grid-2 { display: grid; gap: 14px; }
+    @media (min-width: 900px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+    .card { border: 1px solid var(--border); border-radius: 12px; padding: 14px; background: var(--bg-elev); }
     .role { margin: 0 0 6px; font-weight: 700; }
     .meta { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
     .chip { padding: 6px 10px; background: var(--chip); border: 1px solid var(--border); border-radius: 999px; font-size: 12px; color: var(--muted); }
+    .embed-wrap {
+      border: 1px dashed var(--border); border-radius: 12px; padding: 12px; background: var(--bg-elev);
+    }
     footer { color: var(--muted); text-align: center; margin: 16px 0 8px; font-size: 13px; }
-    /* Accessibility focus */
     a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
   </style>
+
+  <!-- Gradio Web Component for embedding Spaces -->
+  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js"></script>
 </head>
 <body>
   <div class="container">
@@ -132,10 +125,8 @@
           <div class="social" aria-label="Social links">
             <a class="badge" href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener" aria-label="LinkedIn">🔗 LinkedIn</a>
             <a class="badge" href="https://github.com/mano066" target="_blank" rel="noopener" aria-label="GitHub">💻 GitHub</a>
-            <!-- Assumed handle on Hugging Face based on GitHub; update if different -->
-            <a class="badge" href="https://huggingface.co/mano066" target="_blank" rel="noopener" aria-label="Hugging Face">🤗 Hugging Face</a>
-            <!-- Placeholder: replace with actual CareerTakAI profile URL -->
-            <a class="badge" href="#" target="_blank" rel="noopener" aria-label="CareerTakAI">🧭 CareerTakAI</a>
+            <a class="badge" href="https://huggingface.co/MANO066" target="_blank" rel="noopener" aria-label="Hugging Face">🤗 Hugging Face</a>
+            <a class="badge" href="https://huggingface.co/spaces/MANO066/Career-takAI" target="_blank" rel="noopener" aria-label="Career‑takAI Space">🧭 Career‑takAI</a>
           </div>
         </div>
       </div>
@@ -192,30 +183,43 @@
         <p>Thesis: Multi‑Spectral Image‑Based Air Quality Prediction (Ensemble Learning).</p>
       </section>
 
-      <section aria-labelledby="projects">
-        <h2 id="projects">Projects</h2>
-        <ul>
-          <li>Autonomous steering angle prediction in a simulation environment (02/2022–05/2022).</li>
-        </ul>
-      </section>
-
       <section aria-labelledby="publications">
         <h2 id="publications">Publications</h2>
         <ul>
-          <li>Enhancing PM2.5 Detection via Multi‑Spectral Image‑based Ensemble Learning — IEEE Sensors Journal, 2025.</li>
+          <li>Enhancing PM2.5 Detection via Multi‑Spectral Image‑based Double Channel Ensemble Learning for Drones — IEEE Sensors Journal, 2025.</li>
           <li>Vertical‑Line Mura Defect Detection for TFT‑LCDs — IEEE ACCESS, 2024.</li>
         </ul>
       </section>
 
-      <section aria-labelledby="certs">
-        <h2 id="certs">Certificates</h2>
-        <div class="chips">
-          <span class="chip">Python</span>
-          <span class="chip">Tableau</span>
-          <span class="chip">Deep Learning</span>
-          <span class="chip">LLM Engineering</span>
-          <span class="chip">Data Science Fundamentals</span>
+      <section aria-labelledby="chat">
+        <h2 id="chat">Career‑takAI Chatbot</h2>
+        <p class="meta">Embedded directly from the public Hugging Face Space for an interactive, low‑friction demo.</p>
+        <div class="embed-wrap">
+          <!-- Preferred: Web Component (auto-sizing, lazy) -->
+          <gradio-app
+            space="MANO066/Career-takAI"
+            theme_mode="dark"
+            eager="true"
+            initial_height="0px"
+            container="false"
+            info="false"
+          ></gradio-app>
+
+          <!-- Fallback: static link if JS disabled -->
+          <noscript>
+            <p>Please enable JavaScript to interact with the embedded chatbot.</p>
+            <p><a href="https://huggingface.co/spaces/MANO066/Career-takAI" target="_blank" rel="noopener">Open the Career‑takAI Space</a></p>
+          </noscript>
         </div>
+      </section>
+
+      <section aria-labelledby="contact">
+        <h2 id="contact">Contact</h2>
+        <p>Email: <a href="mailto:manomathew1943@gmail.com">manomathew1943@gmail.com</a></p>
+        <p>Phone: <a href="tel:+886958334626">+886 958334626</a></p>
+        <p>GitHub: <a href="https://github.com/mano066" target="_blank" rel="noopener">mano066</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener">manova-m-509145157</a></p>
+        <p>Hugging Face: <a href="https://huggingface.co/MANO066" target="_blank" rel="noopener">MANO066</a></p>
       </section>
     </main>
 
@@ -224,7 +228,6 @@
     </footer>
   </div>
   <script>
-    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
