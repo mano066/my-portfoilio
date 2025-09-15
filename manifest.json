@@ -1,0 +1,20 @@
+{
+  "name": "Manova L M - AI Engineer Portfolio",
+  "short_name": "Manova Portfolio",
+  "description": "Professional portfolio of Manova L M, AI Engineer and Researcher",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4eee7",
+  "theme_color": "#0a66c2",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["education", "productivity", "business"],
+  "lang": "en",
+  "dir": "ltr"
+}
