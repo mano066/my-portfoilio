@@ -3,67 +3,259 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Profile — Manova L M</title>
+  <title>Profile - Manova L M | AI Engineer & Researcher</title>
   <link rel="icon" href="favicon.ico" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="page-transition"></div>
+  
   <header class="site wrap">
-    <a class="brand" href="index.html"><span class="logo-dot"></span><span class="brand-name">Manova L M</span></a>
-    <nav class="top-nav" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a class="active" href="profile.html">Profile</a>
-      <a href="#blog">Blog</a>
-      <a href="#speaking">Speaking</a>
-      <a href="#about">About</a>
+    <a class="brand" href="index.html">
+      <div class="brand-avatar">
+        <span class="brand-initial">M</span>
+        <div class="brand-pulse"></div>
+      </div>
+      <span class="brand-name">Manova L M</span>
+    </a>
+    <nav class="top-nav" aria-label="Primary navigation">
+      <a class="nav-link" href="index.html">
+        <i class="ti ti-home"></i>
+        <span>Home</span>
+      </a>
+      <a class="nav-link active" href="profile.html">
+        <i class="ti ti-user"></i>
+        <span>Profile</span>
+      </a>
+      <a class="nav-link" href="projects.html">
+        <i class="ti ti-code"></i>
+        <span>Projects</span>
+      </a>
+      <a class="nav-link" href="publications.html">
+        <i class="ti ti-book"></i>
+        <span>Research</span>
+      </a>
+      <a class="nav-link" href="contact.html">
+        <i class="ti ti-mail"></i>
+        <span>Contact</span>
+      </a>
     </nav>
   </header>
 
-  <main class="wrap">
-    <section class="panel">
-      <h1>Profile</h1>
-      <p class="muted">AI Engineer and Researcher with experience in embedded VLM/NLVR systems, CV pipelines, and edge optimizations with ONNX/OpenVINO and INT8/FP16 quantization.</p>
-      <div class="cta-row">
-        <button id="open-assistant" class="btn ghost"><i class="ti ti-message-chatbot"></i> Ask the assistant</button>
-        <a class="btn primary" href="https://huggingface.co/spaces/MANO066/Career-takAI" target="_blank" rel="noopener"><i class="ti ti-compass"></i> Open Space</a>
+  <main class="wrap profile-page">
+    <div class="page-header">
+      <h1>Professional Profile</h1>
+      <p>Comprehensive overview of experience, education, and achievements in AI engineering</p>
+    </div>
+
+    <div class="profile-grid">
+      <section class="profile-summary card">
+        <div class="card-header">
+          <h2><i class="ti ti-user-circle"></i> About</h2>
+        </div>
+        <div class="card-content">
+          <p>AI Engineer and Researcher with <strong>5+ years</strong> of experience in building and deploying AI-driven solutions. Specialized in embedded VLM/NLVR systems, computer vision pipelines, and edge optimization using advanced quantization techniques.</p>
+          <ul class="highlights">
+            <li>✨ Expert in deep learning, computer vision, and large language models</li>
+            <li>🎯 Proficient in managing customer requirements and delivering tailored AI solutions</li>
+            <li>🚀 Passionate about adopting cutting-edge technologies for real-world applications</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="experience card">
+        <div class="card-header">
+          <h2><i class="ti ti-briefcase"></i> Experience</h2>
+        </div>
+        <div class="card-content">
+          <div class="timeline">
+            <div class="timeline-item current">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="job-header">
+                  <h3>AI Engineer</h3>
+                  <div class="company">IEI Integration Corp</div>
+                  <div class="duration">Jul 2024 – Present | New Taipei, Taiwan</div>
+                </div>
+                <div class="job-description">
+                  <h4>Digital Fence & AI Feature Implementation</h4>
+                  <ul>
+                    <li>Integrated Vision-Language (VLM) and NLVR models into embedded object-detection pipelines</li>
+                    <li>Designed multi-object tracking enabling glass detection, human-safety alerting, and skeleton recognition</li>
+                    <li>Optimized models using ONNX, OpenVINO, INT8/FP16 quantization reducing memory footprint by 60%</li>
+                    <li>Collaborated with firmware and QA teams for production deployment</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="job-header">
+                  <h3>AI Engineer</h3>
+                  <div class="company">Intelligent Recognition Industry Service Centre</div>
+                  <div class="duration">Jun 2023 – May 2024 | Douliu, Taiwan</div>
+                </div>
+                <div class="job-description">
+                  <h4>Computer Vision & Defect Detection</h4>
+                  <ul>
+                    <li><strong>iTrash Recycling Detection:</strong> Boosted accuracy by 50%, reduced sorting errors by 30%</li>
+                    <li><strong>TFT-LCD Defect Detection:</strong> YOLOv8-based V-line mura detection system</li>
+                    <li><strong>Award:</strong> Winner of 2023 AI+ Rising Talent Selection</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="job-header">
+                  <h3>Research Fellow</h3>
+                  <div class="company">Vel Tech R&D Institute</div>
+                  <div class="duration">Jul 2017 – Feb 2021 | Chennai, India</div>
+                </div>
+                <div class="job-description">
+                  <ul>
+                    <li>Led government-funded NIDHI PRAYAS project team</li>
+                    <li>Integrated OpenCV-based UAV object detection systems</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="education card">
+        <div class="card-header">
+          <h2><i class="ti ti-school"></i> Education</h2>
+        </div>
+        <div class="card-content">
+          <div class="degree">
+            <h3>M.Sc Aeronautical & Electronic Engineering</h3>
+            <div class="specialization">Specialist in Artificial Intelligence</div>
+            <div class="university">National Formosa University</div>
+            <div class="duration">Apr 2021 – Jan 2023 | Taiwan</div>
+            <div class="thesis">
+              <h4>Thesis: Multi-Spectral Image-Based Air Quality Prediction</h4>
+              <p>Developed deep learning multimodal approach for environmental prediction using ensemble learning methods, significantly reducing monitoring station requirements.</p>
+              <div class="achievements">
+                <span class="achievement">🏆 Overall Prize Winner - 5G AI Competition</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills card">
+        <div class="card-header">
+          <h2><i class="ti ti-code"></i> Technical Skills</h2>
+        </div>
+        <div class="card-content">
+          <div class="skill-category">
+            <h3>Large Language Models & AI Frameworks</h3>
+            <div class="skill-tags">
+              <span class="skill-tag expert">LLMs</span>
+              <span class="skill-tag expert">OpenAI SDK</span>
+              <span class="skill-tag advanced">CrewAI</span>
+              <span class="skill-tag advanced">LangChain</span>
+              <span class="skill-tag intermediate">Autogen</span>
+              <span class="skill-tag intermediate">MCP</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3>Computer Vision & Deep Learning</h3>
+            <div class="skill-tags">
+              <span class="skill-tag expert">Computer Vision</span>
+              <span class="skill-tag expert">Deep Learning</span>
+              <span class="skill-tag expert">Machine Learning</span>
+              <span class="skill-tag advanced">YOLO</span>
+              <span class="skill-tag advanced">OpenCV</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3>Multimodal & Generative AI</h3>
+            <div class="skill-tags">
+              <span class="skill-tag expert">Multimodal AI</span>
+              <span class="skill-tag expert">Vision-Language Models</span>
+              <span class="skill-tag advanced">Generative AI</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3>Edge Computing & Optimization</h3>
+            <div class="skill-tags">
+              <span class="skill-tag expert">ONNX</span>
+              <span class="skill-tag expert">OpenVINO</span>
+              <span class="skill-tag expert">INT8/FP16</span>
+              <span class="skill-tag advanced">Quantization</span>
+              <span class="skill-tag advanced">Model Pruning</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="certifications card">
+        <div class="card-header">
+          <h2><i class="ti ti-certificate"></i> Certifications</h2>
+        </div>
+        <div class="card-content">
+          <div class="cert-grid">
+            <div class="cert-item">
+              <i class="ti ti-brand-python"></i>
+              <span>Python Programming</span>
+            </div>
+            <div class="cert-item">
+              <i class="ti ti-chart-bar"></i>
+              <span>Data Visualization with Tableau</span>
+            </div>
+            <div class="cert-item">
+              <i class="ti ti-brain"></i>
+              <span>Deep Learning Specialization</span>
+            </div>
+            <div class="cert-item">
+              <i class="ti ti-robot"></i>
+              <span>LLM Engineering</span>
+            </div>
+            <div class="cert-item">
+              <i class="ti ti-database"></i>
+              <span>Data Science Fundamentals</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <strong>Manova L M</strong>
+          <p>AI Engineer & Researcher</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="publications.html">Research</a>
+        </div>
+        <div class="footer-copy">
+          <p>&copy; <span id="current-year"></span> Manova L M. All rights reserved.</p>
+        </div>
       </div>
-    </section>
+    </div>
+  </footer>
 
-    <section class="panel">
-      <h2>Experience</h2>
-      <ul class="list">
-        <li><strong>AI Engineer — IEI Integration Corp</strong> (Jul 2024 – Present, New Taipei): Integrated VLM + NLVR into embedded detection, designed multi‑object tracking, and optimized edge deployments with ONNX/OpenVINO and INT8/FP16 for real‑time reliability.</li>
-        <li><strong>AI Engineer — Intelligent Recognition Industry Service Centre</strong> (Jun 2023 – May 2024, Douliu): iTrash recycling detection with ~50% accuracy gain and TFT‑LCD vertical‑line mura detection using YOLOv8‑based methods.</li>
-      </ul>
-    </section>
-
-    <section class="panel">
-      <h2>Education</h2>
-      <p>M.Sc Aeronautical & Electronic Engineering (AI Specialist), National Formosa University (2021–2023) — Thesis: Multi‑Spectral Image‑Based Air Quality Prediction via ensemble learning.</p>
-    </section>
-
-    <section class="panel">
-      <h2>Publications</h2>
-      <ul class="list">
-        <li>Enhancing PM2.5 Detection via Multi‑Spectral Image‑based Double Channel Ensemble Learning for Drones — IEEE Sensors Journal, 2025.</li>
-        <li>Vertical‑Line Mura Defect Detection for TFT‑LCDs — IEEE ACCESS, 2024.</li>
-      </ul>
-    </section>
-
-    <section class="panel">
-      <h2>Skills (LLM‑first)</h2>
-      <div class="badges">
-        <span class="badge">LLMs</span>
-        <span class="badge">Multimodal AI</span>
-        <span class="badge">Computer Vision</span>
-        <span class="badge">Generative AI</span>
-        <span class="badge">OpenAI SDK</span>
-        <span class="badge">CrewAI</span>
-        <span class="badge">LangChain</span>
-        <span class="badge">Autogen</span>
-        <span class="badge">MCP</span>
-        <span class="badge">ONNX</span>
-        <span class="badge">OpenVINO</span>
-        <span class="badge">INT8/FP16</span>
+  <script src="app.js"></script>
+</body>
+</html>
