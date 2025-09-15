@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile — Manova L M</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site wrap">
+    <a class="brand" href="index.html"><span class="logo-dot"></span><span class="brand-name">Manova L M</span></a>
+    <nav class="top-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a class="active" href="profile.html">Profile</a>
+      <a href="#blog">Blog</a>
+      <a href="#speaking">Speaking</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="panel">
+      <h1>Profile</h1>
+      <p class="muted">AI Engineer and Researcher with experience in embedded VLM/NLVR systems, CV pipelines, and edge optimizations.</p>
+      <div class="cta-row">
+        <button id="open-assistant" class="btn ghost"><i class="ti ti-message-chatbot"></i> Ask the assistant</button>
+        <a class="btn primary" href="https://huggingface.co/spaces/MANO066/Career-takAI" target="_blank" rel="noopener"><i class="ti ti-compass"></i> Open Space</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Experience</h2>
+      <ul class="list">
+        <li>
+          <strong>AI Engineer — IEI Integration Corp</strong> (Jul 2024 – Present, New Taipei): VLM+NLVR integration, multi‑object tracking, and ONNX/OpenVINO INT8/FP16 deployment for real‑time edge systems. 
+        </li>
+        <li>
+          <strong>AI Engineer — Intelligent Recognition Industry Service Centre</strong> (Jun 2023 – May 2024, Douliu): iTrash recycling detection (~50% accuracy boost) and TFT‑LCD vertical‑line mura detection with YOLOv8‑based methods. 
+        </li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Education</h2>
+      <p>M.Sc Aeronautical & Electronic Engineering (AI Specialist), National Formosa University (2021–2023) — Thesis: Multi‑Spectral Image‑Based Air Quality Prediction.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Publications</h2>
+      <ul class="list">
+        <li>Enhancing PM2.5 Detection via Multi‑Spectral Image‑based Double Channel Ensemble Learning for Drones — IEEE Sensors Journal, 2025.</li>
+        <li>Vertical‑Line Mura Defect Detection for TFT‑LCDs — IEEE ACCESS, 2024.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Skills (LLM‑first)</h2>
+      <div class="badges">
+        <span class="badge">LLMs</span>
+        <span class="badge">Multimodal AI</span>
+        <span class="badge">Computer Vision</span>
+        <span class="badge">Generative AI</span>
+        <span class="badge">OpenAI SDK</span>
+        <span class="badge">CrewAI</span>
+        <span class="badge">LangChain</span>
+        <span class="badge">Autogen</span>
+        <span class="badge">MCP</span>
+        <span class="badge">ONNX</span>
+        <span class="badge">OpenVINO</span>
+        <span class="badge">INT8/FP16</span>
+        <span class="badge">Quantization & Pruning</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Right-side assistant -->
+  <dialog id="assistant" class="assistant" aria-label="Career-takAI Assistant">
+    <div class="assistant-head">
+      <span><i class="ti ti-message-chatbot"></i> Career‑takAI</span>
+      <button id="close-assistant" class="icon-btn" aria-label="Close assistant"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="assistant-body" id="assistant-body"></div>
+  </dialog>
+
+  <footer class="wrap footer">© <span id="y"></span> Manova L M</footer>
+  <script src="app.js"></script>
+</body>
+</html>
