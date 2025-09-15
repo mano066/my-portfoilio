@@ -102,6 +102,11 @@ body {
   z-index: 100;
   background: rgba(255, 255, 255, 0.8);
   border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.site.hidden {
+  transform: translateY(-100%);
 }
 
 .brand {
@@ -863,6 +868,19 @@ body {
   border: none;
 }
 
+.project-card.featured::before {
+  background: linear-gradient(90deg, var(--secondary), var(--accent));
+}
+
+.project-card.award {
+  border-color: var(--accent);
+  position: relative;
+}
+
+.project-card.award::before {
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+}
+
 .project-badge {
   display: inline-flex;
   align-items: center;
@@ -874,6 +892,14 @@ body {
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 20px;
+}
+
+.project-badge.success {
+  background: var(--secondary);
+}
+
+.project-badge.award {
+  background: var(--accent);
 }
 
 .project-header {
@@ -895,6 +921,30 @@ body {
 
 .project-card.featured .project-icon {
   background: rgba(255, 255, 255, 0.2);
+}
+
+.project-icon.cv {
+  background: #e8f5e8;
+}
+
+.project-icon.defect {
+  background: #fff3e0;
+}
+
+.project-icon.measurement {
+  background: #f3e5f5;
+}
+
+.project-icon.grinding {
+  background: #fce4ec;
+}
+
+.project-icon.research {
+  background: #e3f2fd;
+}
+
+.project-icon.autonomous {
+  background: #f0f4ff;
 }
 
 .project-icon i {
@@ -961,6 +1011,11 @@ body {
   color: rgba(255, 255, 255, 0.9);
 }
 
+.project-description > p {
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
 .project-features {
   display: grid;
   gap: 16px;
@@ -1025,6 +1080,47 @@ body {
   color: white;
 }
 
+.project-impact {
+  display: flex;
+  gap: 32px;
+  margin: 24px 0;
+  padding: 20px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.project-card.featured .project-impact {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.impact-metric {
+  text-align: center;
+}
+
+.metric-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.project-card.featured .metric-value {
+  color: var(--secondary);
+}
+
+.metric-label {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.project-card.featured .metric-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .project-achievements {
   margin-top: 24px;
 }
@@ -1040,6 +1136,26 @@ body {
   margin-bottom: 8px;
   font-weight: 600;
   color: var(--text-primary);
+}
+
+.achievement.success {
+  background: var(--secondary);
+  color: white;
+  border-color: var(--secondary);
+}
+
+.achievement.success i {
+  color: white;
+}
+
+.achievement.award {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.achievement.award i {
+  color: white;
 }
 
 .achievement i {
@@ -1627,6 +1743,37 @@ body {
   font-weight: 600;
 }
 
+/* Skip link styles */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+  transition: top 0.3s;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Form error states */
+.error {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2) !important;
+}
+
+/* Loading states */
+.loaded .hero-content > * {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .wrap {
@@ -1688,42 +1835,21 @@ body {
     justify-content: center;
     text-align: center;
   }
-}
-
-/* Header hide on scroll */
-.site.hidden {
-  transform: translateY(-100%);
-}
-
-/* Skip link styles */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: var(--primary);
-  color: white;
-  padding: 8px 16px;
-  text-decoration: none;
-  border-radius: 4px;
-  z-index: 1000;
-  transition: top 0.3s;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.skip-link:focus {
-  top: 6px;
-}
-
-/* Form error states */
-.error {
-  border-color: var(--accent) !important;
-  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2) !important;
-}
-
-/* Loading states */
-.loaded .hero-content > * {
-  animation: fadeInUp 0.6s ease forwards;
+  
+  .project-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .project-icon {
+    align-self: flex-start;
+  }
+  
+  .project-impact {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
 }
 
 /* Print styles */
@@ -1767,112 +1893,3 @@ body {
     --shadow: 0 2px 4px rgba(0,0,0,0.5);
   }
 }
-/* Enhanced Project Card Styles */
-.project-badge.success {
-  background: var(--secondary);
-}
-
-.project-badge.award {
-  background: var(--accent);
-}
-
-.project-card.award {
-  border-color: var(--accent);
-  position: relative;
-}
-
-.project-card.award::before {
-  background: linear-gradient(90deg, var(--accent), var(--secondary));
-}
-
-.project-icon.cv {
-  background: #e8f5e8;
-}
-
-.project-icon.defect {
-  background: #fff3e0;
-}
-
-.project-icon.measurement {
-  background: #f3e5f5;
-}
-
-.project-icon.grinding {
-  background: #fce4ec;
-}
-
-.project-icon.research {
-  background: #e3f2fd;
-}
-
-.project-impact {
-  display: flex;
-  gap: 32px;
-  margin: 24px 0;
-  padding: 20px;
-  background: var(--bg-secondary);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-}
-
-.project-card.featured .project-impact {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.impact-metric {
-  text-align: center;
-}
-
-.metric-value {
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--primary);
-  line-height: 1;
-}
-
-.project-card.featured .metric-value {
-  color: var(--secondary);
-}
-
-.metric-label {
-  font-size: 14px;
-  color: var(--text-muted);
-  font-weight: 600;
-  margin-top: 4px;
-}
-
-.project-card.featured .metric-label {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.achievement.success {
-  background: var(--secondary);
-  color: white;
-  border-color: var(--secondary);
-}
-
-.achievement.success i {
-  color: white;
-}
-
-.achievement.award {
-  background: var(--accent);
-  color: white;
-  border-color: var(--accent);
-}
-
-.achievement.award i {
-  color: white;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .project-impact {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-  }
-}
-
-
