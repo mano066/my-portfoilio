@@ -3,7 +3,6 @@
   --brand:#0a66c2; --cream:#e9e2d9; --card:#ffffff;
   --border:#e3dbd1; --chip:#f3efe8; --shadow:0 12px 40px rgba(0,0,0,.12);
 }
-/* Dark mode */
 @media (prefers-color-scheme: dark){
   :root{
     --bg:#0f1114; --ink:#f2f4f7; --text:#e0e4ea; --muted:#9aa3ad;
@@ -11,7 +10,6 @@
   }
 }
 
-/* Base */
 *{box-sizing:border-box}
 html,body{margin:0}
 body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
@@ -46,16 +44,15 @@ a:hover{text-decoration:underline}
 .portrait-shadow{position:absolute;inset:auto auto 12% 6%;width:68%;aspect-ratio:1/1;background:#2d2927;border-radius:50%;transform:translate(-6%,6%);z-index:0;opacity:.9}
 .portrait{position:relative;z-index:1;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:50%;box-shadow:var(--shadow);border:6px solid var(--cream);clip-path:circle(50% at 50% 50%)}
 
-/* Generic panels */
+/* Panels */
 .panel{background:var(--card);border-radius:16px;padding:22px;box-shadow:var(--shadow);border:1px solid var(--border);margin:18px 0}
 .badges{display:flex;flex-wrap:wrap;gap:10px}
 .badge{padding:8px 12px;border-radius:999px;background:var(--chip);border:1px solid var(--border);color:var(--ink)}
 .list{margin:0;padding:0;list-style:none}
 .list li{margin:10px 0}
 
-/* Assistant (right-side non-modal) */
+/* Assistant (right-side, non-modal) */
 .assistant{position:fixed;right:16px;top:16px;width:min(480px,95vw);height:80vh;margin:0;padding:0;border:1px solid var(--border);border-radius:14px;background:var(--card);box-shadow:var(--shadow)}
-.assistant::backdrop{background:transparent} /* non-modal so not used, but safe */
+.assistant::backdrop{background:transparent}
 .assistant-head{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:800;color:var(--ink)}
-.assistant-body{height:calc(80vh - 52px);padding:0}
-.footer{color:var(--muted);text-align:center;padding:16px 0 8px}
+.assistant-body{
