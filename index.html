@@ -1,234 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Manova L M | AI Engineer</title>
-  <meta name="description" content="AI Engineer specializing in deep learning, computer vision, multimodal AI, and LLMs. Publications in IEEE ACCESS and IEEE Sensors Journal." />
-  <meta name="theme-color" content="#0a66c2" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="Manova L M | AI Engineer" />
-  <meta property="og:description" content="Deep Learning, Computer Vision, Multimodal AI, and Generative AI." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="og-image.png" />
+  <meta name="description" content="AI Engineer specializing in deep learning, computer vision, multimodal AI, and LLMs." />
+  <meta name="theme-color" content="#eae2d9" />
   <link rel="icon" href="favicon.ico" />
 
   <style>
-    :root {
-      --bg: #0b0c10;
-      --bg-elev: #111317;
-      --txt: #e6e9ef;
-      --muted: #a8b3cf;
-      --primary: #0a66c2;
-      --accent: #00d4ff;
-      --card: #151821;
-      --border: #222738;
-      --chip: #10131a;
+    /* Theme */
+    :root{
+      --bg:#f4eee7;      /* cream */
+      --ink:#242424;     /* headline */
+      --text:#3c3c3c;    /* body */
+      --muted:#6b6b6b;   /* subtle */
+      --brand:#0a66c2;   /* accent */
+      --card:#ffffff;    /* panels */
+      --shadow:0 12px 40px rgba(0,0,0,.12);
     }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f7f9fc;
-        --bg-elev: #ffffff;
-        --txt: #1b1f29;
-        --muted: #4b5565;
-        --card: #ffffff;
-        --border: #e5e9f2;
-        --chip: #f1f5fb;
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0f1114; --ink:#f2f4f7; --text:#e0e4ea; --muted:#a9b0bb; --card:#151a20; --shadow:0 14px 46px rgba(0,0,0,.35);
       }
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, system-ui, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 10% -10%, rgba(10,102,194,0.20), transparent 40%),
-                  radial-gradient(900px 500px at 110% 10%, rgba(0,212,255,0.18), transparent 50%),
-                  var(--bg);
-      color: var(--txt);
-      line-height: 1.6;
+
+    /* Base */
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family: Inter, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height:1.6;
     }
-    .container { max-width: 1080px; margin: 0 auto; padding: 24px; }
-    header {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)) , var(--card);
-      backdrop-filter: blur(6px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Layout */
+    .wrap{max-width:1200px; margin:0 auto; padding:24px}
+    header.site{
+      display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 4px;
     }
-    .top {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 20px;
-      align-items: center;
+    .logo{display:flex; align-items:center; gap:10px; font-weight:800; color:var(--ink)}
+    nav.primary ul{display:flex; gap:24px; list-style:none; padding:0; margin:0}
+    nav.primary a{color:var(--ink); font-weight:600}
+    nav.primary a:hover{opacity:.8}
+
+    /* Hero */
+    .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:44px; align-items:center; padding:64px 0 40px}
+    @media (max-width: 900px){ .hero{grid-template-columns:1fr; gap:28px; padding:36px 0} }
+    .hero-title{font-size:clamp(36px,6vw,64px); line-height:1.05; color:var(--ink); margin:0 0 18px}
+    .hero-underline{border:none; border-bottom:3px dotted #bcb6ae; width:min(560px,90%); margin:18px 0}
+    .tagline{color:var(--muted); font-weight:600}
+
+    /* Portrait composite */
+    .portrait-wrap{position:relative; width:min(520px,90%); margin:auto}
+    .portrait-shadow{
+      position:absolute; inset:auto auto 12% 6%;
+      width:68%; aspect-ratio:1/1; background:#2d2927; border-radius:50%;
+      filter:blur(0.2px); transform:translate(-6%, 6%); z-index:0;
     }
-    .avatar {
-      width: 72px; height: 72px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      display: inline-flex; align-items: center; justify-content: center;
-      color: white; font-weight: 700; font-size: 24px;
-      border: 2px solid rgba(255,255,255,0.15);
-      box-shadow: 0 6px 18px rgba(10,102,194,0.35);
-      user-select: none;
+    .portrait{
+      position:relative; z-index:1; width:100%; aspect-ratio:1/1; object-fit:cover;
+      border-radius:50%; box-shadow:var(--shadow); border:6px solid #e9e2d9;
+      clip-path: circle(50% at 50% 50%);
     }
-    h1 { margin: 0 0 6px 0; font-size: 28px; letter-spacing: 0.3px; }
-    .subtitle { margin: 0; color: var(--muted); }
-    .contact {
-      margin-top: 14px; display: flex; flex-wrap: wrap; gap: 12px; color: var(--muted);
+
+    /* Meta row under hero (email / phone / location) */
+    .meta{display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; color:var(--muted)}
+    .dot::before{content:"• "; color:#b5ada4}
+
+    /* Sections */
+    section{background:var(--card); border-radius:16px; padding:22px; box-shadow:var(--shadow); margin:18px 0}
+    h2{margin:0 0 10px; color:var(--ink); font-size:22px}
+    ul.clean{list-style:none; padding:0; margin:0}
+    ul.clean li{margin:8px 0}
+
+    /* Badges */
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
+      background:#f0ece6; color:#2a2a2a; border:1px solid #ded7cf;
     }
-    .contact a { color: var(--txt); text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.2); }
-    .contact a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-    .social { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)), var(--chip);
-      color: var(--txt); text-decoration: none; font-weight: 600; font-size: 14px;
-      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-    .badge:hover { transform: translateY(-1px); border-color: var(--accent); box-shadow: 0 6px 16px rgba(0,212,255,0.18); }
-    main { margin-top: 22px; display: grid; gap: 22px; }
-    section { border: 1px solid var(--border); border-radius: 14px; background: var(--card); padding: 20px; }
-    section h2 { margin: 0 0 12px 0; font-size: 20px; }
-    ul { margin: 0; padding: 0; list-style: none; }
-    li + li { margin-top: 8px; }
-    .grid-2 { display: grid; gap: 14px; }
-    @media (min-width: 900px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
-    .card { border: 1px solid var(--border); border-radius: 12px; padding: 14px; background: var(--bg-elev); }
-    .role { margin: 0 0 6px; font-weight: 700; }
-    .meta { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-    .chip { padding: 6px 10px; background: var(--chip); border: 1px solid var(--border); border-radius: 999px; font-size: 12px; color: var(--muted); }
-    .embed-wrap {
-      border: 1px dashed var(--border); border-radius: 12px; padding: 12px; background: var(--bg-elev);
-    }
-    footer { color: var(--muted); text-align: center; margin: 16px 0 8px; font-size: 13px; }
-    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+    @media (prefers-color-scheme: dark){ .badge{background:#1a1f26; color:#dfe4ea; border-color:#283041} }
+
+    /* Embed */
+    .embed{border:1px dashed #cfc7bd; border-radius:14px; padding:10px; background:#faf6f1}
+    @media (prefers-color-scheme: dark){ .embed{background:#0f1318; border-color:#2b323d} }
+
+    footer{color:var(--muted); text-align:center; padding:18px 0 8px}
   </style>
 
-  <!-- Gradio Web Component for embedding Spaces -->
+  <!-- Gradio web component (official embed for HF Spaces) -->
   <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js"></script>
 </head>
 <body>
-  <div class="container">
-    <header aria-label="Profile header">
-      <div class="top">
-        <div class="avatar" aria-hidden="true">ML</div>
-        <div>
-          <h1>Manova L M</h1>
-          <p class="subtitle">AI Engineer and Researcher • Taiwan</p>
-          <div class="contact" aria-label="Contact">
-            <a href="mailto:manomathew1943@gmail.com">manomathew1943@gmail.com</a>
-            <span>•</span>
-            <a href="tel:+886958334626">+886 958 334 626</a>
-          </div>
-          <div class="social" aria-label="Social links">
-            <a class="badge" href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener" aria-label="LinkedIn">🔗 LinkedIn</a>
-            <a class="badge" href="https://github.com/mano066" target="_blank" rel="noopener" aria-label="GitHub">💻 GitHub</a>
-            <a class="badge" href="https://huggingface.co/MANO066" target="_blank" rel="noopener" aria-label="Hugging Face">🤗 Hugging Face</a>
-            <a class="badge" href="https://huggingface.co/spaces/MANO066/Career-takAI" target="_blank" rel="noopener" aria-label="Career‑takAI Space">🧭 Career‑takAI</a>
-          </div>
-        </div>
-      </div>
+  <div class="wrap">
+    <header class="site" aria-label="Primary">
+      <div class="logo">Manova L M</div>
+      <nav class="primary" aria-label="Main navigation">
+        <ul>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#speaking">Speaking</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#" aria-haspopup="true" aria-expanded="false">Language ▾</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <main>
-      <section aria-labelledby="skills">
-        <h2 id="skills">Skills</h2>
-        <div class="chips">
-          <span class="chip">Deep Learning</span>
-          <span class="chip">Computer Vision</span>
-          <span class="chip">Machine Learning</span>
-          <span class="chip">Multimodal AI</span>
-          <span class="chip">LLMs</span>
-          <span class="chip">VLMs</span>
-          <span class="chip">Generative AI</span>
-          <span class="chip">OpenAI SDK</span>
-          <span class="chip">CrewAI</span>
-          <span class="chip">LangChain</span>
-          <span class="chip">Autogen</span>
-          <span class="chip">MCP</span>
-          <span class="chip">ONNX</span>
-          <span class="chip">OpenVINO</span>
-          <span class="chip">INT8/FP16</span>
-          <span class="chip">Quantization & Pruning</span>
+    <!-- HERO -->
+    <section class="hero" aria-label="Intro">
+      <div>
+        <h1 class="hero-title">I am Manova L M</h1>
+        <hr class="hero-underline" />
+        <p class="tagline">AI Engineer specializing in deep learning, computer vision, and multimodal AI.</p>
+        <div class="meta">
+          <span>manomathew1943@gmail.com</span>
+          <span class="dot">+886 958334626</span>
+          <span class="dot">Taiwan</span>
         </div>
-      </section>
-
-      <section aria-labelledby="experience">
-        <h2 id="experience">Experience</h2>
-        <div class="grid-2">
-          <div class="card">
-            <p class="role">AI Engineer — IEI Integration Corp</p>
-            <p class="meta">Jul 2024 – Present • New Taipei, Taiwan</p>
-            <ul>
-              <li>Integrated VLM + NLVR models into embedded object‑detection pipelines and continuous monitoring systems.</li>
-              <li>Optimized with ONNX, OpenVINO, INT8/FP16 quantization and pruning for edge deployment.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <p class="role">AI Engineer — Intelligent Recognition Industry Service Centre</p>
-            <p class="meta">Jun 2023 – May 2024 • Douliu, Taiwan</p>
-            <ul>
-              <li>iTrash Recycling Detection: boosted detection accuracy by ~50% with CV pipelines.</li>
-              <li>TFT‑LCD Vertical‑Line Mura defect detection leveraging YOLOv8/VLM‑YOLOGA variants.</li>
-            </ul>
-          </div>
+        <div class="badges" style="margin-top:16px">
+          <a class="badge" href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+          <a class="badge" href="https://github.com/mano066" target="_blank" rel="noopener">💻 GitHub</a>
+          <a class="badge" href="https://huggingface.co/MANO066" target="_blank" rel="noopener">🤗 Hugging Face</a>
+          <a class="badge" href="https://huggingface.co/spaces/MANO066/Career-takAI" target="_blank" rel="noopener">🧭 Career‑takAI</a>
         </div>
-      </section>
+      </div>
 
-      <section aria-labelledby="education">
-        <h2 id="education">Education</h2>
-        <p>M.Sc, Aeronautical & Electronic Engineering (AI Specialist) — National Formosa University (2021–2023).</p>
-        <p>Thesis: Multi‑Spectral Image‑Based Air Quality Prediction (Ensemble Learning).</p>
-      </section>
+      <div class="portrait-wrap" aria-hidden="true">
+        <div class="portrait-shadow"></div>
+        <!-- Replace profile.jpg with a real headshot -->
+        <img class="portrait" src="profile.jpg" alt="Portrait of Manova L M" />
+      </div>
+    </section>
 
-      <section aria-labelledby="publications">
-        <h2 id="publications">Publications</h2>
-        <ul>
-          <li>Enhancing PM2.5 Detection via Multi‑Spectral Image‑based Double Channel Ensemble Learning for Drones — IEEE Sensors Journal, 2025.</li>
-          <li>Vertical‑Line Mura Defect Detection for TFT‑LCDs — IEEE ACCESS, 2024.</li>
-        </ul>
-      </section>
+    <!-- EXPERIENCE -->
+    <section id="about" aria-labelledby="exp">
+      <h2 id="exp">Experience</h2>
+      <ul class="clean">
+        <li><strong>AI Engineer, IEI Integration Corp</strong> — VLM + NLVR in embedded detection; ONNX/OpenVINO INT8/FP16 optimizations (2024–Present).</li>
+        <li><strong>AI Engineer, Intelligent Recognition Industry Service Centre</strong> — iTrash recycling detection (+~50% accuracy) and TFT‑LCD V‑line mura detection with YOLO‑based methods (2023–2024).</li>
+      </ul>
+    </section>
 
-      <section aria-labelledby="chat">
-        <h2 id="chat">Career‑takAI Chatbot</h2>
-        <p class="meta">Embedded directly from the public Hugging Face Space for an interactive, low‑friction demo.</p>
-        <div class="embed-wrap">
-          <!-- Preferred: Web Component (auto-sizing, lazy) -->
-          <gradio-app
-            space="MANO066/Career-takAI"
-            theme_mode="dark"
-            eager="true"
-            initial_height="0px"
-            container="false"
-            info="false"
-          ></gradio-app>
+    <!-- SKILLS -->
+    <section aria-labelledby="skills">
+      <h2 id="skills">Skills</h2>
+      <div class="badges">
+        <span class="badge">Deep Learning</span>
+        <span class="badge">Computer Vision</span>
+        <span class="badge">LLMs</span>
+        <span class="badge">VLMs</span>
+        <span class="badge">Generative AI</span>
+        <span class="badge">OpenAI SDK</span>
+        <span class="badge">CrewAI</span>
+        <span class="badge">LangChain</span>
+        <span class="badge">Autogen</span>
+        <span class="badge">MCP</span>
+        <span class="badge">ONNX</span>
+        <span class="badge">OpenVINO</span>
+        <span class="badge">Quantization</span>
+      </div>
+    </section>
 
-          <!-- Fallback: static link if JS disabled -->
-          <noscript>
-            <p>Please enable JavaScript to interact with the embedded chatbot.</p>
-            <p><a href="https://huggingface.co/spaces/MANO066/Career-takAI" target="_blank" rel="noopener">Open the Career‑takAI Space</a></p>
-          </noscript>
-        </div>
-      </section>
+    <!-- PUBLICATIONS -->
+    <section aria-labelledby="pubs">
+      <h2 id="pubs">Publications</h2>
+      <ul class="clean">
+        <li>Enhancing PM2.5 Detection via Multi‑Spectral Image‑based Double Channel Ensemble Learning for Drones — IEEE Sensors Journal, 2025.</li>
+        <li>Vertical‑Line Mura Defect Detection for TFT‑LCDs — IEEE ACCESS, 2024.</li>
+      </ul>
+    </section>
 
-      <section aria-labelledby="contact">
-        <h2 id="contact">Contact</h2>
-        <p>Email: <a href="mailto:manomathew1943@gmail.com">manomathew1943@gmail.com</a></p>
-        <p>Phone: <a href="tel:+886958334626">+886 958334626</a></p>
-        <p>GitHub: <a href="https://github.com/mano066" target="_blank" rel="noopener">mano066</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener">manova-m-509145157</a></p>
-        <p>Hugging Face: <a href="https://huggingface.co/MANO066" target="_blank" rel="noopener">MANO066</a></p>
-      </section>
-    </main>
+    <!-- CHATBOT EMBED -->
+    <section aria-labelledby="chat">
+      <h2 id="chat">Career‑takAI Chatbot</h2>
+      <div class="embed">
+        <gradio-app
+          space="MANO066/Career-takAI"
+          theme_mode="light"
+          eager="true"
+          initial_height="0px"
+          container="false"
+          info="false"
+        ></gradio-app>
+        <noscript>
+          JavaScript is required for the embedded chatbot; open the Space directly:
+          <a href="https://huggingface.co/spaces/MANO066/Career-takAI" target="_blank" rel="noopener">Career‑takAI</a>.
+        </noscript>
+      </div>
+    </section>
 
-    <footer>
-      © <span id="y"></span> Manova L M — All rights reserved.
-    </footer>
+    <footer>© <span id="y"></span> Manova L M — All rights reserved.</footer>
   </div>
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
