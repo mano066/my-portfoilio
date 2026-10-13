@@ -1,490 +1,295 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Research & Publications - Manova L M | AI Engineer & Researcher</title>
-  <link rel="icon" href="favicon.ico" />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js"></script>
+  <title>Research | Manova L M — AI Engineer &amp; Researcher</title>
+  <meta name="description" content="Publications by Manova L M in IEEE Sensors Journal, IEEE Access, Elsevier and international conferences — computer vision, environmental AI and aerospace." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700&family=Gloock&family=Rajdhani:wght@300;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () { try { if (localStorage.getItem('motion') === 'off') document.documentElement.classList.add('motion-off'); } catch (e) {} })();
+  </script>
 </head>
 <body>
-  <div class="page-transition"></div>
-  
-  <header class="site wrap">
-    <a class="brand" href="index.html">
-      <div class="brand-avatar">
-        <span class="brand-initial">M</span>
-        <div class="brand-pulse"></div>
-      </div>
-      <span class="brand-name">Manova L M</span>
-    </a>
-    <nav class="top-nav" aria-label="Primary navigation">
-      <a class="nav-link" href="index.html">
-        <i class="ti ti-home"></i>
-        <span>Home</span>
-      </a>
-      <a class="nav-link" href="profile.html">
-        <i class="ti ti-user"></i>
-        <span>Profile</span>
-      </a>
-      <a class="nav-link" href="projects.html">
-        <i class="ti ti-code"></i>
-        <span>Projects</span>
-      </a>
-      <a class="nav-link active" href="publications.html">
-        <i class="ti ti-book"></i>
-        <span>Research</span>
-      </a>
-    </nav>
-  </header>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="bg-canvas" data-scene="dust" aria-hidden="true"></canvas>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
-  <main class="wrap publications-page" id="main">
-    <div class="page-header">
-      <h1>Research & Publications</h1>
-      <p>Cutting-edge research in AI, computer vision, and intelligent systems with real-world applications</p>
-      <div class="research-stats">
-        <div class="stat">
-          <span class="stat-number">12</span>
-          <span class="stat-label">Publications</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">6</span>
-          <span class="stat-label">Journals</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">7</span>
-          <span class="stat-label">Conferences</span>
-        </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Manova L M — home">Manova<span class="star" aria-hidden="true">✦</span></a>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="profile.html">Profile</a>
+        <a class="nav-link" href="projects.html">Works</a>
+        <a class="nav-link" href="publications.html">Research</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+      <div class="header-tools">
+        <button class="motion-toggle" type="button" aria-pressed="true" aria-label="Pause animations">
+          <svg viewBox="0 0 40 14" aria-hidden="true"><path class="wave" d="M2 7 C 10 0, 14 0, 20 7 S 30 14, 38 7" /></svg>
+        </button>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span class="bars"></span></button>
       </div>
     </div>
+  </header>
 
-    <!-- Featured Publications -->
-    <section class="publications-section">
-      <h2 class="section-title">
-        <i class="ti ti-star"></i>
-        Featured Publications
-      </h2>
-      
-      <div class="publications-grid featured">
-        <!-- IEEE Sensors Journal 2025 -->
-        <article class="publication-card featured">
-          <div class="publication-badge">
-            <i class="ti ti-crown"></i>
-            <span>Latest Publication</span>
+  <main class="page" id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <span class="eyebrow reveal">Research &amp; publications</span>
+        <h1 class="reveal" style="--d:.08s">Peer-reviewed work in<br /><span class="grad-text">vision, sensing &amp; flight</span>.</h1>
+        <p class="reveal" style="--d:.16s">Research in AI, computer vision and intelligent systems with real-world applications — from TFT-LCD inspection to drone-based air-quality sensing.</p>
+        <div class="mini-stats reveal" style="--d:.24s">
+          <div class="mini-stat"><b class="grad-text" data-count="12">12</b><span>Publications</span></div>
+          <div class="mini-stat"><b class="grad-text" data-count="6">6</b><span>Journal papers</span></div>
+          <div class="mini-stat"><b class="grad-text" data-count="6">6</b><span>Conference papers</span></div>
+          <div class="mini-stat"><b class="grad-text">Q1</b><span>IEEE journals</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="section-head reveal" style="margin-bottom:32px">
+        <span class="eyebrow">Featured</span>
+      </div>
+      <div class="featured-pubs">
+        <article class="fp-card glass tilt reveal" data-tilt="4">
+          <div class="fp-cover">
+            <span class="badge cyan"><i class="ti ti-sparkles"></i>Latest · 2025</span>
+            <span class="venue">IEEE Sensors Journal</span>
           </div>
-          
-          <div class="publication-image">
-            <div class="publication-overlay">
-              <div class="journal-badge ieee">IEEE Sensors Journal</div>
-            </div>
-          </div>
-          
-          <div class="publication-content">
+          <div class="fp-body">
             <h3>Enhancing PM2.5 Detection via Multi-Spectral Image-based Double Channel Ensemble Learning for Drones</h3>
-            <div class="publication-meta">
-              <span class="journal">IEEE Sensors Journal</span>
-              <span class="date">June 28, 2025</span>
-              <span class="type">Journal Article</span>
-            </div>
-            <p class="publication-abstract">
-              Advanced ensemble learning approach for environmental monitoring using multi-spectral imaging on drone platforms, significantly reducing the need for traditional monitoring stations through innovative double-channel processing.
-            </p>
-            <div class="publication-tags">
-              <span class="tag">Ensemble Learning</span>
-              <span class="tag">Multi-spectral Imaging</span>
-              <span class="tag">Drone Technology</span>
-              <span class="tag">Environmental Monitoring</span>
-            </div>
-            <div class="publication-actions">
-              <a href="https://ieeexplore.ieee.org/document/11098626" target="_blank" class="btn btn-primary">
-                <i class="ti ti-external-link"></i>
-                <span>View Paper</span>
-              </a>
-            </div>
+            <div class="pub-meta"><span><i class="ti ti-calendar"></i>June 28, 2025</span><span><i class="ti ti-file-text"></i>Journal article</span><span><i class="ti ti-award"></i>Q1</span></div>
+            <p>An ensemble-learning approach to environmental monitoring using multi-spectral imaging on drones. Its double-channel processing significantly reduces the need for traditional monitoring stations.</p>
+            <div class="tags"><span class="tag">Ensemble Learning</span><span class="tag">Multi-spectral</span><span class="tag">Drones</span><span class="tag">Environmental AI</span></div>
+            <a class="btn btn-primary btn-sm" href="https://ieeexplore.ieee.org/document/11098626" target="_blank" rel="noopener"><i class="ti ti-external-link"></i>Read on IEEE Xplore</a>
           </div>
         </article>
 
-        <!-- IEEE ACCESS 2024 -->
-        <article class="publication-card featured">
-          <div class="publication-badge high-impact">
-            <i class="ti ti-trending-up"></i>
-            <span>High Impact</span>
+        <article class="fp-card glass tilt reveal" data-tilt="4" style="--d:.08s">
+          <div class="fp-cover">
+            <span class="badge violet"><i class="ti ti-trending-up"></i>High impact · 2024</span>
+            <span class="venue">IEEE Access</span>
           </div>
-          
-          <div class="publication-image">
-            <div class="publication-overlay">
-              <div class="journal-badge ieee">IEEE ACCESS</div>
-            </div>
-          </div>
-          
-          <div class="publication-content">
+          <div class="fp-body">
             <h3>Vertical-Line Mura Defect Detection for TFT-LCDs</h3>
-            <div class="publication-meta">
-              <span class="journal">IEEE ACCESS</span>
-              <span class="date">October 25, 2024</span>
-              <span class="type">Journal Article</span>
+            <div class="pub-meta"><span><i class="ti ti-calendar"></i>October 25, 2024</span><span><i class="ti ti-file-text"></i>Journal article</span><span><i class="ti ti-award"></i>Q1</span></div>
+            <p>A YOLO-GA algorithm integrating Ghost layers and CBAM to detect subtle LV1 abnormalities in TFT-LCD manufacturing, trained on high-resolution images from AUO Corporation.</p>
+            <div class="highlights">
+              <div class="hl"><b class="grad-text">99.5%</b><span>mAP</span></div>
+              <div class="hl"><b class="grad-text">99.7%</b><span>F1-score</span></div>
+              <div class="hl"><b class="grad-text">107,080</b><span>images</span></div>
             </div>
-            <p class="publication-abstract">
-              Innovative YOLO-GA algorithm addressing persistent challenges in TFT-LCD manufacturing by detecting subtle LV1 abnormalities with 99.5% mAP and 99.7% F1-Score using 107,080 high-resolution images from AUO Corporation.
-            </p>
-            
-            <div class="publication-highlights">
-              <div class="highlight-item">
-                <i class="ti ti-target"></i>
-                <div>
-                  <strong>99.5% mAP Accuracy</strong>
-                  <span>Superior detection performance</span>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <i class="ti ti-database"></i>
-                <div>
-                  <strong>107,080 Images Dataset</strong>
-                  <span>AUO Corporation collaboration</span>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <i class="ti ti-brain"></i>
-                <div>
-                  <strong>YOLO-GA Algorithm</strong>
-                  <span>Ghost layer + CBAM integration</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="publication-tags">
-              <span class="tag">YOLO-GA</span>
-              <span class="tag">Computer Vision</span>
-              <span class="tag">Manufacturing QC</span>
-              <span class="tag">Ghost Networks</span>
-              <span class="tag">CBAM</span>
-            </div>
-            <div class="publication-actions">
-              <a href="https://ieeexplore.ieee.org/document/10735154" target="_blank" class="btn btn-primary">
-                <i class="ti ti-external-link"></i>
-                <span>View Paper</span>
-              </a>
-            </div>
+            <a class="btn btn-primary btn-sm" href="https://ieeexplore.ieee.org/document/10735154" target="_blank" rel="noopener"><i class="ti ti-external-link"></i>Read on IEEE Xplore</a>
           </div>
         </article>
       </div>
-    </section>
 
-    <!-- All Publications List -->
-    <section class="publications-section">
-      <h2 class="section-title">
-        <i class="ti ti-list"></i>
-        Complete Publication Record
-      </h2>
-      
-      <div class="publications-list">
-        <!-- Journal Publications -->
-        <div class="publication-category">
-          <h3><i class="ti ti-book-2"></i> Journal Publications</h3>
-          
-          <article class="publication-item latest">
-            <div class="publication-status latest">
-              <i class="ti ti-sparkles"></i>
-              <span>Latest</span>
-            </div>
-            <div class="publication-details">
-              <h4>Enhancing PM2.5 Detection via Multi-Spectral Image-based Double Channel Ensemble Learning for Drones</h4>
-              <div class="publication-meta">
-                <span class="journal">IEEE Sensors Journal</span>
-                <span class="date">June 28, 2025</span>
-                <span class="impact">Q1 Journal</span>
-              </div>
-              <p>Novel double-channel ensemble learning approach for drone-based environmental monitoring, significantly reducing dependency on traditional monitoring stations through advanced multi-spectral image processing.</p>
-              <div class="publication-link">
-                <a href="https://ieeexplore.ieee.org/document/11098626" target="_blank">
-                  <i class="ti ti-external-link"></i>
-                  View Publication
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="publication-item">
-            <div class="publication-details">
-              <h4>Vertical-Line Mura Defect Detection for TFT-LCDs</h4>
-              <div class="publication-meta">
-                <span class="journal">IEEE ACCESS</span>
-                <span class="date">October 25, 2024</span>
-                <span class="impact">Q1 Journal</span>
-              </div>
-              <p>Advanced YOLO-GA algorithm integrating Ghost layers and CBAM for TFT-LCD quality control. Achieved 99.5% mAP and 99.7% F1-Score on 107,080 high-resolution images from AUO Corporation, addressing Level-1 defect detection challenges.</p>
-              <div class="technical-highlights">
-                <span class="tech-highlight">Ghost Layer Optimization</span>
-                <span class="tech-highlight">CBAM Integration</span>
-                <span class="tech-highlight">1624×1240 Resolution</span>
-                <span class="tech-highlight">80:20 Train/Val Split</span>
-              </div>
-              <div class="publication-link">
-                <a href="https://ieeexplore.ieee.org/document/10735154" target="_blank">
-                  <i class="ti ti-external-link"></i>
-                  View Publication
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="publication-item under-review">
-            <div class="publication-status under-review">
-              <i class="ti ti-clock"></i>
-              <span>Under Review</span>
-            </div>
-            <div class="publication-details">
-              <h4>Enhancing Air Quality Prediction with Ensemble Learning Using Aerial Multi-spectral Camera</h4>
-              <div class="publication-meta">
-                <span class="journal">IEEE Internet of Things Journal</span>
-                <span class="status-badge under-review">Under Review</span>
-              </div>
-              <p>Comprehensive aerial monitoring system combining ensemble learning with multi-spectral imaging for enhanced air quality assessment and prediction in IoT environments.</p>
-            </div>
-          </article>
-
-          <article class="publication-item">
-            <div class="publication-details">
-              <h4>Structural and CFD Analysis of Unmanned Aerial Vehicle by using COMSOL Multiphysics</h4>
-              <div class="publication-meta">
-                <span class="journal">INCAS BULLETIN, Volume 13, Issue 3</span>
-                <span class="date">September 2021</span>
-              </div>
-              <p>Comprehensive structural and computational fluid dynamics analysis of UAV design using COMSOL 5.6. Achieved optimal performance at 5° AoA and 3 m/sec through finite element analysis and k-e turbulence modeling.</p>
-              <div class="publication-link">
-                <a href="https://doi.org/10.13111/2066-8201.2021.13.3.9" target="_blank">
-                  <i class="ti ti-external-link"></i>
-                  View Publication
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="publication-item">
-            <div class="publication-details">
-              <h4>Aerodynamic Interaction Studies on Amphibious Vehicle in Forward and Hovering Flight</h4>
-              <div class="publication-meta">
-                <span class="journal">International Journal of Automotive and Mechanical Engineering (IJAME)</span>
-                <span class="date">December 2019</span>
-              </div>
-              <p>CFD analysis examining vortex formation, turbulent regimes, and ground effects in amphibious UAVs. Demonstrated superior performance at 5° AoA and 8.3 m/sec for military and coastal applications.</p>
-              <div class="publication-link">
-                <a href="http://journal.ump.edu.my/ijame/article/view/632" target="_blank">
-                  <i class="ti ti-external-link"></i>
-                  View Publication
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="publication-item">
-            <div class="publication-details">
-              <h4>Development of 3D Printed Floating Quadrotor for Collection of Algae in Remote Water Bodies</h4>
-              <div class="publication-meta">
-                <span class="journal">Computers and Electronics in Agriculture, Elsevier</span>
-                <span class="date">September 2019</span>
-              </div>
-              <p>Innovative 3D-printed floating quadrotor with robotic arm for autonomous algae collection. Utilized FFF method with high-temperature resistant, biodegradable materials for environmental applications.</p>
-              <div class="publication-link">
-                <a href="https://www.sciencedirect.com/science/article/pii/S0168169919303242" target="_blank">
-                  <i class="ti ti-external-link"></i>
-                  View Publication
-                </a>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Conference Publications -->
-        <div class="publication-category">
-          <h3><i class="ti ti-presentation"></i> Conference Publications</h3>
-          
-          <article class="publication-item conference">
-            <div class="publication-details">
-              <h4>Fiberglass Mesh Classification with Deep Learning Approach</h4>
-              <div class="publication-meta">
-                <span class="conference">11th IEEE International Conference on Consumer Electronics-Taiwan</span>
-                <span class="date">July 9, 2024</span>
-                <span class="location">Taiwan</span>
-              </div>
-              <p>Advanced deep learning methodology for fiberglass mesh classification with applications in material science and quality control systems.</p>
-            </div>
-          </article>
-
-          <article class="publication-item conference">
-            <div class="publication-details">
-              <h4>Ensemble Learning-based Air Quality Prediction for Drones</h4>
-              <div class="publication-meta">
-                <span class="conference">7th Annual Conference on Engineering and Information Technology (ACEAIT)</span>
-                <span class="location">Japan</span>
-                <span class="date">July 1, 2023</span>
-              </div>
-              <p>Novel ensemble learning techniques specifically adapted for drone-based air quality monitoring systems, demonstrating superior accuracy over traditional methods.</p>
-            </div>
-          </article>
-
-          <article class="publication-item conference">
-            <div class="publication-details">
-              <h4>Design of uncrewed amphibious aerial vehicle for in-situ water quality assessment</h4>
-              <div class="publication-meta">
-                <span class="conference">International Conference on Integrated Water Resources Management: Prospects and Challenges (ICIWRM 2022)</span>
-                <span class="date">December 2022</span>
-              </div>
-              <p>Innovative amphibious UAV design for real-time water quality monitoring in diverse aquatic environments with integrated sensor systems.</p>
-            </div>
-          </article>
-
-          <article class="publication-item conference">
-            <div class="publication-details">
-              <h4>Multi-Spectral Image-Based Air Quality Prediction using the Ensemble Learning Method</h4>
-              <div class="publication-meta">
-                <span class="conference">CVGIP 2022: The 35th IPPR Conference on Computer Vision, Graphics, and Image Processing</span>
-                <span class="date">August 18, 2022</span>
-              </div>
-              <p>Five-channel CNN utilizing multi-spectral (red, blue, NIR, red edge) and RGB images for air quality prediction. Demonstrated superior accuracy compared to traditional monitoring methods.</p>
-            </div>
-          </article>
-
-          <article class="publication-item conference">
-            <div class="publication-details">
-              <h4>Structural Analysis of Classifier Car Employing with Different Materials to Analysis Weight and Strength</h4>
-              <div class="publication-meta">
-                <span class="conference">International Symposium on Novel and Sustainable Technology</span>
-                <span class="date">November 2021</span>
-              </div>
-              <p>Comparative structural analysis focusing on material optimization for automotive classifier systems using advanced computational methods.</p>
-            </div>
-          </article>
-
-          <article class="publication-item conference">
-            <div class="publication-details">
-              <h4>Experimental and Numerical Study on Temperature Distribution of Infrared Heater Used for Curing Solid Propellant Slurries</h4>
-              <div class="publication-meta">
-                <span class="conference">4th International Conference on Innovative Design & Development Practices in Aerospace and Automotive Engineering (I-DAD 2020)</span>
-                <span class="date">October 2020</span>
-              </div>
-              <p>Layer-by-layer curing optimization using curved ceramic infrared heaters with FLIR thermal imaging validation and ANSYS Fluent simulation for aerospace propellant applications.</p>
-              <div class="publication-link">
-                <a href="https://www.researchgate.net/publication/344623983_Experimental_and_Numerical_Study_on_Temperature_Distribution_of_Infrared_Heater_Used_for_Curing_Solid_Propellant_Slurries" target="_blank">
-                  <i class="ti ti-external-link"></i>
-                  View Publication
-                </a>
-              </div>
-            </div>
-          </article>
-        </div>
+      <div class="section-head reveal" style="margin-bottom:28px">
+        <span class="eyebrow">Complete record</span>
+        <h2>All publications</h2>
       </div>
-    </section>
 
-    <!-- Research Impact -->
-    <section class="research-impact">
-      <h2 class="section-title">
-        <i class="ti ti-chart-line"></i>
-        Research Impact & Metrics
-      </h2>
-      
-      <div class="impact-grid">
-        <div class="impact-card">
-          <div class="impact-icon">
-            <i class="ti ti-eye"></i>
+      <div class="filters reveal" role="group" aria-label="Filter publications" data-filter-group="#pub-list" data-empty="#pub-empty">
+        <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" type="button" data-filter="journal" aria-pressed="false">Journals</button>
+        <button class="filter-btn" type="button" data-filter="conference" aria-pressed="false">Conferences</button>
+        <button class="filter-btn" type="button" data-filter="cv" aria-pressed="false">Computer vision</button>
+        <button class="filter-btn" type="button" data-filter="env" aria-pressed="false">Environmental AI</button>
+        <button class="filter-btn" type="button" data-filter="aero" aria-pressed="false">Aerospace &amp; UAV</button>
+      </div>
+
+      <div class="pub-list" id="pub-list">
+        <article class="pub-item reveal" data-type="journal" data-tags="journal env cv">
+          <div class="pub-when"><span class="pub-year">2025</span><span class="pub-type">Journal</span></div>
+          <div>
+            <h4>Enhancing PM2.5 Detection via Multi-Spectral Image-based Double Channel Ensemble Learning for Drones</h4>
+            <div class="pub-venue">IEEE Sensors Journal · June 28, 2025</div>
+            <p>A double-channel ensemble-learning approach for drone-based environmental monitoring that reduces dependence on traditional monitoring stations.</p>
+            <div class="tags"><span class="tag">Q1</span><span class="tag">Latest</span></div>
           </div>
-          <div class="impact-content">
-            <h3>Computer Vision</h3>
-            <p>Advanced defect detection and quality control systems</p>
-            <div class="impact-stat">6 Publications</div>
+          <a class="pub-link" href="https://ieeexplore.ieee.org/document/11098626" target="_blank" rel="noopener" aria-label="Open publication"><i class="ti ti-arrow-up-right"></i></a>
+        </article>
+
+        <article class="pub-item reveal" data-type="journal" data-tags="journal cv">
+          <div class="pub-when"><span class="pub-year">2024</span><span class="pub-type">Journal</span></div>
+          <div>
+            <h4>Vertical-Line Mura Defect Detection for TFT-LCDs</h4>
+            <div class="pub-venue">IEEE Access · October 25, 2024</div>
+            <p>YOLO-GA with Ghost layers and CBAM for TFT-LCD quality control: 99.5% mAP and 99.7% F1-score on 107,080 high-resolution AUO images, addressing Level-1 defect detection.</p>
+            <div class="tags"><span class="tag">Q1</span><span class="tag">Ghost layers</span><span class="tag">CBAM</span><span class="tag">1624×1240</span></div>
           </div>
+          <a class="pub-link" href="https://ieeexplore.ieee.org/document/10735154" target="_blank" rel="noopener" aria-label="Open publication"><i class="ti ti-arrow-up-right"></i></a>
+        </article>
+
+        <article class="pub-item reveal" data-type="journal" data-tags="journal env cv">
+          <div class="pub-when"><span class="pub-year">—</span><span class="pub-type">Journal</span></div>
+          <div>
+            <h4>Enhancing Air Quality Prediction with Ensemble Learning Using Aerial Multi-spectral Camera</h4>
+            <div class="pub-venue">IEEE Internet of Things Journal</div>
+            <p>An aerial monitoring system combining ensemble learning with multi-spectral imaging for air-quality assessment and prediction in IoT environments.</p>
+            <div class="tags"><span class="badge amber"><i class="ti ti-clock"></i>Under review</span></div>
+          </div>
+          <span class="pub-link disabled" aria-hidden="true"><i class="ti ti-clock"></i></span>
+        </article>
+
+        <article class="pub-item reveal" data-type="journal" data-tags="journal aero">
+          <div class="pub-when"><span class="pub-year">2021</span><span class="pub-type">Journal</span></div>
+          <div>
+            <h4>Structural and CFD Analysis of Unmanned Aerial Vehicle by using COMSOL Multiphysics</h4>
+            <div class="pub-venue">INCAS Bulletin, Vol. 13, Issue 3 · September 2021</div>
+            <p>Structural and computational fluid dynamics analysis of a UAV design in COMSOL 5.6, with optimal performance at 5° AoA and 3 m/s using finite element analysis and k-ε turbulence modelling.</p>
+          </div>
+          <a class="pub-link" href="https://doi.org/10.13111/2066-8201.2021.13.3.9" target="_blank" rel="noopener" aria-label="Open publication"><i class="ti ti-arrow-up-right"></i></a>
+        </article>
+
+        <article class="pub-item reveal" data-type="journal" data-tags="journal aero">
+          <div class="pub-when"><span class="pub-year">2019</span><span class="pub-type">Journal</span></div>
+          <div>
+            <h4>Aerodynamic Interaction Studies on Amphibious Vehicle in Forward and Hovering Flight</h4>
+            <div class="pub-venue">International Journal of Automotive and Mechanical Engineering (IJAME) · December 2019</div>
+            <p>CFD analysis of vortex formation, turbulent regimes and ground effects in amphibious UAVs, with best performance at 5° AoA and 8.3 m/s for military and coastal applications.</p>
+          </div>
+          <a class="pub-link" href="http://journal.ump.edu.my/ijame/article/view/632" target="_blank" rel="noopener" aria-label="Open publication"><i class="ti ti-arrow-up-right"></i></a>
+        </article>
+
+        <article class="pub-item reveal" data-type="journal" data-tags="journal aero env">
+          <div class="pub-when"><span class="pub-year">2019</span><span class="pub-type">Journal</span></div>
+          <div>
+            <h4>Development of 3D Printed Floating Quadrotor for Collection of Algae in Remote Water Bodies</h4>
+            <div class="pub-venue">Computers and Electronics in Agriculture, Elsevier · September 2019</div>
+            <p>A 3D-printed floating quadrotor with a robotic arm for autonomous algae collection, built with FFF using high-temperature-resistant, biodegradable materials.</p>
+          </div>
+          <a class="pub-link" href="https://www.sciencedirect.com/science/article/pii/S0168169919303242" target="_blank" rel="noopener" aria-label="Open publication"><i class="ti ti-arrow-up-right"></i></a>
+        </article>
+
+        <article class="pub-item reveal" data-type="conference" data-tags="conference cv">
+          <div class="pub-when"><span class="pub-year">2024</span><span class="pub-type">Conference</span></div>
+          <div>
+            <h4>Fiberglass Mesh Classification with Deep Learning Approach</h4>
+            <div class="pub-venue">11th IEEE International Conference on Consumer Electronics – Taiwan · July 9, 2024</div>
+            <p>A deep-learning method for fiberglass mesh classification with applications in material science and quality control.</p>
+          </div>
+          <span class="pub-link disabled" aria-hidden="true"><i class="ti ti-presentation"></i></span>
+        </article>
+
+        <article class="pub-item reveal" data-type="conference" data-tags="conference env">
+          <div class="pub-when"><span class="pub-year">2023</span><span class="pub-type">Conference</span></div>
+          <div>
+            <h4>Ensemble Learning-based Air Quality Prediction for Drones</h4>
+            <div class="pub-venue">7th Annual Conference on Engineering and Information Technology (ACEAIT) · Japan · July 1, 2023</div>
+            <p>Ensemble-learning techniques adapted for drone-based air-quality monitoring, outperforming traditional methods.</p>
+          </div>
+          <span class="pub-link disabled" aria-hidden="true"><i class="ti ti-presentation"></i></span>
+        </article>
+
+        <article class="pub-item reveal" data-type="conference" data-tags="conference aero env">
+          <div class="pub-when"><span class="pub-year">2022</span><span class="pub-type">Conference</span></div>
+          <div>
+            <h4>Design of Uncrewed Amphibious Aerial Vehicle for In-situ Water Quality Assessment</h4>
+            <div class="pub-venue">ICIWRM 2022 — Integrated Water Resources Management: Prospects and Challenges · December 2022</div>
+            <p>An amphibious UAV design for real-time water-quality monitoring in diverse aquatic environments with integrated sensors.</p>
+          </div>
+          <span class="pub-link disabled" aria-hidden="true"><i class="ti ti-presentation"></i></span>
+        </article>
+
+        <article class="pub-item reveal" data-type="conference" data-tags="conference cv env">
+          <div class="pub-when"><span class="pub-year">2022</span><span class="pub-type">Conference</span></div>
+          <div>
+            <h4>Multi-Spectral Image-Based Air Quality Prediction using the Ensemble Learning Method</h4>
+            <div class="pub-venue">CVGIP 2022 — 35th IPPR Conference on Computer Vision, Graphics, and Image Processing · August 18, 2022</div>
+            <p>A five-channel CNN using multi-spectral (red, blue, NIR, red edge) and RGB images for air-quality prediction, more accurate than traditional monitoring.</p>
+          </div>
+          <span class="pub-link disabled" aria-hidden="true"><i class="ti ti-presentation"></i></span>
+        </article>
+
+        <article class="pub-item reveal" data-type="conference" data-tags="conference aero">
+          <div class="pub-when"><span class="pub-year">2021</span><span class="pub-type">Conference</span></div>
+          <div>
+            <h4>Structural Analysis of Classifier Car Employing with Different Materials to Analysis Weight and Strength</h4>
+            <div class="pub-venue">International Symposium on Novel and Sustainable Technology · November 2021</div>
+            <p>Comparative structural analysis of material choices for automotive classifier systems using computational methods.</p>
+          </div>
+          <span class="pub-link disabled" aria-hidden="true"><i class="ti ti-presentation"></i></span>
+        </article>
+
+        <article class="pub-item reveal" data-type="conference" data-tags="conference aero">
+          <div class="pub-when"><span class="pub-year">2020</span><span class="pub-type">Conference</span></div>
+          <div>
+            <h4>Experimental and Numerical Study on Temperature Distribution of Infrared Heater Used for Curing Solid Propellant Slurries</h4>
+            <div class="pub-venue">I-DAD 2020 — 4th Int. Conf. on Innovative Design &amp; Development Practices in Aerospace and Automotive Engineering · October 2020</div>
+            <p>Layer-by-layer curing optimisation using curved ceramic infrared heaters, validated with FLIR thermal imaging and ANSYS Fluent simulation.</p>
+          </div>
+          <a class="pub-link" href="https://www.researchgate.net/publication/344623983_Experimental_and_Numerical_Study_on_Temperature_Distribution_of_Infrared_Heater_Used_for_Curing_Solid_Propellant_Slurries" target="_blank" rel="noopener" aria-label="Open publication"><i class="ti ti-arrow-up-right"></i></a>
+        </article>
+      </div>
+      <p class="empty-state" id="pub-empty">No publications match this filter.</p>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Research areas</span>
+          <h2>Where the work <span class="grad-text">concentrates</span>.</h2>
         </div>
-        
-        <div class="impact-card">
-          <div class="impact-icon">
-            <i class="ti ti-world"></i>
-          </div>
-          <div class="impact-content">
-            <h3>Environmental AI</h3>
-            <p>Air quality prediction and monitoring solutions</p>
-            <div class="impact-stat">4 Publications</div>
-          </div>
-        </div>
-        
-        <div class="impact-card">
-          <div class="impact-icon">
-            <i class="ti ti-plane"></i>
-          </div>
-          <div class="impact-content">
-            <h3>Aerospace Engineering</h3>
-            <p>UAV design and aerodynamic analysis</p>
-            <div class="impact-stat">3 Publications</div>
-          </div>
-        </div>
-        
-        <div class="impact-card">
-          <div class="impact-icon">
-            <i class="ti ti-award"></i>
-          </div>
-          <div class="impact-content">
-            <h3>Awards & Recognition</h3>
-            <p>5G AI Competition winner and rising talent recognition</p>
-            <div class="impact-stat">3 Awards</div>
-          </div>
+        <div class="areas">
+          <div class="area glass tilt reveal"><i class="ti ti-eye"></i><h3>Computer vision</h3><p>Defect detection and quality-control systems for manufacturing.</p></div>
+          <div class="area glass tilt reveal" style="--d:.08s"><i class="ti ti-world"></i><h3>Environmental AI</h3><p>Air-quality prediction and monitoring from drones and multi-spectral imagery.</p></div>
+          <div class="area glass tilt reveal" style="--d:.16s"><i class="ti ti-plane"></i><h3>Aerospace engineering</h3><p>UAV design, CFD and aerodynamic analysis.</p></div>
+          <div class="area glass tilt reveal" style="--d:.24s"><i class="ti ti-award"></i><h3>Awards</h3><p>5G AI Competition overall prize and 2023 AI+ Rising Talent Selection.</p></div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Career-takAI Chatbot -->
-  <div class="chatbot-wrapper">
-    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Open Career-takAI Assistant">
-      <div class="chatbot-icon">
-        <i class="ti ti-message-chatbot"></i>
-      </div>
-      <div class="chatbot-pulse"></div>
-    </button>
-    
-    <div id="chatbot-panel" class="chatbot-panel">
-      <div class="chatbot-header">
-        <div class="chatbot-title">
-          <i class="ti ti-robot"></i>
-          <span>Career-takAI</span>
-        </div>
-        <button id="chatbot-close" class="chatbot-close" aria-label="Close chatbot">
-          <i class="ti ti-x"></i>
-        </button>
-      </div>
-      <div class="chatbot-content" id="chatbot-content">
-        <div class="chatbot-loading">
-          <i class="ti ti-loader"></i>
-          <span>Initializing AI Assistant...</span>
-        </div>
-      </div>
+  <!-- FOOTER / CONTACT -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-marquee" aria-hidden="true">
+      <div class="marquee" style="--speed:60s"><div class="marquee-track">
+        <span>LLMs</span><em>●</em><span>Computer Vision</span><em>●</em><span>Edge AI</span><em>●</em><span>Multimodal</span><em>●</em><span>Agentic AI</span><em>●</em>
+        <span>LLMs</span><em>●</em><span>Computer Vision</span><em>●</em><span>Edge AI</span><em>●</em><span>Multimodal</span><em>●</em><span>Agentic AI</span><em>●</em>
+      </div></div>
     </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="wrap">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <strong>Manova L M</strong>
-          <p>AI Engineer & Researcher</p>
-        </div>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="profile.html">Profile</a>
-          <a href="projects.html">Projects</a>
-        </div>
-        <div class="footer-copy">
-          <p>&copy; <span id="current-year"></span> Manova L M. All rights reserved.</p>
-        </div>
-      </div>
+    <div class="chrome-wrap">
+      <canvas id="chrome-logo" aria-hidden="true"></canvas>
+      <div class="chrome-fallback" aria-hidden="true">M</div>
+    </div>
+    <p class="footer-lead">Let's collaborate and bring <strong>intelligent ideas</strong> to life.<br />Reach out through any of these channels:</p>
+    <div class="channels">
+      <span class="channel"><i class="ti ti-mail"></i><a href="mailto:manomathew1943@gmail.com">Email</a><button class="copy-btn" type="button" data-copy="manomathew1943@gmail.com" aria-label="Copy email address"><i class="ti ti-copy"></i></button></span>
+      <a class="channel" href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i>LinkedIn</a>
+      <a class="channel" href="https://github.com/mano066" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i>GitHub</a>
+      <a class="channel" href="https://huggingface.co/MANO066" target="_blank" rel="noopener"><span aria-hidden="true">🤗</span>Hugging Face</a>
+      <a class="channel" href="tel:+886958334626"><i class="ti ti-phone"></i>+886 958 334 626</a>
+    </div>
+    <div class="footer-base">
+      <span>&copy; <span data-year>2026</span> Manova L M · New Taipei, Taiwan</span>
+      <nav class="footer-links" aria-label="Footer"><a href="profile.html">Profile</a><a href="projects.html">Works</a><a href="publications.html">Research</a></nav>
+      <a class="to-top" href="#main"><i class="ti ti-arrow-up"></i>Back to top</a>
     </div>
   </footer>
 
+  <button class="chat-fab" id="chat-fab" type="button" aria-label="Open AI assistant" aria-expanded="false" aria-controls="chat-panel"><i class="ti ti-message-chatbot"></i><i class="ti ti-x"></i></button>
+  <div class="chat-panel" id="chat-panel" role="dialog" aria-label="Career-takAI assistant" aria-hidden="true">
+    <div class="chat-head">
+      <div class="chat-title"><span class="bot"><i class="ti ti-robot"></i></span><div>Career-takAI<small>Ask about my experience</small></div></div>
+      <button class="chat-close" id="chat-close" type="button" aria-label="Close assistant"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="chat-body" id="chat-body"><div class="chat-state"><i class="ti ti-loader-2 spin"></i><span>Starting assistant…</span></div></div>
+  </div>
+
   <script src="app.js"></script>
+  <script type="module" src="scene.js"></script>
 </body>
 </html>

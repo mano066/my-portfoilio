@@ -1,286 +1,229 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Profile - Manova L M | AI Engineer & Researcher</title>
-  <link rel="icon" href="favicon.ico" />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js"></script>
+  <title>Profile | Manova L M — AI Engineer &amp; Researcher</title>
+  <meta name="description" content="Experience, education, skills and certifications of Manova L M, AI Engineer at IEI Integration Corp." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700&family=Gloock&family=Rajdhani:wght@300;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () { try { if (localStorage.getItem('motion') === 'off') document.documentElement.classList.add('motion-off'); } catch (e) {} })();
+  </script>
 </head>
 <body>
-  <div class="page-transition"></div>
-  
-  <header class="site wrap">
-    <a class="brand" href="index.html">
-      <div class="brand-avatar">
-        <span class="brand-initial">M</span>
-        <div class="brand-pulse"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="bg-canvas" data-scene="dust" aria-hidden="true"></canvas>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Manova L M — home">Manova<span class="star" aria-hidden="true">✦</span></a>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="profile.html">Profile</a>
+        <a class="nav-link" href="projects.html">Works</a>
+        <a class="nav-link" href="publications.html">Research</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+      <div class="header-tools">
+        <button class="motion-toggle" type="button" aria-pressed="true" aria-label="Pause animations">
+          <svg viewBox="0 0 40 14" aria-hidden="true"><path class="wave" d="M2 7 C 10 0, 14 0, 20 7 S 30 14, 38 7" /></svg>
+        </button>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span class="bars"></span></button>
       </div>
-      <span class="brand-name">Manova L M</span>
-    </a>
-    <nav class="top-nav" aria-label="Primary navigation">
-      <a class="nav-link" href="index.html">
-        <i class="ti ti-home"></i>
-        <span>Home</span>
-      </a>
-      <a class="nav-link active" href="profile.html">
-        <i class="ti ti-user"></i>
-        <span>Profile</span>
-      </a>
-      <a class="nav-link" href="projects.html">
-        <i class="ti ti-code"></i>
-        <span>Projects</span>
-      </a>
-      <a class="nav-link" href="publications.html">
-        <i class="ti ti-book"></i>
-        <span>Research</span>
-      </a>
-    </nav>
+    </div>
   </header>
 
-  <main class="wrap profile-page" id="main">
-    <div class="page-header">
-      <h1>Professional Profile</h1>
-      <p>Comprehensive overview of experience, education, and achievements in AI engineering</p>
-    </div>
+  <main class="page" id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <span class="eyebrow reveal">Professional profile</span>
+        <h1 class="reveal" style="--d:.08s">Engineer by training,<br /><span class="grad-text">AI builder</span> by craft.</h1>
+        <p class="reveal" style="--d:.16s">Experience, education and skills behind 5+ years of building and deploying AI — from UAV research in India to edge-AI products in Taiwan.</p>
+      </div>
+    </section>
 
-    <div class="profile-grid">
-      <section class="profile-summary card">
-        <div class="card-header">
-          <h2><i class="ti ti-user-circle"></i> About</h2>
+    <div class="wrap profile-layout">
+      <aside class="profile-aside glass reveal">
+        <picture>
+          <source srcset="assets/profile.webp" type="image/webp" />
+          <img class="avatar" src="assets/profile.jpg" alt="Portrait of Manova L M" width="864" height="1184" loading="lazy" />
+        </picture>
+        <div>
+          <h2>Manova L M</h2>
+          <div class="role">AI Engineer &amp; Researcher</div>
         </div>
-        <div class="card-content">
-          <p>AI Engineer and Researcher with <strong>5+ years</strong> of experience in building and deploying AI-driven solutions. Specialized in embedded VLM/NLVR systems, computer vision pipelines, and edge optimization using advanced quantization techniques.</p>
-          <ul class="highlights">
-            <li>✨ Expert in deep learning, computer vision, and large language models</li>
-            <li>🎯 Proficient in managing customer requirements and delivering tailored AI solutions</li>
-            <li>🚀 Passionate about adopting cutting-edge technologies for real-world applications</li>
+        <ul class="info-list">
+          <li><i class="ti ti-building"></i><span>IEI Integration Corp</span></li>
+          <li><i class="ti ti-map-pin"></i><span>New Taipei, Taiwan</span></li>
+          <li><i class="ti ti-mail"></i><a href="mailto:manomathew1943@gmail.com">manomathew1943@gmail.com</a></li>
+          <li><i class="ti ti-phone"></i><a href="tel:+886958334626">+886 958 334 626</a></li>
+        </ul>
+        <div class="socials aside-actions">
+          <a class="social" href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+          <a class="social" href="https://github.com/mano066" target="_blank" rel="noopener" aria-label="GitHub"><i class="ti ti-brand-github"></i></a>
+          <a class="social" href="https://huggingface.co/MANO066" target="_blank" rel="noopener" aria-label="Hugging Face"><span class="hf" aria-hidden="true">🤗</span></a>
+          <button class="social" type="button" data-copy="manomathew1943@gmail.com" aria-label="Copy email address"><i class="ti ti-copy"></i></button>
+        </div>
+      </aside>
+
+      <div class="profile-main">
+        <section class="panel glass reveal" aria-labelledby="about-h">
+          <h2 class="panel-title" id="about-h"><i class="ti ti-user-circle"></i>About</h2>
+          <p>AI Engineer and Researcher with <strong>5+ years</strong> of experience building and deploying AI-driven solutions. I specialise in embedded VLM/NLVR systems, computer-vision pipelines and edge optimisation using advanced quantisation techniques.</p>
+          <ul class="check-list">
+            <li><i class="ti ti-circle-check"></i>Deep learning, computer vision and large language models</li>
+            <li><i class="ti ti-circle-check"></i>Translating customer requirements into tailored, production-ready AI solutions</li>
+            <li><i class="ti ti-circle-check"></i>Early adopter of new techniques for real-world applications</li>
           </ul>
-        </div>
-      </section>
+        </section>
 
-      <section class="experience card">
-        <div class="card-header">
-          <h2><i class="ti ti-briefcase"></i> Experience</h2>
-        </div>
-        <div class="card-content">
+        <section class="panel glass reveal" aria-labelledby="exp-h">
+          <h2 class="panel-title" id="exp-h"><i class="ti ti-briefcase"></i>Experience</h2>
           <div class="timeline">
-            <div class="timeline-item current">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <div class="job-header">
-                  <h3>AI Engineer</h3>
-                  <div class="company">IEI Integration Corp</div>
-                  <div class="duration">Jul 2024 – Present | New Taipei, Taiwan</div>
-                </div>
-                <div class="job-description">
-                  <h4>Digital Fence & AI Feature Implementation</h4>
-                  <ul>
-                    <li>Integrated Vision-Language (VLM) and NLVR models into embedded object-detection pipelines</li>
-                    <li>Designed multi-object tracking enabling glass detection, human-safety alerting, and skeleton recognition</li>
-                    <li>Optimized models using ONNX, OpenVINO, INT8/FP16 quantization reducing memory footprint by 60%</li>
-                    <li>Collaborated with firmware and QA teams for production deployment</li>
-                  </ul>
-                </div>
+            <article class="t-item now">
+              <span class="t-dot"></span>
+              <div class="t-head">
+                <div><h3>AI Engineer</h3><div class="t-org">IEI Integration Corp</div></div>
+                <div class="t-when">Jul 2024 — Present<br />New Taipei, Taiwan</div>
               </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <div class="job-header">
-                  <h3>AI Engineer</h3>
-                  <div class="company">Intelligent Recognition Industry Service Centre</div>
-                  <div class="duration">Jun 2023 – May 2024 | Douliu, Taiwan</div>
-                </div>
-                <div class="job-description">
-                  <h4>Computer Vision & Defect Detection</h4>
-                  <ul>
-                    <li><strong>iTrash Recycling Detection:</strong> Boosted accuracy by 50%, reduced sorting errors by 30%</li>
-                    <li><strong>TFT-LCD Defect Detection:</strong> YOLOv8-based V-line mura detection system</li>
-                    <li><strong>Award:</strong> Winner of 2023 AI+ Rising Talent Selection</li>
-                  </ul>
-                </div>
+              <h4>Digital Fence &amp; AI feature implementation</h4>
+              <ul>
+                <li>Integrated Vision-Language (VLM) and NLVR models into embedded object-detection pipelines</li>
+                <li>Designed multi-object tracking enabling glass detection, human-safety alerting and skeleton recognition</li>
+                <li>Optimised models with ONNX, OpenVINO and INT8/FP16 quantisation, <strong>reducing memory footprint by 60%</strong></li>
+                <li>Worked with firmware and QA teams to take features into production</li>
+              </ul>
+            </article>
+            <article class="t-item">
+              <span class="t-dot"></span>
+              <div class="t-head">
+                <div><h3>AI Engineer</h3><div class="t-org">Intelligent Recognition Industry Service Centre</div></div>
+                <div class="t-when">Jun 2023 — May 2024<br />Douliu, Taiwan</div>
               </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <div class="job-header">
-                  <h3>Research Fellow</h3>
-                  <div class="company">Vel Tech R&D Institute</div>
-                  <div class="duration">Jul 2017 – Feb 2021 | Chennai, India</div>
-                </div>
-                <div class="job-description">
-                  <ul>
-                    <li>Led government-funded NIDHI PRAYAS project team</li>
-                    <li>Integrated OpenCV-based UAV object detection systems</li>
-                  </ul>
-                </div>
+              <h4>Computer vision &amp; defect detection</h4>
+              <ul>
+                <li><strong>iTrash recycling detection:</strong> accuracy up 50%, sorting errors down 30%</li>
+                <li><strong>TFT-LCD defect detection:</strong> YOLOv8-based V-line mura detection system</li>
+                <li><strong>Award:</strong> winner of the 2023 AI+ Rising Talent Selection</li>
+              </ul>
+            </article>
+            <article class="t-item">
+              <span class="t-dot"></span>
+              <div class="t-head">
+                <div><h3>Research Fellow</h3><div class="t-org">Vel Tech R&amp;D Institute</div></div>
+                <div class="t-when">Jul 2017 — Feb 2021<br />Chennai, India</div>
               </div>
+              <ul>
+                <li>Led the government-funded NIDHI PRAYAS project team</li>
+                <li>Integrated OpenCV-based object detection into UAV systems</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel glass reveal" aria-labelledby="edu-h">
+          <h2 class="panel-title" id="edu-h"><i class="ti ti-school"></i>Education</h2>
+          <div class="edu-card">
+            <h3>M.Sc. Aeronautical &amp; Electronic Engineering</h3>
+            <div class="sub">Specialist in Artificial Intelligence · National Formosa University</div>
+            <div class="meta">Apr 2021 — Jan 2023 · Taiwan</div>
+            <h4>Thesis: Multi-spectral image-based air quality prediction</h4>
+            <p>A multimodal deep-learning approach using ensemble learning for environmental prediction, significantly reducing the number of monitoring stations required.</p>
+            <span class="badge amber"><i class="ti ti-trophy"></i>Overall prize winner — 5G AI Competition</span>
+          </div>
+        </section>
+
+        <section class="panel glass reveal" aria-labelledby="skills-h">
+          <h2 class="panel-title" id="skills-h"><i class="ti ti-code"></i>Technical skills</h2>
+          <div class="skill-groups">
+            <div class="skill-group">
+              <h3>LLMs &amp; AI frameworks</h3>
+              <div class="skill-row"><div class="s-top">LLMs · OpenAI SDK<em>Expert</em></div><div class="bar"><span style="--w:92%"></span></div></div>
+              <div class="skill-row"><div class="s-top">CrewAI · LangChain<em>Advanced</em></div><div class="bar"><span style="--w:78%"></span></div></div>
+              <div class="skill-row"><div class="s-top">AutoGen · MCP<em>Intermediate</em></div><div class="bar"><span style="--w:62%"></span></div></div>
+            </div>
+            <div class="skill-group">
+              <h3>Computer vision &amp; deep learning</h3>
+              <div class="skill-row"><div class="s-top">Computer vision · Deep learning<em>Expert</em></div><div class="bar"><span style="--w:92%"></span></div></div>
+              <div class="skill-row"><div class="s-top">Machine learning<em>Expert</em></div><div class="bar"><span style="--w:92%"></span></div></div>
+              <div class="skill-row"><div class="s-top">YOLO · OpenCV<em>Advanced</em></div><div class="bar"><span style="--w:78%"></span></div></div>
+            </div>
+            <div class="skill-group">
+              <h3>Multimodal &amp; generative AI</h3>
+              <div class="skill-row"><div class="s-top">Multimodal AI<em>Expert</em></div><div class="bar"><span style="--w:92%"></span></div></div>
+              <div class="skill-row"><div class="s-top">Vision-language models<em>Expert</em></div><div class="bar"><span style="--w:92%"></span></div></div>
+              <div class="skill-row"><div class="s-top">Generative AI<em>Advanced</em></div><div class="bar"><span style="--w:78%"></span></div></div>
+            </div>
+            <div class="skill-group">
+              <h3>Edge computing &amp; optimisation</h3>
+              <div class="skill-row"><div class="s-top">ONNX · OpenVINO<em>Expert</em></div><div class="bar"><span style="--w:92%"></span></div></div>
+              <div class="skill-row"><div class="s-top">INT8 / FP16<em>Expert</em></div><div class="bar"><span style="--w:92%"></span></div></div>
+              <div class="skill-row"><div class="s-top">Quantisation · Pruning<em>Advanced</em></div><div class="bar"><span style="--w:78%"></span></div></div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="education card">
-        <div class="card-header">
-          <h2><i class="ti ti-school"></i> Education</h2>
-        </div>
-        <div class="card-content">
-          <div class="degree">
-            <h3>M.Sc Aeronautical & Electronic Engineering</h3>
-            <div class="specialization">Specialist in Artificial Intelligence</div>
-            <div class="university">National Formosa University</div>
-            <div class="duration">Apr 2021 – Jan 2023 | Taiwan</div>
-            <div class="thesis">
-              <h4>Thesis: Multi-Spectral Image-Based Air Quality Prediction</h4>
-              <p>Developed deep learning multimodal approach for environmental prediction using ensemble learning methods, significantly reducing monitoring station requirements.</p>
-              <div class="achievements">
-                <span class="achievement">🏆 Overall Prize Winner - 5G AI Competition</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="skills card">
-        <div class="card-header">
-          <h2><i class="ti ti-code"></i> Technical Skills</h2>
-        </div>
-        <div class="card-content">
-          <div class="skill-category">
-            <h3>Large Language Models & AI Frameworks</h3>
-            <div class="skill-tags">
-              <span class="skill-tag expert">LLMs</span>
-              <span class="skill-tag expert">OpenAI SDK</span>
-              <span class="skill-tag advanced">CrewAI</span>
-              <span class="skill-tag advanced">LangChain</span>
-              <span class="skill-tag intermediate">Autogen</span>
-              <span class="skill-tag intermediate">MCP</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3>Computer Vision & Deep Learning</h3>
-            <div class="skill-tags">
-              <span class="skill-tag expert">Computer Vision</span>
-              <span class="skill-tag expert">Deep Learning</span>
-              <span class="skill-tag expert">Machine Learning</span>
-              <span class="skill-tag advanced">YOLO</span>
-              <span class="skill-tag advanced">OpenCV</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3>Multimodal & Generative AI</h3>
-            <div class="skill-tags">
-              <span class="skill-tag expert">Multimodal AI</span>
-              <span class="skill-tag expert">Vision-Language Models</span>
-              <span class="skill-tag advanced">Generative AI</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3>Edge Computing & Optimization</h3>
-            <div class="skill-tags">
-              <span class="skill-tag expert">ONNX</span>
-              <span class="skill-tag expert">OpenVINO</span>
-              <span class="skill-tag expert">INT8/FP16</span>
-              <span class="skill-tag advanced">Quantization</span>
-              <span class="skill-tag advanced">Model Pruning</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="certifications card">
-        <div class="card-header">
-          <h2><i class="ti ti-certificate"></i> Certifications</h2>
-        </div>
-        <div class="card-content">
+        <section class="panel glass reveal" aria-labelledby="cert-h">
+          <h2 class="panel-title" id="cert-h"><i class="ti ti-certificate"></i>Certifications</h2>
           <div class="cert-grid">
-            <div class="cert-item">
-              <i class="ti ti-brand-python"></i>
-              <span>Python Programming</span>
-            </div>
-            <div class="cert-item">
-              <i class="ti ti-chart-bar"></i>
-              <span>Data Visualization with Tableau</span>
-            </div>
-            <div class="cert-item">
-              <i class="ti ti-brain"></i>
-              <span>Deep Learning Specialization</span>
-            </div>
-            <div class="cert-item">
-              <i class="ti ti-robot"></i>
-              <span>LLM Engineering</span>
-            </div>
-            <div class="cert-item">
-              <i class="ti ti-database"></i>
-              <span>Data Science Fundamentals</span>
-            </div>
+            <div class="cert"><i class="ti ti-brand-python"></i>Python Programming</div>
+            <div class="cert"><i class="ti ti-chart-bar"></i>Data Visualization with Tableau</div>
+            <div class="cert"><i class="ti ti-brain"></i>Deep Learning Specialization</div>
+            <div class="cert"><i class="ti ti-robot"></i>LLM Engineering</div>
+            <div class="cert"><i class="ti ti-database"></i>Data Science Fundamentals</div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   </main>
 
-  <!-- Career-takAI Chatbot -->
-  <div class="chatbot-wrapper">
-    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Open Career-takAI Assistant">
-      <div class="chatbot-icon">
-        <i class="ti ti-message-chatbot"></i>
-      </div>
-      <div class="chatbot-pulse"></div>
-    </button>
-    
-    <div id="chatbot-panel" class="chatbot-panel">
-      <div class="chatbot-header">
-        <div class="chatbot-title">
-          <i class="ti ti-robot"></i>
-          <span>Career-takAI</span>
-        </div>
-        <button id="chatbot-close" class="chatbot-close" aria-label="Close chatbot">
-          <i class="ti ti-x"></i>
-        </button>
-      </div>
-      <div class="chatbot-content" id="chatbot-content">
-        <div class="chatbot-loading">
-          <i class="ti ti-loader"></i>
-          <span>Initializing AI Assistant...</span>
-        </div>
-      </div>
+  <!-- FOOTER / CONTACT -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-marquee" aria-hidden="true">
+      <div class="marquee" style="--speed:60s"><div class="marquee-track">
+        <span>LLMs</span><em>●</em><span>Computer Vision</span><em>●</em><span>Edge AI</span><em>●</em><span>Multimodal</span><em>●</em><span>Agentic AI</span><em>●</em>
+        <span>LLMs</span><em>●</em><span>Computer Vision</span><em>●</em><span>Edge AI</span><em>●</em><span>Multimodal</span><em>●</em><span>Agentic AI</span><em>●</em>
+      </div></div>
     </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="wrap">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <strong>Manova L M</strong>
-          <p>AI Engineer & Researcher</p>
-        </div>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="publications.html">Research</a>
-        </div>
-        <div class="footer-copy">
-          <p>&copy; <span id="current-year"></span> Manova L M. All rights reserved.</p>
-        </div>
-      </div>
+    <div class="chrome-wrap">
+      <canvas id="chrome-logo" aria-hidden="true"></canvas>
+      <div class="chrome-fallback" aria-hidden="true">M</div>
+    </div>
+    <p class="footer-lead">Let's collaborate and bring <strong>intelligent ideas</strong> to life.<br />Reach out through any of these channels:</p>
+    <div class="channels">
+      <span class="channel"><i class="ti ti-mail"></i><a href="mailto:manomathew1943@gmail.com">Email</a><button class="copy-btn" type="button" data-copy="manomathew1943@gmail.com" aria-label="Copy email address"><i class="ti ti-copy"></i></button></span>
+      <a class="channel" href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i>LinkedIn</a>
+      <a class="channel" href="https://github.com/mano066" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i>GitHub</a>
+      <a class="channel" href="https://huggingface.co/MANO066" target="_blank" rel="noopener"><span aria-hidden="true">🤗</span>Hugging Face</a>
+      <a class="channel" href="tel:+886958334626"><i class="ti ti-phone"></i>+886 958 334 626</a>
+    </div>
+    <div class="footer-base">
+      <span>&copy; <span data-year>2026</span> Manova L M · New Taipei, Taiwan</span>
+      <nav class="footer-links" aria-label="Footer"><a href="profile.html">Profile</a><a href="projects.html">Works</a><a href="publications.html">Research</a></nav>
+      <a class="to-top" href="#main"><i class="ti ti-arrow-up"></i>Back to top</a>
     </div>
   </footer>
 
+  <button class="chat-fab" id="chat-fab" type="button" aria-label="Open AI assistant" aria-expanded="false" aria-controls="chat-panel"><i class="ti ti-message-chatbot"></i><i class="ti ti-x"></i></button>
+  <div class="chat-panel" id="chat-panel" role="dialog" aria-label="Career-takAI assistant" aria-hidden="true">
+    <div class="chat-head">
+      <div class="chat-title"><span class="bot"><i class="ti ti-robot"></i></span><div>Career-takAI<small>Ask about my experience</small></div></div>
+      <button class="chat-close" id="chat-close" type="button" aria-label="Close assistant"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="chat-body" id="chat-body"><div class="chat-state"><i class="ti ti-loader-2 spin"></i><span>Starting assistant…</span></div></div>
+  </div>
+
   <script src="app.js"></script>
+  <script type="module" src="scene.js"></script>
 </body>
 </html>

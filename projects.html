@@ -1,599 +1,266 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Projects - Manova L M | AI Engineer & Researcher</title>
-  <link rel="icon" href="favicon.ico" />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js"></script>
+  <title>Projects | Manova L M — AI Engineer &amp; Researcher</title>
+  <meta name="description" content="AI projects by Manova L M: multimodal surveillance, TFT-LCD defect detection, recycling AI, semiconductor measurement and more." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700&family=Gloock&family=Rajdhani:wght@300;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () { try { if (localStorage.getItem('motion') === 'off') document.documentElement.classList.add('motion-off'); } catch (e) {} })();
+  </script>
 </head>
 <body>
-  <div class="page-transition"></div>
-  
-  <header class="site wrap">
-    <a class="brand" href="index.html">
-      <div class="brand-avatar">
-        <span class="brand-initial">M</span>
-        <div class="brand-pulse"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="bg-canvas" data-scene="dust" aria-hidden="true"></canvas>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Manova L M — home">Manova<span class="star" aria-hidden="true">✦</span></a>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="profile.html">Profile</a>
+        <a class="nav-link" href="projects.html">Works</a>
+        <a class="nav-link" href="publications.html">Research</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+      <div class="header-tools">
+        <button class="motion-toggle" type="button" aria-pressed="true" aria-label="Pause animations">
+          <svg viewBox="0 0 40 14" aria-hidden="true"><path class="wave" d="M2 7 C 10 0, 14 0, 20 7 S 30 14, 38 7" /></svg>
+        </button>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span class="bars"></span></button>
       </div>
-      <span class="brand-name">Manova L M</span>
-    </a>
-    <nav class="top-nav" aria-label="Primary navigation">
-      <a class="nav-link" href="index.html">
-        <i class="ti ti-home"></i>
-        <span>Home</span>
-      </a>
-      <a class="nav-link" href="profile.html">
-        <i class="ti ti-user"></i>
-        <span>Profile</span>
-      </a>
-      <a class="nav-link active" href="projects.html">
-        <i class="ti ti-code"></i>
-        <span>Projects</span>
-      </a>
-      <a class="nav-link" href="publications.html">
-        <i class="ti ti-book"></i>
-        <span>Research</span>
-      </a>
-    </nav>
+    </div>
   </header>
 
-  <main class="wrap projects-page" id="main">
-    <div class="page-header">
-      <h1>AI Projects</h1>
-      <p>Innovative solutions in computer vision, edge AI, and multimodal systems</p>
+  <main class="page" id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <span class="eyebrow reveal">AI projects</span>
+        <h1 class="reveal" style="--d:.08s">Systems built for<br /><span class="grad-text">real factories &amp; devices</span>.</h1>
+        <p class="reveal" style="--d:.16s">Computer vision, edge AI and multimodal systems — designed with industry partners and deployed where accuracy and latency matter.</p>
+        <div class="mini-stats reveal" style="--d:.24s">
+          <div class="mini-stat"><b class="grad-text" data-count="6" data-suffix="+">6+</b><span>AI projects</span></div>
+          <div class="mini-stat"><b class="grad-text" data-count="2">2</b><span>Awards won</span></div>
+          <div class="mini-stat"><b class="grad-text" data-count="5" data-suffix="+">5+</b><span>Industries</span></div>
+          <div class="mini-stat"><b class="grad-text" data-count="50" data-suffix="%">50%</b><span>Max accuracy gain</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="filters reveal" role="group" aria-label="Filter projects" data-filter-group="#projects-grid" data-empty="#projects-empty">
+        <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" type="button" data-filter="vision" aria-pressed="false">Computer vision</button>
+        <button class="filter-btn" type="button" data-filter="vlm" aria-pressed="false">Multimodal / VLM</button>
+        <button class="filter-btn" type="button" data-filter="edge" aria-pressed="false">Edge AI</button>
+        <button class="filter-btn" type="button" data-filter="industrial" aria-pressed="false">Industrial QC</button>
+        <button class="filter-btn" type="button" data-filter="award" aria-pressed="false">Award-winning</button>
+        <button class="filter-btn" type="button" data-filter="research" aria-pressed="false">Research</button>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- AIEI -->
+        <article id="p-aiei" class="p-card featured glass tilt reveal" data-tilt="3" data-tags="vision vlm edge">
+          <div class="p-head">
+            <div class="p-icon lift"><i class="ti ti-eye-check"></i></div>
+            <div>
+              <h2>AIEI — IEI Multi-Modal Visual Surveillance</h2>
+              <div class="p-meta"><span>IEI Integration Corp · 2024</span><span class="badge cyan"><i class="ti ti-star"></i>Featured</span><span class="badge green"><i class="ti ti-point-filled"></i>Active development</span></div>
+            </div>
+          </div>
+          <p>A multi-modal visual surveillance system that brings AI into security monitoring. It combines vision-language models with real-time action detection for comprehensive safety solutions.</p>
+          <div class="features">
+            <div class="feature"><i class="ti ti-message-2"></i><div><strong>VLM-based text answering</strong><span>Natural-language queries about visual content</span></div></div>
+            <div class="feature"><i class="ti ti-help-circle"></i><div><strong>Visual question answering</strong><span>Interactive visual intelligence</span></div></div>
+            <div class="feature"><i class="ti ti-user-search"></i><div><strong>Human action &amp; behaviour detection</strong><span>Real-time behavioural analysis</span></div></div>
+            <div class="feature"><i class="ti ti-shield-check"></i><div><strong>Safety detection</strong><span>Automated hazard identification</span></div></div>
+            <div class="feature"><i class="ti ti-robot"></i><div><strong>Agentic AI integration</strong><span>Autonomous security-response triggering</span></div></div>
+            <div class="feature"><i class="ti ti-cpu"></i><div><strong>Edge deployment</strong><span>Local processing for speed and reliability</span></div></div>
+          </div>
+          <div class="tags"><span class="tag">Vision-Language Models</span><span class="tag">ONNX</span><span class="tag">OpenVINO</span><span class="tag">Computer Vision</span><span class="tag">Agentic AI</span><span class="tag">Edge Computing</span><span class="tag">Real-time</span></div>
+          <ul class="outcomes">
+            <li><i class="ti ti-circle-check"></i>60% faster processing with local deployment</li>
+            <li><i class="ti ti-circle-check"></i>Higher reliability with reduced cloud dependency</li>
+            <li><i class="ti ti-circle-check"></i>Multi-modal visual understanding on device</li>
+          </ul>
+        </article>
+
+        <!-- iTrash -->
+        <article id="p-itrash" class="p-card glass tilt reveal" data-tilt="5" data-accent="blue" data-tags="vision industrial">
+          <div class="p-head">
+            <div class="p-icon lift"><i class="ti ti-recycle"></i></div>
+            <div>
+              <h2>iTrash Recycling Detection</h2>
+              <div class="p-meta"><span>Intelligent Recognition Industry Service Centre · 2023–24</span></div>
+            </div>
+          </div>
+          <div class="p-meta"><span class="badge green"><i class="ti ti-chart-line"></i>High impact</span><span class="badge blue"><i class="ti ti-check"></i>Completed</span></div>
+          <p>An AI model for recycling-machine waste detection built on an optimised YOLOv8-GA architecture, tuned end-to-end to surpass the accuracy of existing solutions.</p>
+          <div class="impact-row">
+            <div class="impact"><b class="grad-text">+50%</b><span>Accuracy improvement</span></div>
+            <div class="impact"><b class="grad-text">−30%</b><span>Sorting errors</span></div>
+          </div>
+          <div class="features">
+            <div class="feature"><i class="ti ti-brain"></i><div><strong>YOLOv8-GA</strong><span>Genetic-algorithm optimisation</span></div></div>
+            <div class="feature"><i class="ti ti-settings"></i><div><strong>Operational integration</strong><span>Real-time deployment in machines</span></div></div>
+          </div>
+          <div class="tags"><span class="tag">YOLOv8</span><span class="tag">Genetic Algorithm</span><span class="tag">Object Detection</span><span class="tag">Real-time</span></div>
+        </article>
+
+        <!-- Mura -->
+        <article id="p-mura" class="p-card glass tilt reveal" data-tilt="5" data-accent="violet" data-tags="vision vlm industrial">
+          <div class="p-head">
+            <div class="p-icon lift"><i class="ti ti-scan"></i></div>
+            <div>
+              <h2>Vertical-Line Mura Defect Detection (VLM-YOLOGA)</h2>
+              <div class="p-meta"><span>Intelligent Recognition Industry Service Centre · 2023–24</span></div>
+            </div>
+          </div>
+          <div class="p-meta"><span class="badge violet"><i class="ti ti-file-certificate"></i>IEEE Access</span><span class="badge blue"><i class="ti ti-check"></i>Completed</span></div>
+          <p>Tackles a persistent TFT-LCD manufacturing problem: detecting minor LV1 abnormalities. The VLM-YOLOGA algorithm, based on YOLOv8, identifies V-line mura defects in LCD images quickly and accurately.</p>
+          <div class="impact-row">
+            <div class="impact"><b class="grad-text">99.5%</b><span>mAP</span></div>
+            <div class="impact"><b class="grad-text">99.7%</b><span>F1-score</span></div>
+          </div>
+          <div class="features">
+            <div class="feature"><i class="ti ti-bug"></i><div><strong>LV1 abnormality detection</strong><span>Subtle manufacturing defects</span></div></div>
+            <div class="feature"><i class="ti ti-device-tv"></i><div><strong>TFT-LCD quality control</strong><span>Automated QA</span></div></div>
+          </div>
+          <div class="tags"><span class="tag">VLM-YOLOGA</span><span class="tag">YOLOv8</span><span class="tag">Quality Control</span><span class="tag">Defect Detection</span></div>
+        </article>
+
+        <!-- MA-tek -->
+        <article id="p-matek" class="p-card glass tilt reveal" data-tilt="5" data-accent="blue" data-tags="vision industrial">
+          <div class="p-head">
+            <div class="p-icon lift"><i class="ti ti-ruler-measure"></i></div>
+            <div>
+              <h2>MA-tek Image Measurement System</h2>
+              <div class="p-meta"><span>Semiconductor industry · 2023</span></div>
+            </div>
+          </div>
+          <div class="p-meta"><span class="badge blue"><i class="ti ti-check"></i>Completed</span></div>
+          <p>Precision measurement for advanced semiconductor manufacturing: 3-nm node spike outer and inner width measurement using OpenCV pixel-wise masking.</p>
+          <div class="features">
+            <div class="feature"><i class="ti ti-microscope"></i><div><strong>3-nm node precision</strong><span>Ultra-precise measurement</span></div></div>
+            <div class="feature"><i class="ti ti-mask"></i><div><strong>Pixel-wise masking</strong><span>OpenCV-based pipeline</span></div></div>
+          </div>
+          <div class="tags"><span class="tag">OpenCV</span><span class="tag">Image Processing</span><span class="tag">Semiconductor</span><span class="tag">Metrology</span></div>
+          <ul class="outcomes">
+            <li><i class="ti ti-circle-check"></i>3-nm node measurement capability achieved</li>
+            <li><i class="ti ti-circle-check"></i>High-precision dimensional analysis</li>
+          </ul>
+        </article>
+
+        <!-- Grinding wheel -->
+        <article id="p-grinding" class="p-card glass tilt reveal" data-tilt="5" data-accent="amber" data-tags="vision industrial award">
+          <div class="p-head">
+            <div class="p-icon lift"><i class="ti ti-circle-dot"></i></div>
+            <div>
+              <h2>Grinding Wheel Defect Detection with Incremental Learning</h2>
+              <div class="p-meta"><span>Industrial AI · 2023</span></div>
+            </div>
+          </div>
+          <div class="p-meta"><span class="badge amber"><i class="ti ti-trophy"></i>2023 AI+ Rising Talent winner</span></div>
+          <p>Combines geometric analysis and deep learning for grinding-wheel quality control: ellipse fitting captures contours while MobileNetV3 detects surface defects.</p>
+          <div class="features">
+            <div class="feature"><i class="ti ti-geometry"></i><div><strong>Ellipse fitting</strong><span>Precise contour capture</span></div></div>
+            <div class="feature"><i class="ti ti-search"></i><div><strong>Multi-defect detection</strong><span>Deformation, missing corners, cracks</span></div></div>
+            <div class="feature"><i class="ti ti-device-mobile"></i><div><strong>MobileNetV3</strong><span>Resin-overflow surface defects</span></div></div>
+            <div class="feature"><i class="ti ti-refresh"></i><div><strong>Incremental learning</strong><span>Improves generation over generation</span></div></div>
+          </div>
+          <div class="tags"><span class="tag">MobileNetV3</span><span class="tag">Ellipse Fitting</span><span class="tag">Incremental Learning</span></div>
+          <ul class="outcomes">
+            <li class="award"><i class="ti ti-trophy"></i>Winner: 2023 AI+ Rising Talent Selection</li>
+          </ul>
+        </article>
+
+        <!-- Steering -->
+        <article id="p-steering" class="p-card glass tilt reveal" data-tilt="5" data-accent="pink" data-tags="research">
+          <div class="p-head">
+            <div class="p-icon lift"><i class="ti ti-steering-wheel"></i></div>
+            <div>
+              <h2>Autonomous Steering Angle Prediction</h2>
+              <div class="p-meta"><span>Research project · 2022</span></div>
+            </div>
+          </div>
+          <div class="p-meta"><span class="badge blue"><i class="ti ti-check"></i>Completed</span></div>
+          <p>Steering-angle prediction with deep learning and reinforcement learning, navigating simulated environments with traffic, vehicles and dynamic conditions.</p>
+          <div class="features">
+            <div class="feature"><i class="ti ti-brain"></i><div><strong>Deep learning</strong><span>Neural steering prediction</span></div></div>
+            <div class="feature"><i class="ti ti-repeat"></i><div><strong>Reinforcement learning</strong><span>Self-improving navigation</span></div></div>
+          </div>
+          <div class="tags"><span class="tag">Deep Learning</span><span class="tag">Reinforcement Learning</span><span class="tag">Simulation</span></div>
+          <ul class="outcomes">
+            <li><i class="ti ti-circle-check"></i>Navigated complex traffic scenarios in simulation</li>
+          </ul>
+        </article>
+      </div>
+      <p class="empty-state" id="projects-empty">No projects in this category yet.</p>
     </div>
 
-    <div class="projects-grid">
-      <!-- Featured Project: AIEI-IEI -->
-      <section class="project-card featured">
-        <div class="project-badge">
-          <i class="ti ti-star"></i>
-          <span>Featured Project</span>
-        </div>
-        <div class="project-header">
-          <div class="project-icon">
-            <i class="ti ti-eye-check"></i>
-          </div>
-          <div class="project-meta">
-            <h2>AIEI – IEI Multi-Modal Visual Surveillance</h2>
-            <div class="project-company">IEI Integration Corp • 2024</div>
-            <div class="project-status current">
-              <i class="ti ti-circle-dot"></i>
-              <span>Active Development</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-description">
-          <p>Advanced multi-modal visual surveillance system that revolutionizes security monitoring through AI integration. The system combines vision-language models with real-time action detection for comprehensive safety solutions.</p>
-          
-          <div class="project-features">
-            <div class="feature">
-              <i class="ti ti-message-2"></i>
-              <div>
-                <strong>VLM-based Text Answering</strong>
-                <span>Natural language queries about visual content</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-help-circle"></i>
-              <div>
-                <strong>Visual Question Answering (VQA)</strong>
-                <span>Interactive visual intelligence system</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-user-search"></i>
-              <div>
-                <strong>Human Action & Behavior Detection</strong>
-                <span>Real-time behavioral analysis and monitoring</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-shield-check"></i>
-              <div>
-                <strong>Safety Detection System</strong>
-                <span>Automated threat and safety hazard identification</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-robot"></i>
-              <div>
-                <strong>Agentic AI Integration</strong>
-                <span>Autonomous security response triggering</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-cpu"></i>
-              <div>
-                <strong>Edge Deployment</strong>
-                <span>Local processing for enhanced speed & reliability</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-technologies">
-            <span class="tech-tag">Vision-Language Models</span>
-            <span class="tech-tag">ONNX</span>
-            <span class="tech-tag">OpenVINO</span>
-            <span class="tech-tag">Computer Vision</span>
-            <span class="tech-tag">Agentic AI</span>
-            <span class="tech-tag">Edge Computing</span>
-            <span class="tech-tag">Real-time Processing</span>
-          </div>
-
-          <div class="project-achievements">
-            <div class="achievement">
-              <i class="ti ti-clock"></i>
-              <span>60% faster processing with local deployment</span>
-            </div>
-            <div class="achievement">
-              <i class="ti ti-shield"></i>
-              <span>Enhanced reliability with reduced cloud dependency</span>
-            </div>
-            <div class="achievement">
-              <i class="ti ti-eye"></i>
-              <span>Multi-modal visual understanding capabilities</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- iTrash Recycling Detection -->
-      <section class="project-card award">
-        <div class="project-badge success">
-          <i class="ti ti-chart-line"></i>
-          <span>High Impact Project</span>
-        </div>
-        <div class="project-header">
-          <div class="project-icon cv">
-            <i class="ti ti-recycle"></i>
-          </div>
-          <div class="project-meta">
-            <h2>iTrash Recycling Detection</h2>
-            <div class="project-company">Intelligent Recognition Industry Service Centre • 2023-2024</div>
-            <div class="project-status completed">
-              <i class="ti ti-check"></i>
-              <span>Completed</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-description">
-          <p>Revolutionary AI model for recycling waste machine detection using optimized YOLOv8-GA architecture. This cutting-edge development aimed at revolutionizing recycling waste machine detection by meticulously optimizing every aspect to surpass the accuracy of existing solutions.</p>
-
-          <div class="project-features">
-            <div class="feature">
-              <i class="ti ti-brain"></i>
-              <div>
-                <strong>YOLOv8-GA Architecture</strong>
-                <span>Genetic Algorithm optimization for enhanced accuracy</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-target"></i>
-              <div>
-                <strong>Precision Detection</strong>
-                <span>Advanced computer vision for waste classification</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-settings"></i>
-              <div>
-                <strong>Operational Integration</strong>
-                <span>Real-time deployment in recycling machines</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-impact">
-            <div class="impact-metric">
-              <div class="metric-value">50%</div>
-              <div class="metric-label">Accuracy Improvement</div>
-            </div>
-            <div class="impact-metric">
-              <div class="metric-value">30%</div>
-              <div class="metric-label">Error Reduction</div>
-            </div>
-          </div>
-
-          <div class="project-technologies">
-            <span class="tech-tag">YOLOv8</span>
-            <span class="tech-tag">Genetic Algorithm</span>
-            <span class="tech-tag">Computer Vision</span>
-            <span class="tech-tag">Recycling AI</span>
-            <span class="tech-tag">Object Detection</span>
-            <span class="tech-tag">Real-time Processing</span>
-          </div>
-
-          <div class="project-achievements">
-            <div class="achievement success">
-              <i class="ti ti-trending-up"></i>
-              <span>Enhanced operational efficiency significantly</span>
-            </div>
-            <div class="achievement success">
-              <i class="ti ti-bullseye"></i>
-              <span>Surpassed existing model accuracy benchmarks</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TFT-LCD Defect Detection -->
-      <section class="project-card">
-        <div class="project-header">
-          <div class="project-icon defect">
-            <i class="ti ti-scan"></i>
-          </div>
-          <div class="project-meta">
-            <h2>Vertical-Line Mura Defect Detection using VLM-YOLOGA</h2>
-            <div class="project-company">Intelligent Recognition Industry Service Centre • 2023-2024</div>
-            <div class="project-status completed">
-              <i class="ti ti-check"></i>
-              <span>Completed</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-description">
-          <p>Innovative research addressing persistent challenges faced by TFT-LCD screen manufacturers in detecting minor defects, particularly LV1 abnormalities. Our VLM-YOLOGA algorithm, based on YOLOv8, proves highly effective in swiftly and accurately identifying V-line mura defects in LCD images.</p>
-
-          <div class="project-features">
-            <div class="feature">
-              <i class="ti ti-eye-scan"></i>
-              <div>
-                <strong>VLM-YOLOGA Algorithm</strong>
-                <span>Vision-Language Model enhanced YOLO for defect detection</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-bug"></i>
-              <div>
-                <strong>LV1 Abnormality Detection</strong>
-                <span>Specialized detection for subtle manufacturing defects</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-device-tv"></i>
-              <div>
-                <strong>TFT-LCD Quality Control</strong>
-                <span>Manufacturing quality assurance automation</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-technologies">
-            <span class="tech-tag">VLM-YOLOGA</span>
-            <span class="tech-tag">YOLOv8</span>
-            <span class="tech-tag">LCD Manufacturing</span>
-            <span class="tech-tag">Quality Control</span>
-            <span class="tech-tag">Computer Vision</span>
-            <span class="tech-tag">Defect Detection</span>
-          </div>
-
-          <div class="project-achievements">
-            <div class="achievement">
-              <i class="ti ti-clock-fast"></i>
-              <span>Swift and accurate V-line mura identification</span>
-            </div>
-            <div class="achievement">
-              <i class="ti ti-microscope"></i>
-              <span>Successfully detects minor LV1 abnormalities</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- MA-tek Image Measurement -->
-      <section class="project-card">
-        <div class="project-header">
-          <div class="project-icon measurement">
-            <i class="ti ti-ruler-measure"></i>
-          </div>
-          <div class="project-meta">
-            <h2>MA-tek Image Measurement System</h2>
-            <div class="project-company">Semiconductor Industry • 2023</div>
-            <div class="project-status completed">
-              <i class="ti ti-check"></i>
-              <span>Completed</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-description">
-          <p>Precision measurement solution for advanced semiconductor manufacturing, enabling accurate 3-nm node spike outer and inner width length measurement using advanced OpenCV pixel-wise masking techniques.</p>
-
-          <div class="project-features">
-            <div class="feature">
-              <i class="ti ti-microscope"></i>
-              <div>
-                <strong>3-nm Node Precision</strong>
-                <span>Ultra-precise measurements for advanced semiconductor nodes</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-mask"></i>
-              <div>
-                <strong>Pixel-Wise Masking</strong>
-                <span>Advanced OpenCV-based measurement solution</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-dimensions"></i>
-              <div>
-                <strong>Dimensional Analysis</strong>
-                <span>Accurate spike outer and inner width measurements</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-technologies">
-            <span class="tech-tag">OpenCV</span>
-            <span class="tech-tag">Image Processing</span>
-            <span class="tech-tag">Semiconductor</span>
-            <span class="tech-tag">Precision Measurement</span>
-            <span class="tech-tag">Pixel-wise Masking</span>
-            <span class="tech-tag">3-nm Technology</span>
-          </div>
-
-          <div class="project-achievements">
-            <div class="achievement">
-              <i class="ti ti-atom"></i>
-              <span>3-nm node measurement capability achieved</span>
-            </div>
-            <div class="achievement">
-              <i class="ti ti-precision"></i>
-              <span>High-precision dimensional analysis solution</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Grinding Wheel Defect Detection -->
-      <section class="project-card award">
-        <div class="project-badge award">
-          <i class="ti ti-award"></i>
-          <span>Award Winner</span>
-        </div>
-        <div class="project-header">
-          <div class="project-icon grinding">
-            <i class="ti ti-circle-dot"></i>
-          </div>
-          <div class="project-meta">
-            <h2>Grinding Wheel Defect Detection with Incremental Learning</h2>
-            <div class="project-company">Industrial AI • 2023</div>
-            <div class="project-status completed">
-              <i class="ti ti-trophy"></i>
-              <span>2023 AI+ Rising Talent Winner</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-description">
-          <p>Unique AI technology combining geometric analysis and deep learning for comprehensive grinding wheel quality control. This innovative approach utilizes ellipse fitting for contour capture and MobileNetV3 for surface defect detection.</p>
-
-          <div class="project-features">
-            <div class="feature">
-              <i class="ti ti-geometry"></i>
-              <div>
-                <strong>Ellipse Fitting Algorithm</strong>
-                <span>Precise contour capture for shape analysis</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-search"></i>
-              <div>
-                <strong>Multi-Defect Detection</strong>
-                <span>Deformation, poor appearance, missing corners, and cracks</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-device-mobile"></i>
-              <div>
-                <strong>MobileNetV3 Integration</strong>
-                <span>Efficient surface defect detection for resin overflow</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-refresh"></i>
-              <div>
-                <strong>Incremental Learning</strong>
-                <span>Continuous improvement through generational learning</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-technologies">
-            <span class="tech-tag">Computer Vision</span>
-            <span class="tech-tag">MobileNetV3</span>
-            <span class="tech-tag">Ellipse Fitting</span>
-            <span class="tech-tag">Industrial AI</span>
-            <span class="tech-tag">Quality Control</span>
-            <span class="tech-tag">Incremental Learning</span>
-            <span class="tech-tag">Defect Detection</span>
-          </div>
-
-          <div class="project-achievements">
-            <div class="achievement award">
-              <i class="ti ti-trophy"></i>
-              <span>Winner: 2023 AI+ Rising Talent Selection</span>
-            </div>
-            <div class="achievement">
-              <i class="ti ti-tools"></i>
-              <span>Comprehensive quality control solution</span>
-            </div>
-            <div class="achievement">
-              <i class="ti ti-brain"></i>
-              <span>Innovative incremental learning approach</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Autonomous Steering Project -->
-      <section class="project-card">
-        <div class="project-header">
-          <div class="project-icon autonomous">
-            <i class="ti ti-car"></i>
-          </div>
-          <div class="project-meta">
-            <h2>Autonomous Steering Angle Prediction</h2>
-            <div class="project-company">Research Project • 2022</div>
-            <div class="project-status completed">
-              <i class="ti ti-check"></i>
-              <span>Completed</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-description">
-          <p>Advanced research in autonomous steering angle prediction using deep learning and reinforcement learning in simulation environments. Developed models to navigate complex simulation environments with traffic, vehicles, and dynamic conditions.</p>
-
-          <div class="project-features">
-            <div class="feature">
-              <i class="ti ti-brain"></i>
-              <div>
-                <strong>Deep Learning Models</strong>
-                <span>Advanced neural networks for steering prediction</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-repeat"></i>
-              <div>
-                <strong>Reinforcement Learning</strong>
-                <span>Self-improving navigation through trial and learning</span>
-              </div>
-            </div>
-            <div class="feature">
-              <i class="ti ti-world"></i>
-              <div>
-                <strong>Simulation Environment</strong>
-                <span>Complex traffic scenarios with vehicles and signals</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-technologies">
-            <span class="tech-tag">Deep Learning</span>
-            <span class="tech-tag">Reinforcement Learning</span>
-            <span class="tech-tag">Autonomous Vehicles</span>
-            <span class="tech-tag">Simulation</span>
-            <span class="tech-tag">Navigation</span>
-            <span class="tech-tag">Computer Vision</span>
-          </div>
-
-          <div class="project-achievements">
-            <div class="achievement">
-              <i class="ti ti-route"></i>
-              <span>Successfully navigated complex traffic scenarios</span>
-            </div>
-            <div class="achievement">
-              <i class="ti ti-target"></i>
-              <span>Improved autonomous vehicle navigation accuracy</span>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- Project Stats -->
-    <section class="project-stats">
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="ti ti-code"></i>
-          </div>
-          <div class="stat-content">
-            <div class="stat-number">6+</div>
-            <div class="stat-label">AI Projects</div>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="ti ti-award"></i>
-          </div>
-          <div class="stat-content">
-            <div class="stat-number">2</div>
-            <div class="stat-label">Awards Won</div>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="ti ti-building-factory"></i>
-          </div>
-          <div class="stat-content">
-            <div class="stat-number">5+</div>
-            <div class="stat-label">Industries</div>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">
-            <i class="ti ti-trending-up"></i>
-          </div>
-          <div class="stat-content">
-            <div class="stat-number">50%</div>
-            <div class="stat-label">Max Improvement</div>
+    <section class="section">
+      <div class="wrap">
+        <div class="cta glass reveal">
+          <span class="eyebrow">Have a project in mind?</span>
+          <h2>Let's make it <span class="grad-text">work on the edge</span>.</h2>
+          <p>Vision, VLM or LLM — I'm happy to talk through feasibility and deployment.</p>
+          <div class="contact-row">
+            <a class="btn btn-primary" href="mailto:manomathew1943@gmail.com"><i class="ti ti-mail"></i>Email me</a>
+            <a class="btn btn-ghost" href="publications.html"><i class="ti ti-book"></i>See the research</a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Career-takAI Chatbot -->
-  <div class="chatbot-wrapper">
-    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Open Career-takAI Assistant">
-      <div class="chatbot-icon">
-        <i class="ti ti-message-chatbot"></i>
-      </div>
-      <div class="chatbot-pulse"></div>
-    </button>
-    
-    <div id="chatbot-panel" class="chatbot-panel">
-      <div class="chatbot-header">
-        <div class="chatbot-title">
-          <i class="ti ti-robot"></i>
-          <span>Career-takAI</span>
-        </div>
-        <button id="chatbot-close" class="chatbot-close" aria-label="Close chatbot">
-          <i class="ti ti-x"></i>
-        </button>
-      </div>
-      <div class="chatbot-content" id="chatbot-content">
-        <div class="chatbot-loading">
-          <i class="ti ti-loader"></i>
-          <span>Initializing AI Assistant...</span>
-        </div>
-      </div>
+  <!-- FOOTER / CONTACT -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-marquee" aria-hidden="true">
+      <div class="marquee" style="--speed:60s"><div class="marquee-track">
+        <span>LLMs</span><em>●</em><span>Computer Vision</span><em>●</em><span>Edge AI</span><em>●</em><span>Multimodal</span><em>●</em><span>Agentic AI</span><em>●</em>
+        <span>LLMs</span><em>●</em><span>Computer Vision</span><em>●</em><span>Edge AI</span><em>●</em><span>Multimodal</span><em>●</em><span>Agentic AI</span><em>●</em>
+      </div></div>
     </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="wrap">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <strong>Manova L M</strong>
-          <p>AI Engineer & Researcher</p>
-        </div>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="profile.html">Profile</a>
-          <a href="publications.html">Research</a>
-        </div>
-        <div class="footer-copy">
-          <p>&copy; <span id="current-year"></span> Manova L M. All rights reserved.</p>
-        </div>
-      </div>
+    <div class="chrome-wrap">
+      <canvas id="chrome-logo" aria-hidden="true"></canvas>
+      <div class="chrome-fallback" aria-hidden="true">M</div>
+    </div>
+    <p class="footer-lead">Let's collaborate and bring <strong>intelligent ideas</strong> to life.<br />Reach out through any of these channels:</p>
+    <div class="channels">
+      <span class="channel"><i class="ti ti-mail"></i><a href="mailto:manomathew1943@gmail.com">Email</a><button class="copy-btn" type="button" data-copy="manomathew1943@gmail.com" aria-label="Copy email address"><i class="ti ti-copy"></i></button></span>
+      <a class="channel" href="https://www.linkedin.com/in/manova-m-509145157/" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i>LinkedIn</a>
+      <a class="channel" href="https://github.com/mano066" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i>GitHub</a>
+      <a class="channel" href="https://huggingface.co/MANO066" target="_blank" rel="noopener"><span aria-hidden="true">🤗</span>Hugging Face</a>
+      <a class="channel" href="tel:+886958334626"><i class="ti ti-phone"></i>+886 958 334 626</a>
+    </div>
+    <div class="footer-base">
+      <span>&copy; <span data-year>2026</span> Manova L M · New Taipei, Taiwan</span>
+      <nav class="footer-links" aria-label="Footer"><a href="profile.html">Profile</a><a href="projects.html">Works</a><a href="publications.html">Research</a></nav>
+      <a class="to-top" href="#main"><i class="ti ti-arrow-up"></i>Back to top</a>
     </div>
   </footer>
 
+  <button class="chat-fab" id="chat-fab" type="button" aria-label="Open AI assistant" aria-expanded="false" aria-controls="chat-panel"><i class="ti ti-message-chatbot"></i><i class="ti ti-x"></i></button>
+  <div class="chat-panel" id="chat-panel" role="dialog" aria-label="Career-takAI assistant" aria-hidden="true">
+    <div class="chat-head">
+      <div class="chat-title"><span class="bot"><i class="ti ti-robot"></i></span><div>Career-takAI<small>Ask about my experience</small></div></div>
+      <button class="chat-close" id="chat-close" type="button" aria-label="Close assistant"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="chat-body" id="chat-body"><div class="chat-state"><i class="ti ti-loader-2 spin"></i><span>Starting assistant…</span></div></div>
+  </div>
+
   <script src="app.js"></script>
+  <script type="module" src="scene.js"></script>
 </body>
 </html>
