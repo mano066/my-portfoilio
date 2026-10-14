@@ -10,9 +10,9 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700&family=Gloock&family=Rajdhani:wght@300;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700&family=Gloock&family=Inter:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=0bdff5a2" />
   <script>
     (function () { try { if (localStorage.getItem('motion') === 'off') document.documentElement.classList.add('motion-off'); } catch (e) {} })();
   </script>
@@ -47,8 +47,12 @@
     <section class="page-hero">
       <div class="wrap">
         <span class="eyebrow reveal">Professional profile</span>
-        <h1 class="reveal" style="--d:.08s">Engineer by training,<br /><span class="grad-text">AI builder</span> by craft.</h1>
+        <h1 class="reveal" style="--d:.08s">AI Engineer<br /><span class="grad-text">&amp; Researcher</span></h1>
         <p class="reveal" style="--d:.16s">Experience, education and skills behind 5+ years of building and deploying AI — from UAV research in India to edge-AI products in Taiwan.</p>
+        <div class="reveal" style="--d:.24s;display:flex;justify-content:center;gap:12px;margin-top:30px;flex-wrap:wrap">
+          <button class="btn btn-primary" type="button" data-print><i class="ti ti-download"></i>Download CV (PDF)</button>
+          <a class="btn" href="mailto:manomathew1943@gmail.com"><i class="ti ti-mail"></i>Contact</a>
+        </div>
       </div>
     </section>
 
@@ -77,6 +81,11 @@
       </aside>
 
       <div class="profile-main">
+        <header class="print-only cv-head">
+          <h1>Manova L M</h1>
+          <div class="cv-role">AI Engineer &amp; Researcher</div>
+          <div class="cv-contact">manomathew1943@gmail.com · +886 958 334 626 · New Taipei, Taiwan<br />linkedin.com/in/manova-m-509145157 · github.com/mano066 · huggingface.co/MANO066</div>
+        </header>
         <section class="panel glass reveal" aria-labelledby="about-h">
           <h2 class="panel-title" id="about-h"><i class="ti ti-user-circle"></i>About</h2>
           <p>AI Engineer and Researcher with <strong>5+ years</strong> of experience building and deploying AI-driven solutions. I specialise in embedded VLM/NLVR systems, computer-vision pipelines and edge optimisation using advanced quantisation techniques.</p>
@@ -173,6 +182,16 @@
           </div>
         </section>
 
+        <section class="panel glass reveal" aria-labelledby="pubs-h">
+          <h2 class="panel-title" id="pubs-h"><i class="ti ti-file-certificate"></i>Selected publications</h2>
+          <div class="sel-pubs">
+            <div class="sel-pub"><h3>Enhancing PM2.5 Detection via Multi-Spectral Image-based Double Channel Ensemble Learning for Drones</h3><p>IEEE Sensors Journal (Q1), 2025 · <a href="https://ieeexplore.ieee.org/document/11098626" target="_blank" rel="noopener">ieeexplore.ieee.org/document/11098626</a></p></div>
+            <div class="sel-pub"><h3>Vertical-Line Mura Defect Detection for TFT-LCDs</h3><p>IEEE Access (Q1), 2024 · 99.5% mAP, 99.7% F1 · <a href="https://ieeexplore.ieee.org/document/10735154" target="_blank" rel="noopener">ieeexplore.ieee.org/document/10735154</a></p></div>
+            <div class="sel-pub"><h3>Development of 3D Printed Floating Quadrotor for Collection of Algae in Remote Water Bodies</h3><p>Computers and Electronics in Agriculture, Elsevier, 2019</p></div>
+          </div>
+          <p style="margin:14px 0 0">12 publications in total — 6 journal, 6 conference. <a class="link-arrow no-print" href="publications.html" style="margin-left:6px">Full list <i class="ti ti-arrow-right"></i></a></p>
+        </section>
+
         <section class="panel glass reveal" aria-labelledby="cert-h">
           <h2 class="panel-title" id="cert-h"><i class="ti ti-certificate"></i>Certifications</h2>
           <div class="cert-grid">
@@ -206,6 +225,7 @@
       <a class="channel" href="https://github.com/mano066" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i>GitHub</a>
       <a class="channel" href="https://huggingface.co/MANO066" target="_blank" rel="noopener"><span aria-hidden="true">🤗</span>Hugging Face</a>
       <a class="channel" href="tel:+886958334626"><i class="ti ti-phone"></i>+886 958 334 626</a>
+      <a class="channel" href="profile.html?cv"><i class="ti ti-download"></i>CV</a>
     </div>
     <div class="footer-base">
       <span>&copy; <span data-year>2026</span> Manova L M · New Taipei, Taiwan</span>
@@ -215,15 +235,9 @@
   </footer>
 
   <button class="chat-fab" id="chat-fab" type="button" aria-label="Open AI assistant" aria-expanded="false" aria-controls="chat-panel"><i class="ti ti-message-chatbot"></i><i class="ti ti-x"></i></button>
-  <div class="chat-panel" id="chat-panel" role="dialog" aria-label="Career-takAI assistant" aria-hidden="true">
-    <div class="chat-head">
-      <div class="chat-title"><span class="bot"><i class="ti ti-robot"></i></span><div>Career-takAI<small>Ask about my experience</small></div></div>
-      <button class="chat-close" id="chat-close" type="button" aria-label="Close assistant"><i class="ti ti-x"></i></button>
-    </div>
-    <div class="chat-body" id="chat-body"><div class="chat-state"><i class="ti ti-loader-2 spin"></i><span>Starting assistant…</span></div></div>
-  </div>
+  <div class="chat-panel" id="chat-panel" role="dialog" aria-label="Ask Manova — AI assistant" aria-hidden="true"></div>
 
-  <script src="app.js"></script>
-  <script type="module" src="scene.js"></script>
+  <script src="app.js?v=16cc7509"></script>
+  <script type="module" src="scene.js?v=4ff5e405"></script>
 </body>
 </html>

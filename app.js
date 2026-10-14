@@ -18,8 +18,8 @@
     document.body.classList.add('loading');
     const pct = document.getElementById('loader-pct');
     const start = performance.now();
-    const MIN = 1400;
-    const MAX = 4000;
+    const MIN = 900;
+    const MAX = 2600;
     let loaded = document.readyState === 'complete';
     window.addEventListener('load', () => { loaded = true; });
     let finished = false;
@@ -371,77 +371,384 @@
     });
   }
 
-  // ---------- Career-takAI chatbot (Gradio, loaded on first open) ----------
+  // ---------- "Ask Manova" chat: custom UI over the Career-takAI Space API ----------
   function initChatbot() {
     const fab = document.getElementById('chat-fab');
     const panel = document.getElementById('chat-panel');
-    const body = document.getElementById('chat-body');
-    const closeBtn = document.getElementById('chat-close');
-    if (!fab || !panel || !body) return;
+    if (!fab || !panel) return;
 
-    // Keep this version in sync with the Space's Gradio SDK version.
-    const GRADIO_SRC = 'https://gradio.s3-us-west-2.amazonaws.com/5.34.2/gradio.js';
     const SPACE = 'MANO066/Career-takAI';
-    // Stages in which the Space can serve (or wake up and serve) the app.
-    const USABLE = ['RUNNING', 'SLEEPING', 'APP_STARTING', 'RUNNING_BUILDING', 'RUNNING_APP_STARTING', 'BUILDING'];
-    let loaded = false;
-    let isOpen = false;
+    const API = 'https://mano066-career-takai.hf.space/gradio_api/call/respond';
+    const EMAIL = 'manomathew1943@gmail.com';
+    const STORE = 'chat-history';
+    const MAX_KEEP = 24;
+    const WAKING = ['SLEEPING', 'APP_STARTING', 'BUILDING', 'RUNNING_BUILDING', 'RUNNING_APP_STARTING'];
+    const SUGGESTIONS = [
+      ['Experience', 'What is your work experience?'],
+      ['Skills', 'What are your main technical skills?'],
+      ['Projects', 'Tell me about your best projects.'],
+      ['Research', 'What research have you published?'],
+      ['Contact', 'How can I contact you about an opportunity?'],
+    ];
 
-    const showError = () => {
-      body.innerHTML =
-        '<div class="chat-state"><i class="ti ti-alert-circle"></i>' +
-        '<p>The AI assistant is offline right now.</p>' +
-        '<p>Email <a href="mailto:manomathew1943@gmail.com">manomathew1943@gmail.com</a> instead, or</p>' +
-        '<p><a href="https://huggingface.co/spaces/' + SPACE + '" target="_blank" rel="noopener">Open it on Hugging Face</a></p></div>';
+    // Local answers for when the live assistant can't respond
+    const ANSWERS = [
+      { k: ['experience', 'work', 'job', 'company', 'iei', 'role', 'career', 'background'],
+        a: "I'm an **AI Engineer at IEI Integration Corp** (New Taipei, Jul 2024 – present), integrating vision-language models into embedded detection pipelines and optimising them with ONNX, OpenVINO and INT8/FP16 (−60% memory).\n\nBefore that: AI Engineer at the Intelligent Recognition Industry Service Centre (2023–24) and Research Fellow at Vel Tech R&D Institute (2017–21). [Full profile](profile.html)" },
+      { k: ['skill', 'stack', 'tech', 'tool', 'framework', 'llm', 'vision', 'yolo', 'onnx', 'openvino', 'python'],
+        a: '- **LLMs & agents:** OpenAI SDK, LangChain, CrewAI, AutoGen, MCP\n- **Computer vision:** YOLO, OpenCV, PyTorch, defect detection\n- **Multimodal:** vision-language models, generative AI\n- **Edge:** ONNX, OpenVINO, INT8/FP16 quantisation, pruning' },
+      { k: ['project', 'built', 'portfolio', 'aiei', 'surveillance', 'itrash', 'mura', 'grinding'],
+        a: '- **AIEI** — multi-modal visual surveillance with VLMs at IEI\n- **V-line mura** — TFT-LCD defect detection, 99.5% mAP\n- **iTrash** — recycling detection, +50% accuracy\n- **Grinding wheel QC** — 2023 AI+ Rising Talent winner\n\n[All projects](projects.html)' },
+      { k: ['research', 'paper', 'publication', 'ieee', 'journal', 'conference', 'publish'],
+        a: '**12 publications** (6 journal, 6 conference), including IEEE Sensors Journal 2025 (drone PM2.5 detection) and IEEE Access 2024 (TFT-LCD mura detection, 99.5% mAP). [Full list](publications.html)' },
+      { k: ['education', 'degree', 'study', 'university', 'master', 'msc', 'thesis'],
+        a: '**M.Sc. Aeronautical & Electronic Engineering**, specialist in AI — National Formosa University, Taiwan (2021–23). Thesis on multi-spectral air-quality prediction; overall prize in the 5G AI Competition.' },
+      { k: ['contact', 'email', 'hire', 'reach', 'phone', 'call', 'opportunit', 'available', 'cv', 'resume'],
+        a: 'Email **' + EMAIL + '**, call +886 958 334 626, or connect on [LinkedIn](https://www.linkedin.com/in/manova-m-509145157/). You can also [download my CV](profile.html?cv).' },
+    ];
+    const localAnswer = (text) => {
+      const t = text.toLowerCase();
+      let best = null;
+      let score = 0;
+      ANSWERS.forEach((item) => {
+        const s = item.k.filter((k) => t.includes(k)).length;
+        if (s > score) { score = s; best = item; }
+      });
+      return best ? best.a : "I don't have a quick answer for that — please email **" + EMAIL + "** and I'll reply personally.";
     };
 
-    // Ask the Hub whether the Space is healthy; on any lookup failure, try anyway.
-    const spaceUsable = () => {
+    // ---- Minimal, safe Markdown → HTML (input is escaped first) ----
+    const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const inline = (s) => {
+      const keep = [];
+      const hold = (html) => '\u0000' + (keep.push(html) - 1) + '\u0000';
+      s = s.replace(/`([^`]+)`/g, (_, c) => hold('<code>' + c + '</code>'));
+      s = s.replace(/\[([^\]]+)\]\(((?:https?:\/\/|mailto:)[^\s)]+|[\w-]+\.html(?:[?#][^\s)]*)?)\)/g, (_, t, u) => {
+        const ext = /^https?:/.test(u);
+        return hold('<a href="' + u + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' + t + '</a>');
+      });
+      s = s.replace(/https?:\/\/[^\s<)\u0000]+/g, (u) => hold('<a href="' + u + '" target="_blank" rel="noopener">' + u.replace(/^https?:\/\//, '') + '</a>'));
+      s = s.replace(/[\w.+-]+@[\w-]+\.[\w.]+\w/g, (m) => hold('<a href="mailto:' + m + '">' + m + '</a>'));
+      s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/(^|[\s(])\*([^*\s][^*]*)\*/g, '$1<em>$2</em>');
+      return s.replace(/\u0000(\d+)\u0000/g, (_, i) => keep[+i]);
+    };
+    const md = (src) => {
+      const lines = esc(String(src || '')).replace(/\r/g, '').split('\n');
+      const out = [];
+      let i = 0;
+      while (i < lines.length) {
+        const line = lines[i];
+        if (/^\s*\|.*\|\s*$/.test(line)) {
+          const rows = [];
+          while (i < lines.length && /^\s*\|.*\|\s*$/.test(lines[i])) rows.push(lines[i++]);
+          const cells = (r) => r.trim().replace(/^\||\|$/g, '').split('|').map((c) => inline(c.trim()));
+          const body = rows.filter((r) => !/^\s*\|?[\s:|-]+\|?\s*$/.test(r));
+          if (body.length) {
+            const [head, ...rest] = body;
+            const heads = cells(head);
+            if (heads.length > 2 && rest.length) {
+              // Wide tables don't fit a chat bubble: show each row as a labelled card
+              out.push('<div class="cm-cards">' + rest.map((r) => {
+                const cs = cells(r);
+                return '<div class="cm-card"><div class="cm-card-title">' + (cs[0] || '') + '</div>' +
+                  cs.slice(1).map((c, j) => (c ? '<div class="cm-card-row"><span>' + (heads[j + 1] || '') + '</span>' + c + '</div>' : '')).join('') + '</div>';
+              }).join('') + '</div>');
+            } else {
+              out.push('<div class="cm-table"><table><thead><tr>' + heads.map((c) => '<th>' + c + '</th>').join('') + '</tr></thead><tbody>' +
+                rest.map((r) => '<tr>' + cells(r).map((c) => '<td>' + c + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>');
+            }
+          }
+          continue;
+        }
+        const li = line.match(/^\s*([-*•]|\d+[.)])\s+(.*)$/);
+        if (li) {
+          const ordered = /\d/.test(li[1]);
+          const items = [];
+          while (i < lines.length) {
+            const m = lines[i].match(/^\s*([-*•]|\d+[.)])\s+(.*)$/);
+            if (!m) break;
+            items.push('<li>' + inline(m[2]) + '</li>');
+            i++;
+          }
+          out.push((ordered ? '<ol>' : '<ul>') + items.join('') + (ordered ? '</ol>' : '</ul>'));
+          continue;
+        }
+        const h = line.match(/^#{1,4}\s+(.*)$/);
+        if (h) { out.push('<p><strong>' + inline(h[1]) + '</strong></p>'); i++; continue; }
+        if (!line.trim()) { i++; continue; }
+        const para = [];
+        while (i < lines.length && lines[i].trim() && !/^\s*(\||[-*•]\s|\d+[.)]\s|#)/.test(lines[i])) para.push(inline(lines[i++]));
+        if (para.length) out.push('<p>' + para.join('<br>') + '</p>');
+        else i++;
+      }
+      return out.join('');
+    };
+
+    // ---- UI ----
+    panel.innerHTML =
+      '<div class="cm-head">' +
+        '<div class="cm-who"><span class="cm-avatar"><img src="assets/profile.webp" alt="" width="40" height="40"></span>' +
+        '<div><div class="cm-name">Ask Manova</div><div class="cm-status" data-state="checking"><span class="cm-dot"></span><span class="cm-status-text">Connecting…</span></div></div></div>' +
+        '<div class="cm-actions"><button class="cm-icon" type="button" data-act="reset" aria-label="Start a new chat" title="New chat"><i class="ti ti-refresh"></i></button>' +
+        '<button class="cm-icon" type="button" data-act="close" aria-label="Close chat" title="Close"><i class="ti ti-x"></i></button></div>' +
+      '</div>' +
+      '<div class="cm-log" role="log" aria-live="polite" aria-label="Conversation"></div>' +
+      '<div class="cm-suggest" aria-label="Suggested questions"></div>' +
+      '<form class="cm-form" autocomplete="off">' +
+        '<textarea class="cm-input" rows="1" maxlength="500" placeholder="Ask about my experience, skills, research…" aria-label="Your message"></textarea>' +
+        '<button class="cm-send" type="submit" aria-label="Send message" disabled><i class="ti ti-arrow-up"></i></button>' +
+      '</form>' +
+      '<div class="cm-foot">AI answers from my CV · may be imperfect · <a href="mailto:' + EMAIL + '">email me</a></div>';
+
+    const log = panel.querySelector('.cm-log');
+    const suggest = panel.querySelector('.cm-suggest');
+    const form = panel.querySelector('.cm-form');
+    const input = panel.querySelector('.cm-input');
+    const send = panel.querySelector('.cm-send');
+    const statusEl = panel.querySelector('.cm-status');
+    const statusText = panel.querySelector('.cm-status-text');
+
+    let history = [];
+    try { history = JSON.parse(sessionStorage.getItem(STORE) || '[]'); } catch (e) { history = []; }
+    let mode = 'checking'; // online | waking | offline | checking
+    let busy = false;
+    let isOpen = false;
+    let statusChecked = false;
+
+    const save = () => {
+      try { sessionStorage.setItem(STORE, JSON.stringify(history.slice(-MAX_KEEP))); } catch (e) {}
+    };
+    const setMode = (m) => {
+      mode = m;
+      statusEl.dataset.state = m;
+      statusText.textContent = {
+        online: 'Online · AI assistant',
+        waking: 'Waking up · first reply may take ~30s',
+        offline: 'Quick-answer mode',
+        checking: 'Connecting…',
+      }[m];
+    };
+    const scroll = () => { log.scrollTop = log.scrollHeight; };
+
+    const bubble = (role, content, opts = {}) => {
+      const row = document.createElement('div');
+      row.className = 'cm-row ' + (role === 'user' ? 'me' : 'bot');
+      const msg = document.createElement('div');
+      msg.className = 'cm-msg';
+      if (role === 'user') msg.textContent = content;
+      else msg.innerHTML = md(content);
+      if (opts.local) {
+        const tag = document.createElement('span');
+        tag.className = 'cm-tag';
+        tag.textContent = 'Quick answer';
+        msg.prepend(tag);
+      }
+      row.appendChild(msg);
+      log.appendChild(row);
+      scroll();
+      return row;
+    };
+    const typing = () => {
+      const row = document.createElement('div');
+      row.className = 'cm-row bot';
+      row.innerHTML = '<div class="cm-msg cm-typing" aria-label="Assistant is typing"><span></span><span></span><span></span></div>';
+      log.appendChild(row);
+      scroll();
+      return row;
+    };
+    const renderSuggestions = () => {
+      suggest.innerHTML = SUGGESTIONS.map(([label, q]) => '<button type="button" class="cm-chip" data-q="' + esc(q) + '">' + label + '</button>').join('');
+    };
+    const renderAll = () => {
+      log.innerHTML = '';
+      bubble('assistant', "Hi, I'm **Manova's AI assistant**. Ask me anything about my experience, projects, research or how to get in touch.");
+      history.forEach((m) => bubble(m.role, m.content, { local: m.local }));
+    };
+
+    // Ask the Hub for the Space's state (CORS-enabled, cheap)
+    const checkStatus = () => {
+      if (statusChecked) return;
+      statusChecked = true;
       const ctrl = 'AbortController' in window ? new AbortController() : null;
-      const timer = ctrl && setTimeout(() => ctrl.abort(), 5000);
-      return fetch('https://huggingface.co/api/spaces/' + SPACE, ctrl ? { signal: ctrl.signal } : undefined)
+      const timer = ctrl && setTimeout(() => ctrl.abort(), 6000);
+      fetch('https://huggingface.co/api/spaces/' + SPACE, ctrl ? { signal: ctrl.signal } : undefined)
         .then((r) => (r.ok ? r.json() : null))
         .then((d) => {
           const stage = d && d.runtime && d.runtime.stage;
-          return !stage || USABLE.includes(stage);
+          if (!stage || stage === 'RUNNING') setMode('online');
+          else if (WAKING.includes(stage)) setMode('waking');
+          else setMode('offline');
         })
-        .catch(() => true)
+        .catch(() => setMode('online')) // unknown: try live, fall back on failure
         .finally(() => timer && clearTimeout(timer));
     };
 
-    const load = () => {
-      if (loaded) return;
-      loaded = true;
-      spaceUsable().then((usable) => (usable ? loadGradio() : showError()));
+    // Gradio REST: POST queues the call, GET is a server-sent-event stream of
+    // "generating" events (the growing answer) ending with "complete".
+    const askLive = async (text, onPartial) => {
+      const ctrl = 'AbortController' in window ? new AbortController() : null;
+      const timer = ctrl && setTimeout(() => ctrl.abort(), mode === 'waking' ? 120000 : 75000);
+      const lastAssistant = (data) => {
+        try {
+          const msgs = JSON.parse(data)[0];
+          const last = Array.isArray(msgs) && msgs[msgs.length - 1];
+          return last && last.role === 'assistant' && last.content ? String(last.content) : '';
+        } catch (e) {
+          return '';
+        }
+      };
+      try {
+        const past = history.filter((m) => !m.local).map((m) => ({ role: m.role, content: m.content }));
+        const r = await fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: [text, past] }),
+          signal: ctrl ? ctrl.signal : undefined,
+        });
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const { event_id: id } = await r.json();
+        const s = await fetch(API + '/' + id, { signal: ctrl ? ctrl.signal : undefined });
+        if (!s.ok) throw new Error('HTTP ' + s.status);
+
+        let answer = '';
+        let event = '';
+        let done = false;
+        let buffer = '';
+        const handle = (line) => {
+          if (line.startsWith('event:')) event = line.slice(6).trim();
+          else if (line.startsWith('data:')) {
+            if (event === 'error') throw new Error('Assistant error');
+            if (event === 'generating' || event === 'complete') {
+              const a = lastAssistant(line.slice(5).trim());
+              if (a) { answer = a; onPartial && onPartial(answer); }
+              if (event === 'complete') done = true;
+            }
+          }
+        };
+        if (s.body && s.body.getReader) {
+          const reader = s.body.getReader();
+          const dec = new TextDecoder();
+          while (!done) {
+            const { value, done: end } = await reader.read();
+            if (end) break;
+            buffer += dec.decode(value, { stream: true });
+            const lines = buffer.split('\n');
+            buffer = lines.pop();
+            lines.forEach((l) => handle(l.trim()));
+          }
+          if (buffer) handle(buffer.trim());
+          reader.cancel().catch(() => {});
+        } else {
+          (await s.text()).split('\n').forEach((l) => handle(l.trim()));
+        }
+        if (!answer) throw new Error('Empty answer');
+        return answer;
+      } finally {
+        if (timer) clearTimeout(timer);
+      }
     };
 
-    const loadGradio = () => {
-      const mount = () => {
-        const app = document.createElement('gradio-app');
-        app.setAttribute('space', SPACE);
-        app.setAttribute('theme_mode', 'light');
-        app.setAttribute('eager', 'true');
-        app.setAttribute('container', 'false');
-        app.setAttribute('info', 'false');
-        app.style.cssText = 'display:block;width:100%;min-height:100%;';
-        body.innerHTML = '';
-        body.appendChild(app);
+    const ask = async (text) => {
+      text = text.trim().slice(0, 500);
+      if (!text || busy) return;
+      busy = true;
+      send.disabled = true;
+      input.value = '';
+      autosize();
+      bubble('user', text);
+      const dots = typing();
+      let reply;
+      let local = false;
+      let live = null; // bubble that grows while the answer streams in
+      let pending = '';
+      let frame = 0;
+      const pin = () => {
+        // Follow the text until the reply gets long, then keep its start in view
+        if (live.offsetHeight > log.clientHeight * 0.6) log.scrollTop = live.offsetTop - 12;
+        else scroll();
       };
-      if (window.customElements && customElements.get('gradio-app')) {
-        mount();
-        return;
+      const onPartial = (partial) => {
+        pending = partial;
+        if (!live) {
+          dots.remove();
+          live = bubble('assistant', '');
+          live.querySelector('.cm-msg').classList.add('cm-streaming');
+        }
+        if (!frame) {
+          frame = requestAnimationFrame(() => {
+            frame = 0;
+            live.querySelector('.cm-msg').innerHTML = md(pending);
+            pin();
+          });
+        }
+      };
+      if (mode === 'offline') {
+        await new Promise((r) => setTimeout(r, 500));
+        reply = localAnswer(text);
+        local = true;
+      } else {
+        try {
+          reply = await askLive(text, onPartial);
+          if (mode !== 'online') setMode('online');
+        } catch (e) {
+          if (pending) {
+            reply = pending; // keep what already streamed
+          } else {
+            setMode('offline');
+            reply = localAnswer(text);
+            local = true;
+          }
+        }
       }
-      const s = document.createElement('script');
-      s.type = 'module';
-      s.src = GRADIO_SRC;
-      s.onerror = showError;
-      document.head.appendChild(s);
-      const timeout = setTimeout(showError, 15000);
-      customElements.whenDefined('gradio-app').then(() => {
-        clearTimeout(timeout);
-        mount();
-      });
+      if (frame) cancelAnimationFrame(frame);
+      dots.remove();
+      history.push({ role: 'user', content: text });
+      history.push({ role: 'assistant', content: reply, local });
+      save();
+      let row;
+      if (live && !local) {
+        row = live;
+        const msg = row.querySelector('.cm-msg');
+        msg.classList.remove('cm-streaming');
+        msg.innerHTML = md(reply);
+      } else {
+        if (live) live.remove();
+        row = bubble('assistant', reply, { local });
+      }
+      // Long replies: show the start of the answer, not its last line
+      if (row.offsetHeight > log.clientHeight * 0.6) log.scrollTop = row.offsetTop - 12;
+      else scroll();
+      busy = false;
+      send.disabled = !input.value.trim();
+      if (isOpen && window.matchMedia('(hover: hover)').matches) input.focus();
     };
+
+    const autosize = () => {
+      input.style.height = 'auto';
+      input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+    };
+
+    renderSuggestions();
+    renderAll();
+
+    suggest.addEventListener('click', (e) => {
+      const chip = e.target.closest('.cm-chip');
+      if (chip) ask(chip.dataset.q);
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      ask(input.value);
+    });
+    input.addEventListener('input', () => {
+      autosize();
+      send.disabled = busy || !input.value.trim();
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+        e.preventDefault();
+        ask(input.value);
+      }
+    });
 
     const setOpen = (open) => {
       isOpen = open;
@@ -450,19 +757,30 @@
       fab.setAttribute('aria-expanded', String(open));
       fab.setAttribute('aria-label', open ? 'Close AI assistant' : 'Open AI assistant');
       panel.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('chat-open', open);
       if (open) {
-        load();
-        setTimeout(() => closeBtn && closeBtn.focus(), 250);
+        checkStatus();
+        scroll();
+        setTimeout(() => input.focus(), 250);
       }
     };
 
+    panel.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-act]');
+      if (!btn) return;
+      if (btn.dataset.act === 'close') {
+        setOpen(false);
+        fab.focus();
+      } else if (btn.dataset.act === 'reset' && !busy) {
+        history = [];
+        save();
+        renderAll();
+        input.focus();
+      }
+    });
     fab.addEventListener('click', (e) => {
       e.stopPropagation();
       setOpen(!isOpen);
-    });
-    closeBtn && closeBtn.addEventListener('click', () => {
-      setOpen(false);
-      fab.focus();
     });
     document.querySelectorAll('[data-open-chat]').forEach((b) =>
       b.addEventListener('click', (e) => {
@@ -479,6 +797,23 @@
     document.addEventListener('click', (e) => {
       if (isOpen && !panel.contains(e.target) && !fab.contains(e.target)) setOpen(false);
     });
+  }
+
+  // ---------- CV: the profile page prints as a clean A4 CV ----------
+  function initPrintCV() {
+    const print = () => {
+      // Make sure lazy reveals and skill bars are in their final state before printing
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+      const go = () => window.print();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(go);
+      else go();
+    };
+    document.querySelectorAll('[data-print]').forEach((b) => b.addEventListener('click', print));
+    // profile.html?cv opens the print dialog straight away ("Download CV" links)
+    if (document.querySelector('[data-print]') && /[?&]cv\b/.test(window.location.search)) {
+      if (window.history && history.replaceState) history.replaceState(null, '', window.location.pathname);
+      window.addEventListener('load', () => setTimeout(print, 400));
+    }
   }
 
   // ---------- Footer year ----------
@@ -500,11 +835,13 @@
     initFilters();
     initCopy();
     initChatbot();
+    initPrintCV();
     initYear();
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
+  // This script sits at the end of <body>, so the DOM is already parsed: start now
+  // instead of waiting for DOMContentLoaded (which also waits on module scripts).
+  init();
 
   // ---------- Service worker (network-first, offline fallback) ----------
   if ('serviceWorker' in navigator && window.location.protocol === 'https:') {

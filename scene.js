@@ -287,13 +287,13 @@ const DITHER_FRAG = /* glsl */ `
 
     // Row glitches: occasional horizontal shifts
     float row = floor(uv.y * 18.0);
-    float g = step(0.965, hash(vec2(row, floor(t * 6.0))));
-    uv.x += g * (hash(vec2(row, t)) - 0.5) * 0.08;
+    float g = step(0.992, hash(vec2(row, floor(t * 4.0))));
+    uv.x += g * (hash(vec2(row, t)) - 0.5) * 0.05;
     uv.x += sin(uv.y * 30.0 + t * 1.5) * 0.002;
 
     // Chromatic split grows near the cursor
     float md = uMouse.x < 0.0 ? 1.0 : length((uv - uMouse) * vec2(uRes.x / uRes.y, 1.0));
-    float split = 0.004 + 0.02 * smoothstep(0.6, 0.0, md);
+    float split = 0.0012 + 0.016 * smoothstep(0.5, 0.0, md);
     float b = bayer4(cell);
     float r = step(b, lumAt(uv + vec2(split, 0.0), t));
     float gC = step(b, lumAt(uv, t));
@@ -770,21 +770,42 @@ function safe(fn, canvas) {
   }
 }
 
-const hasGL = webglAvailable();
-const bg = document.getElementById('bg-canvas');
-const band = document.getElementById('hero-band');
-const paper = document.getElementById('paper-dither');
-const works = document.getElementById('works-3d');
-const chromeLogo = document.getElementById('chrome-logo');
-
-if (hasGL) {
-  if (bg) safe(initDust, bg);
-  if (band) safe((c) => initDither(c, { texture: 'assets/profile.jpg', centerY: 0.3 }), band);
-  if (paper) safe((c) => initDither(c), paper);
-  if (works) safe(initWorks, works);
-  if (chromeLogo) safe(initChrome, chromeLogo);
-  requestRender();
-} else {
-  [bg, band, paper, chromeLogo].forEach((c) => c && c.remove());
-  if (works) initWorksFallback(works);
+// Build a view only when its canvas comes near the viewport, so heavy scenes
+// (reflection maps, extruded geometry, shader compiles) never block page start-up.
+function lazy(canvas, fn) {
+  const io = new IntersectionObserver((entries) => {
+    if (!entries.some((e) => e.isIntersecting)) return;
+    io.disconnect();
+    safe(fn, canvas);
+    requestRender();
+  }, { rootMargin: '900px 0px' });
+  io.observe(canvas);
 }
+
+function boot() {
+  const bg = document.getElementById('bg-canvas');
+  const band = document.getElementById('hero-band');
+  const paper = document.getElementById('paper-dither');
+  const works = document.getElementById('works-3d');
+  const chromeLogo = document.getElementById('chrome-logo');
+
+  if (!webglAvailable()) {
+    [bg, band, paper, chromeLogo].forEach((c) => c && c.remove());
+    if (works) initWorksFallback(works);
+    return;
+  }
+  if (band) lazy(band, (c) => initDither(c, { texture: 'assets/profile.jpg', centerY: 0.3 }));
+  if (paper) lazy(paper, (c) => initDither(c));
+  if (works) lazy(works, initWorks);
+  if (chromeLogo) lazy(chromeLogo, initChrome);
+  // The ambient background is decorative: create it once the browser is idle.
+  if (bg) {
+    const start = () => { safe(initDust, bg); requestRender(); };
+    if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 1200 });
+    else setTimeout(start, 300);
+  }
+}
+
+// Let the document finish loading (and app.js initialise) before any GPU work.
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(boot, 0));
+else setTimeout(boot, 0);

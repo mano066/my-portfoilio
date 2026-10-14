@@ -14,9 +14,9 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700&family=Gloock&family=Rajdhani:wght@300;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700&family=Gloock&family=Inter:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=0bdff5a2" />
   <script>
     // Apply saved motion preference and show the loader once per session, before first paint.
     (function () {
@@ -80,9 +80,15 @@
         <span class="row reveal" style="--d:.22s">To <span class="grad-text">Edge</span></span>
       </h1>
       <p class="hero-sub reveal" style="--d:.32s"><b>Manova L M</b> — AI Engineer &amp; Researcher · Taiwan</p>
-      <div class="hero-actions reveal" style="--d:.4s">
+      <ul class="hero-proof reveal" style="--d:.38s" aria-label="Highlights">
+        <li><i class="ti ti-briefcase"></i><b>5+ yrs</b> industry AI</li>
+        <li><i class="ti ti-file-certificate"></i><b>12</b> papers · IEEE Q1</li>
+        <li><i class="ti ti-trophy"></i><b>2</b> competition awards</li>
+      </ul>
+      <div class="hero-actions reveal" style="--d:.44s">
         <a class="btn btn-primary" href="#works">View works</a>
-        <button class="btn" type="button" data-open-chat>Ask my AI</button>
+        <a class="btn" href="profile.html?cv"><i class="ti ti-download"></i>Download CV</a>
+        <button class="btn" type="button" data-open-chat><i class="ti ti-message-chatbot"></i>Ask my AI</button>
       </div>
       </div>
 
@@ -139,9 +145,29 @@
       <div class="partners reveal">
         <span class="label">Industry · Academia · Published in</span>
         <div class="marquee" style="--speed:45s"><div class="marquee-track">
-          <span class="partner p2">IEI Integration Corp</span><span class="partner p1">IEEE Access</span><span class="partner p3">AUO DATASET</span><span class="partner p4">Elsevier</span><span class="partner p2">IEEE Sensors Journal</span><span class="partner p1">National Formosa University</span><span class="partner p3">VEL TECH R&amp;D</span><span class="partner p4">NIDHI PRAYAS</span>
-          <span class="partner p2" aria-hidden="true">IEI Integration Corp</span><span class="partner p1" aria-hidden="true">IEEE Access</span><span class="partner p3" aria-hidden="true">AUO DATASET</span><span class="partner p4" aria-hidden="true">Elsevier</span><span class="partner p2" aria-hidden="true">IEEE Sensors Journal</span><span class="partner p1" aria-hidden="true">National Formosa University</span><span class="partner p3" aria-hidden="true">VEL TECH R&amp;D</span><span class="partner p4" aria-hidden="true">NIDHI PRAYAS</span>
+          <span class="partner">IEI Integration Corp</span><span class="partner">IEEE Access</span><span class="partner">AUO DATASET</span><span class="partner">Elsevier</span><span class="partner">IEEE Sensors Journal</span><span class="partner">National Formosa University</span><span class="partner">VEL TECH R&amp;D</span><span class="partner">NIDHI PRAYAS</span>
+          <span class="partner" aria-hidden="true">IEI Integration Corp</span><span class="partner" aria-hidden="true">IEEE Access</span><span class="partner" aria-hidden="true">AUO DATASET</span><span class="partner" aria-hidden="true">Elsevier</span><span class="partner" aria-hidden="true">IEEE Sensors Journal</span><span class="partner" aria-hidden="true">National Formosa University</span><span class="partner" aria-hidden="true">VEL TECH R&amp;D</span><span class="partner" aria-hidden="true">NIDHI PRAYAS</span>
         </div></div>
+      </div>
+    </section>
+
+    <!-- CAREER -->
+    <section class="section" style="padding-top:20px" aria-labelledby="career-h">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Experience</span>
+          <h2 id="career-h">Career</h2>
+        </div>
+        <div class="career">
+          <div class="career-row now reveal"><span class="career-when">2024 — Present</span><div><h3>AI Engineer</h3><div class="career-org">IEI Integration Corp · Edge VLM, multi-object tracking, INT8/FP16 optimisation</div></div><span class="career-place">New Taipei, TW</span></div>
+          <div class="career-row reveal"><span class="career-when">2023 — 2024</span><div><h3>AI Engineer</h3><div class="career-org">Intelligent Recognition Industry Service Centre · Defect detection, recycling AI</div></div><span class="career-place">Douliu, TW</span></div>
+          <div class="career-row reveal"><span class="career-when">2021 — 2023</span><div><h3>M.Sc. · AI Specialist</h3><div class="career-org">National Formosa University · Aeronautical &amp; Electronic Engineering</div></div><span class="career-place">Taiwan</span></div>
+          <div class="career-row reveal"><span class="career-when">2017 — 2021</span><div><h3>Research Fellow</h3><div class="career-org">Vel Tech R&amp;D Institute · Led NIDHI PRAYAS project, UAV vision</div></div><span class="career-place">Chennai, IN</span></div>
+        </div>
+        <div class="reveal" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:36px">
+          <a class="btn" href="profile.html">Full profile</a>
+          <a class="btn" href="profile.html?cv"><i class="ti ti-download"></i>Download CV</a>
+        </div>
       </div>
     </section>
 
@@ -262,6 +288,7 @@
       <a class="channel" href="https://github.com/mano066" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i>GitHub</a>
       <a class="channel" href="https://huggingface.co/MANO066" target="_blank" rel="noopener"><span aria-hidden="true">🤗</span>Hugging Face</a>
       <a class="channel" href="tel:+886958334626"><i class="ti ti-phone"></i>+886 958 334 626</a>
+      <a class="channel" href="profile.html?cv"><i class="ti ti-download"></i>CV</a>
     </div>
     <div class="footer-base">
       <span>&copy; <span data-year>2026</span> Manova L M · New Taipei, Taiwan</span>
@@ -271,15 +298,9 @@
   </footer>
 
   <button class="chat-fab" id="chat-fab" type="button" aria-label="Open AI assistant" aria-expanded="false" aria-controls="chat-panel"><i class="ti ti-message-chatbot"></i><i class="ti ti-x"></i></button>
-  <div class="chat-panel" id="chat-panel" role="dialog" aria-label="Career-takAI assistant" aria-hidden="true">
-    <div class="chat-head">
-      <div class="chat-title"><span class="bot"><i class="ti ti-robot"></i></span><div>Career-takAI<small>Ask about my experience</small></div></div>
-      <button class="chat-close" id="chat-close" type="button" aria-label="Close assistant"><i class="ti ti-x"></i></button>
-    </div>
-    <div class="chat-body" id="chat-body"><div class="chat-state"><i class="ti ti-loader-2 spin"></i><span>Starting assistant…</span></div></div>
-  </div>
+  <div class="chat-panel" id="chat-panel" role="dialog" aria-label="Ask Manova — AI assistant" aria-hidden="true"></div>
 
-  <script src="app.js"></script>
-  <script type="module" src="scene.js"></script>
+  <script src="app.js?v=16cc7509"></script>
+  <script type="module" src="scene.js?v=4ff5e405"></script>
 </body>
 </html>
